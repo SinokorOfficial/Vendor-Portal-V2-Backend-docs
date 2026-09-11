@@ -1,0 +1,2603 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="장금상선 Partner Portal 백엔드(vp-backend) 개발자 문서 — 아키텍처·컨벤션·도메인 코드 워크스루">
+      
+      
+      
+        <link rel="canonical" href="https://sinokorofficial.github.io/Vendor-Portal-V2-Backend-docs/architecture/">
+      
+      
+        <link rel="prev" href="../configuration/">
+      
+      
+        <link rel="next" href="../modules/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>아키텍처 개요 - Partner Portal Backend · 개발자 문서</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="Partner Portal Backend · 개발자 문서" class="md-header__button md-logo" aria-label="Partner Portal Backend · 개발자 문서" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Partner Portal Backend · 개발자 문서
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              아키텍처 개요
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="green"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="green"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Vendor-Portal-V2-Backend
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  시작하기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  시스템
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../data/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  데이터
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../code-walkthrough/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  코드 워크스루
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../troubleshooting/migration-pitfalls/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  운영·트러블슈팅
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../adr/0001-sb3-java21-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  결정 기록 (ADR)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  변경 이력
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Partner Portal Backend · 개발자 문서" class="md-nav__button md-logo" aria-label="Partner Portal Backend · 개발자 문서" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    Partner Portal Backend · 개발자 문서
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Vendor-Portal-V2-Backend
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시작하기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시작하기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빌드·실행·프로파일
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    설정·시크릿 정책
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시스템
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시스템
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처 개요
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기술 스택
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpapplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        부트스트랩 (VpApplication)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모듈 레이아웃
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        레이어 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        횡단 관심사 (AOP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        보안 / 세션
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예외 처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        외부 통합 (Spring Integration)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#websocket-stomp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실시간 (WebSocket / STOMP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프로파일 / 포트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    모듈 맵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 컨벤션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    보안·인증
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    데이터
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터·MyBatis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code-walkthrough/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 워크스루
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    코드 워크스루
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    핵심 도메인
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    핵심 도메인
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    관리자 · admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    파트너 API · api
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/cms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMS · cms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/eir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EIR · eir
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    기준정보(마스터)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    기준정보(마스터)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/mdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MDM · mdm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    화물·물류 운영
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    화물·물류 운영
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/cfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFS 컨테이너 화물 · cfs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/crs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRS 컨테이너 수리 · crs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/csm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSM 고객 서비스 · csm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/mvs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVS 이동 현황 · mvs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/fds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDS 운임율 · fds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    통합·공통
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    통합·공통
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/vps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vendor Portal · vps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/dsh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    대시보드 · dsh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    운영·트러블슈팅
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    운영·트러블슈팅
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/migration-pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    마이그레이션 함정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    결정 기록 (ADR)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    결정 기록 (ADR)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0001-sb3-java21-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0001 · SB3/Java21 이관
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0002-secret-externalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0002 · 시크릿 외부화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0003-pagehelper-pagesizezero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0003 · PageHelper pageSizeZero 복원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0004-common-procedure-unification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0004 · 공통 프로시저 호출 통합
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변경 이력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기술 스택
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpapplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        부트스트랩 (VpApplication)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모듈 레이아웃
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        레이어 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        횡단 관심사 (AOP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        보안 / 세션
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예외 처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        외부 통합 (Spring Integration)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#websocket-stomp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실시간 (WebSocket / STOMP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프로파일 / 포트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="네비게이션" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href=".." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    홈
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    시스템
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">아키텍처 개요<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<p>Vendor-Portal-V2 백엔드(<code>vp-backend</code>)는 Spring Boot 3.5 + Java 21 위에서 MyBatis(XML 매퍼)로 동작하는 다중 모듈 서블릿 애플리케이션이다. 타입 DTO/JPA 대신 <code>DMap</code>을 데이터 캐리어로 쓰고 응답은 <code>ResponseVo</code>로 통일하며, FTP·Mail·WebPush·HTTP 연동은 Spring Integration 플로우로, 실시간 알림은 STOMP WebSocket으로 처리한다.</p>
+<h2 id="_2">기술 스택<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spring Boot</td>
+<td>3.5.14</td>
+<td><code>build.gradle:3</code></td>
+</tr>
+<tr>
+<td>Java</td>
+<td>21 (toolchain)</td>
+<td><code>build.gradle:11-15</code>, <code>gradle.properties:5</code></td>
+</tr>
+<tr>
+<td>빌드</td>
+<td>Gradle, <code>bootJar</code> 이름 <code>vp-backend.jar</code></td>
+<td><code>build.gradle:17-19</code></td>
+</tr>
+<tr>
+<td>패키지</td>
+<td><code>com.sinokor.vp</code></td>
+<td><code>src/main/java/com/sinokor/vp/VpApplication.java:1</code></td>
+</tr>
+<tr>
+<td>ORM</td>
+<td>MyBatis (<code>mybatis-spring-boot-starter:3.0.5</code>)</td>
+<td><code>build.gradle:68</code></td>
+</tr>
+<tr>
+<td>페이징</td>
+<td>PageHelper <code>1.4.7</code></td>
+<td><code>build.gradle:71</code></td>
+</tr>
+<tr>
+<td>DB</td>
+<td>Oracle(<code>ojdbc11</code>), MSSQL(<code>mssql-jdbc</code>), SQL 로깅 <code>p6spy:1.12.1</code></td>
+<td><code>build.gradle:81-83</code></td>
+</tr>
+<tr>
+<td>세션/캐시</td>
+<td>Redis (<code>spring-session-data-redis</code>)</td>
+<td><code>build.gradle:51-52</code></td>
+</tr>
+<tr>
+<td>인증</td>
+<td>Spring Security + JWT(<code>java-jwt:4.5.2</code>, HMAC256)</td>
+<td><code>build.gradle:50,107</code></td>
+</tr>
+<tr>
+<td>템플릿</td>
+<td>Pebble <code>3.2.4</code></td>
+<td><code>build.gradle:74-75</code></td>
+</tr>
+<tr>
+<td>통합</td>
+<td>Spring Integration file/http/ftp/mail</td>
+<td><code>build.gradle:62-65</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title"><code>-parameters</code> 강제</p>
+<p>Spring 6는 <code>@RequestPart</code>/<code>@RequestParam</code> 등의 파라미터명 추론에 <code>-parameters</code> 컴파일 옵션이 필요해 <code>JavaCompile</code> 전체에 강제 추가한다(<code>build.gradle:25-27</code>).</p>
+</div>
+<h2 id="vpapplication">부트스트랩 (VpApplication)<a class="headerlink" href="#vpapplication" title="Permanent link">¶</a></h2>
+<p><code>VpApplication</code>은 <code>SpringBootServletInitializer</code>를 상속하고, <code>main</code>에서 BouncyCastle 보안 제공자 등록 → <code>SpringApplicationBuilder</code> 구성 → PID 파일 기록 순으로 기동한다(<code>VpApplication.java:30-44</code>).</p>
+<ul>
+<li><strong>AutoConfiguration 제외</strong>: 커스텀 구현으로 대체하기 위해 4개를 제외한다 — <code>MessageSourceAutoConfiguration</code>, <code>HttpMessageConvertersAutoConfiguration</code>, <code>ErrorMvcAutoConfiguration</code>, <code>JdbcRepositoriesAutoConfiguration</code>(<code>VpApplication.java:24-25</code>).</li>
+<li><strong>활성 어노테이션</strong>: <code>@EnableConfigurationProperties(StorageProperties.class)</code>, <code>@IntegrationComponentScan</code>(<code>VpApplication.java:26-27</code>).</li>
+<li><strong>corp별 설정 주입</strong>: <code>args[0]</code>가 <code>dev</code>가 아니면 <code>classpath:/corp/{args[0]}.yaml</code>을 <code>spring.config.location</code>에 추가해 회사별 프로파일을 덧입힌다(<code>VpApplication.java:35-41</code>).</li>
+<li><strong>스토리지 초기화</strong>: <code>CommandLineRunner</code>로 <code>StorageService.init()</code>을 1회 실행한다(<code>VpApplication.java:47-50</code>).</li>
+</ul>
+<h2 id="_3">모듈 레이아웃<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>업무 도메인은 최상위 패키지로 평탄하게 나뉘며, 각 도메인은 <code>controller</code> / <code>service</code> / <code>dao</code> 3계층을 갖는다. <code>config</code>(부트/인프라 설정)와 <code>core</code>(공통 기반)가 횡단 토대를 이룬다.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>com.sinokor.vp/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── admin/  api/  cfs/  cms/  crs/  csm/      # 업무 도메인
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   dsh/  eir/  fds/  mdm/  mvs/  vps/
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   └── {controller, service, dao}/          # 도메인별 3계층
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── config/                                   # 부팅·인프라 구성
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── annotation/   # @VpRepository, @UpperSnakeCase
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   ├── aop/          # TraceAdvice, MybatisDaoMethodParameterAdvice
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── database/     # DataSource·TxManager·SqlSessionFactory
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── integration/  # ftp / http / mail / webpush 플로우
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── property/     # @ConfigurationProperties 바인딩
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   ├── web/          # MVC·필터·시큐리티 설정
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   └── websocket/    # STOMP 브로커
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>└── core/                                     # 공통 기반
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    ├── vo/           # DMap, ResponseVo, ResponseErrorVo
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    ├── web/security/ # filter / provider / handler / entrypoint ...
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    ├── web/exception, web/resolver, web/converter
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    ├── mybatis/      # SqlSessionFactory 확장·PageHelper 후처리
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    ├── storage/  ftp/  http/  mail/  template/  trace/  util/
+</span></code></pre></div>
+<blockquote>
+<p>위 도메인 목록은 <code>src/main/java/com/sinokor/vp/</code> 하위 디렉터리에서 확인했다. 매퍼 XML은 도메인별로 <code>src/main/resources/mapper/oracle/&lt;module&gt;/*-mapper.xml</code>에 둔다(매퍼 디렉터리: admin/api/cfs/cms/crs/csm/dsh/eir/fds/mdm/mvs/vms).</p>
+</blockquote>
+<h2 id="_4">레이어 흐름<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<p>요청은 <code>@RestController</code> → <code>@Service</code> → <code>@VpRepository</code> DAO 인터페이스 → MyBatis XML 순으로 흐른다. DAO는 <code>@Mapper</code>가 아니라 커스텀 마커 <code>@VpRepository</code>만 단 인터페이스이고(<code>config/annotation/VpRepository.java:8</code>, <code>admin/dao/AdminDao.java:10</code>), <code>VpDataBaseConfiguration</code>의 <code>@MapperScan(annotationClass = VpRepository.class)</code>가 이를 스캔한다(<code>config/database/VpDataBaseConfiguration.java:30-33</code>).</p>
+<pre class="mermaid"><code>flowchart TD
+    C["@RestController\n(ExtendBaseController 상속)"] --&gt; S["@Service"]
+    S --&gt; D["@VpRepository DAO\n(인터페이스)"]
+    D --&gt; X["MyBatis XML\nmapper/oracle/&amp;lt;module&amp;gt;/*-mapper.xml"]
+    X --&gt; DS["HikariDataSource\n(p6spy 데코레이트)"]
+    DS --&gt; ORA[("Oracle / MSSQL")]
+    S -. 응답 .-&gt; R["ResponseVo.of(DMap).build()"]
+    R --&gt; C
+    AOP1["TraceAdvice\n(@Around controller)"] -. traceId 생성 .-&gt; C
+    REDIS[("Redis\n세션 2h")] -. HttpSession .-&gt; C</code></pre>
+<ul>
+<li><strong>데이터 캐리어 <code>DMap</code></strong>: <code>HashMap&lt;String,Object&gt;</code> 확장에 <code>getString/getInt/getBigDecimal/getTimestamp</code> 등 타입드 게터를 제공한다(<code>core/vo/DMap.java:14-60</code>).</li>
+<li><strong>응답 <code>ResponseVo</code></strong>: <code>code</code>/<code>message</code>/<code>data</code>/<code>traceId</code>를 담는 제네릭 래퍼. <code>ResponseVo.of(data).message(...).build()</code> 빌더로 만들며, <code>code</code> 미지정 시 <code>"200"</code>, <code>traceId</code>는 <code>Trace.getId()</code>로 채워진다(<code>core/vo/ResponseVo.java:18-54</code>).</li>
+<li><strong>DataSource/Tx/SqlSessionFactory</strong>: 모두 <code>VpDataBaseConfiguration</code>에서 <code>@Primary</code> 빈으로 직접 구성한다. Hikari <code>autoCommit=false</code>, p6spy가 <code>BeanPostProcessor</code>로 자동 래핑(<code>VpDataBaseConfiguration.java:43-57</code>). <code>SqlSessionFactory</code>에는 <code>PageHelperRowIdStripInterceptor</code>를 플러그인으로 끼워 Oracle 페이징이 흘리는 합성 컬럼 <code>PAGEHELPER_ROW_ID</code>를 제거한다(<code>VpDataBaseConfiguration.java:66-86</code>).</li>
+</ul>
+<h2 id="aop">횡단 관심사 (AOP)<a class="headerlink" href="#aop" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>포인트컷</th>
+<th>동작</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TraceAdvice</code></td>
+<td><code>*..controller.*Controller.*(..)</code></td>
+<td>컨트롤러 진입 시 <code>Trace.create()</code>로 분산 추적 ID 생성</td>
+<td><code>config/aop/TraceAdvice.java:14-17</code></td>
+</tr>
+<tr>
+<td><code>MybatisDaoMethodParameterAdvice</code></td>
+<td><code>@VpRepository</code> + <code>*..dao.*Dao.*(..)</code></td>
+<td>DAO 호출 인자 후킹(<code>DMap</code>/<code>String</code> 분기)</td>
+<td><code>config/aop/MybatisDaoMethodParameterAdvice.java:14-32</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">보안 / 세션<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<p><code>WebSecurityConfiguration</code>이 단일 <code>SecurityFilterChain</code>을 구성한다(<code>config/web/security/WebSecurityConfiguration.java:38-61</code>).</p>
+<ul>
+<li><strong>공개 경로</strong>: Java 코드가 아니라 <code>application.yaml</code>의 <code>security.request-permit-all-mappings</code>(method+urls 목록)를 읽어 <code>permitAll()</code>로 등록하고, 나머지 <code>/**</code>는 <code>authenticated()</code>로 막는다(<code>WebSecurityConfiguration.java:42-49</code>; 매핑 정의: <code>application.yaml.example:86-108</code>).</li>
+<li><strong>정적 리소스</strong>: <code>.html/.js/.css/...</code> 확장자는 정규식 매처로 시큐리티 체인에서 제외(<code>WebSecurityConfiguration.java:33-36</code>).</li>
+<li><strong>필터 배치</strong>: <code>JwtAuthenticationFilter</code>를 <code>BasicAuthenticationFilter</code> 위치에, <code>LoginAuthenticationProcessingFilter</code>를 <code>UsernamePasswordAuthenticationFilter</code> 위치에 끼운다(<code>WebSecurityConfiguration.java:55-56</code>).</li>
+<li><strong>인증 제공자 체인</strong>: <code>core/web/security/provider</code>에 JWT 검증·로그인·마스터 로그인용 Provider들이 있다(<code>JwtVerifyAuthenticationProvider</code>, <code>LoginUserDaoAuthenticationProvider</code>, <code>JwtSwitchingLoginUserAuthenticationProvider</code>, <code>LoginSuccessfulAuthenticationProvider</code> 등).</li>
+<li><strong>세션</strong>: Redis 저장(<code>spring.session.store-type: redis</code>), 타임아웃 7200초(2h)(<code>application.yaml.example:59-63</code>). JWT 시크릿은 <code>security.jwt-hmac256-secret</code>로 외부화(<code>application.yaml.example:85</code>).</li>
+</ul>
+<h2 id="_6">예외 처리<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<p><code>ErrorMvcAutoConfiguration</code>을 끄고 <code>GlobalHandlerExceptionResolver</code>(커스텀, <code>AbstractHandlerMethodExceptionResolver</code> 기반)가 전역 예외를 잡는다(<code>core/web/resolver/GlobalHandlerExceptionResolver.java:66</code>).</p>
+<ul>
+<li>예외별 <code>HttpErrorResponseTranslator</code>로 상태·메시지를 해석하고, <code>Accept: text/html</code>이면 Pebble 뷰를, 그 외엔 <code>ResponseErrorVo</code>를 직렬화해 반환한다(<code>GlobalHandlerExceptionResolver.java:260-287</code>).</li>
+<li>인증 사용자(<code>LoginUser</code>)의 <code>userId</code>를 에러 로그에 함께 기록한다(<code>GlobalHandlerExceptionResolver.java:179-193</code>).</li>
+<li>업무 예외 계층: <code>WebControllerException</code>, <code>WebServiceException</code>, <code>JwtAuthenticationException</code>, <code>LoginAuthenticationException</code>(<code>core/web/exception/</code>). 여기에 <code>ExternalServiceException</code>(외부 연동 실패 → 502, <code>core/web/exception/core/</code>, 번역기 <code>ExternalServiceExceptionTranslator</code>)과 <code>LoginFailureReasonException</code>(로그인 실패 사유 세분화, cause 체인)이 있다.</li>
+<li>번역기 등록 순서: <code>ClientAbortExceptionTranslator</code>·<code>ExternalServiceExceptionTranslator</code>는 각각 <code>IOExceptionTranslator</code>·<code>JavaExceptionTranslator</code>보다 먼저 등록된다(<code>config/web/beans/HandlerExceptionConfiguration.java:55-60</code>).</li>
+</ul>
+<h2 id="spring-integration">외부 통합 (Spring Integration)<a class="headerlink" href="#spring-integration" title="Permanent link">¶</a></h2>
+<p><code>config/integration/</code> 아래 4개의 <code>IntegrationFlow</code>가 메시징 게이트웨이로 외부 시스템과 연동한다.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph App["vp-backend"]
+      direction TB
+      MG1["MailSendGateway"] --&gt; MC["mailSendChannel"]
+      MG2["FtpGateway / FtpLsGateway"] --&gt; FC["ftpTransferChannel"]
+      MG3["WebPushGateway"] --&gt; PC["webPushSendChannel"]
+      MG4["HttpGateway"] --&gt; HC["httpRequestChannel"]
+    end
+    MC --&gt; SMTP["SMTP outboundAdapter\nMAIL-HOST:465"]
+    FC --&gt; FTP["FTP outboundAdapter\n(ulogitech)"]
+    PC --&gt; WP["WebPushOutboundGateway\n(VAPID)"]
+    HC --&gt; EXT["RestTemplate outboundGateway\n(외부 REST)"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>플로우</th>
+<th>게이트웨이</th>
+<th>특징</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mail</td>
+<td><code>MailSendGateway.send(...)</code></td>
+<td><code>Mail.outboundAdapter</code>, SMTP 465/SSL, HTML 본문 헤더 주입</td>
+<td><code>config/integration/mail/MailFlowConfiguration.java:21-56</code></td>
+</tr>
+<tr>
+<td>WebPush</td>
+<td><code>WebPushGateway.send(DMap, DMap)</code></td>
+<td><code>WebPushOutboundGateway(pushService)</code>, send/receive 채널 분리</td>
+<td><code>config/integration/webpush/WebPushFlowConfiguration.java:28-50</code></td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td><code>HttpGateway.get/post(...)</code></td>
+<td><code>Http.inboundGateway</code>/<code>outboundGateway</code>, 응답 <code>DMap</code>으로 추출</td>
+<td><code>config/integration/http/HttpFlowConfiguration.java:45-122</code></td>
+</tr>
+<tr>
+<td>FTP</td>
+<td><code>FtpGateway</code> / <code>FtpLsGateway</code></td>
+<td><code>Ftp.outboundAdapter</code>/<code>outboundGateway</code>, <code>CachingSessionFactory</code></td>
+<td><code>config/integration/ftp/FtpFlowConfiguration.java:33-84</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">FTP 플로우 비활성 상태</p>
+<p><code>FtpFlowConfiguration</code>의 <code>@Bean</code>/<code>@Gateway</code> 어노테이션이 주석 처리돼 있어 FTP 플로우는 현재 비활성이다(<code>FtpFlowConfiguration.java:32,44,57-73</code>). 비밀번호는 <code>ftp.flow.password</code>로 외부화되어 있다(<code>FtpFlowConfiguration.java:29</code>).</p>
+</div>
+<h2 id="websocket-stomp">실시간 (WebSocket / STOMP)<a class="headerlink" href="#websocket-stomp" title="Permanent link">¶</a></h2>
+<p><code>WebSocketConfiguration</code>이 <code>@EnableWebSocketMessageBroker</code>로 STOMP 엔드포인트와 심플 브로커를 등록한다. 엔드포인트·프리픽스는 모두 <code>websocket.stomp.server.*</code> 설정에서 읽는다(<code>config/websocket/WebSocketConfiguration.java:13-34</code>).</p>
+<ul>
+<li>엔드포인트 <code>/ws/stomp</code>, 앱 destination <code>/publish</code>, 브로커 <code>/subscribe</code>, user <code>/user</code>(<code>application.yaml.example:188-197</code>).</li>
+</ul>
+<h2 id="_7">프로파일 / 포트<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>프로파일</th>
+<th>포트</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>default</code>(로컬)</td>
+<td>9041</td>
+<td><code>application-default.yaml.example:5</code></td>
+</tr>
+<tr>
+<td><code>dev</code></td>
+<td>(yaml)</td>
+<td>개발 서버</td>
+</tr>
+<tr>
+<td><code>prod</code></td>
+<td>(yaml)</td>
+<td>운영</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>공통 <code>application.yaml</code>은 <code>address: 0.0.0.0</code>, 세션 타임아웃 120m, <code>shutdown: graceful</code>(<code>application.yaml.example:6-13</code>).</li>
+<li><code>spring.main.allow-circular-references: true</code> — 레거시 호환(보안설정↔AdminService 상호참조) 위해 유지(<code>application.yaml.example:25-26</code>).</li>
+<li>PageHelper <code>pageSizeZero: true</code> — <code>pageSize=0</code>일 때 전체조회하던 레거시 동작 복원, 삭제 금지(<code>application.yaml.example:200-206</code>).</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">시크릿 정책</p>
+<p><code>application*.yaml</code>은 gitignore 대상이며 <code>*.yaml.example</code>(placeholder)만 커밋된다. 클론 시 <code>.example</code>→실파일 복사 후 실값을 채워야 기동한다.
+메일 발송 계정(<code>MailFlowConfiguration</code>)도 <code>mail.flow.username</code>/<code>mail.flow.password</code>로 외부화돼 있다(<code>MailFlowConfiguration.java:22-26</code>).</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      장금상선 · Partner Portal
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" target="_blank" rel="noopener" title="Backend 레포" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2255 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="장금상선 Partner Portal 백엔드(vp-backend) 개발자 문서 — 아키텍처·컨벤션·도메인 코드 워크스루">
+      
+      
+      
+        <link rel="canonical" href="https://sinokorofficial.github.io/Vendor-Portal-V2-Backend-docs/changelog/">
+      
+      
+        <link rel="prev" href="../adr/0004-common-procedure-unification/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>변경 이력 - Partner Portal Backend · 개발자 문서</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="Partner Portal Backend · 개발자 문서" class="md-header__button md-logo" aria-label="Partner Portal Backend · 개발자 문서" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Partner Portal Backend · 개발자 문서
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              변경 이력
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="green"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="green"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Vendor-Portal-V2-Backend
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  시작하기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  시스템
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../data/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  데이터
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../code-walkthrough/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  코드 워크스루
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../troubleshooting/migration-pitfalls/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  운영·트러블슈팅
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../adr/0001-sb3-java21-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  결정 기록 (ADR)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  변경 이력
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Partner Portal Backend · 개발자 문서" class="md-nav__button md-logo" aria-label="Partner Portal Backend · 개발자 문서" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    Partner Portal Backend · 개발자 문서
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Vendor-Portal-V2-Backend
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시작하기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시작하기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빌드·실행·프로파일
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    설정·시크릿 정책
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시스템
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시스템
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    모듈 맵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 컨벤션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    보안·인증
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    데이터
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터·MyBatis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code-walkthrough/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 워크스루
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    코드 워크스루
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    핵심 도메인
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    핵심 도메인
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    관리자 · admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    파트너 API · api
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/cms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMS · cms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/eir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EIR · eir
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    기준정보(마스터)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    기준정보(마스터)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/mdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MDM · mdm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    화물·물류 운영
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    화물·물류 운영
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/cfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFS 컨테이너 화물 · cfs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/crs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRS 컨테이너 수리 · crs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/csm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSM 고객 서비스 · csm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/mvs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVS 이동 현황 · mvs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/fds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDS 운임율 · fds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    통합·공통
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    통합·공통
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/vps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vendor Portal · vps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/dsh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    대시보드 · dsh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    운영·트러블슈팅
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    운영·트러블슈팅
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/migration-pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    마이그레이션 함정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    결정 기록 (ADR)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    결정 기록 (ADR)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0001-sb3-java21-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0001 · SB3/Java21 이관
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0002-secret-externalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0002 · 시크릿 외부화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0003-pagehelper-pagesizezero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0003 · PageHelper pageSizeZero 복원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0004-common-procedure-unification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0004 · 공통 프로시저 호출 통합
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변경 이력
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변경 이력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2026-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-09
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-08
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-07
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-06
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2026-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-09
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-08
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-07
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-06
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">변경 이력<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<p>개발자 문서·백엔드의 주요 변경을 기록한다. 상세 커밋은 git 로그를 참고.</p>
+<h2 id="2026-09">2026-09<a class="headerlink" href="#2026-09" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong><code>/api/eir/**</code> permit-all 제거 + EIR 주체를 세션 권위로</strong>(PR #135) — SIPG/EIR 운영 PoC 종료(14일간 <code>issueEirNew</code> 3,178건 = 정상 운영)에 따라 임시 공개 2줄을 닫았다. <strong>정리가 아니라 열려 있던 구멍이다</strong>: <code>issueEirNew</code>·<code>cancelEirNew</code> 가 세션을 쓰지 않고 본문 <code>USER_ID</code>/<code>COMP_CD</code> 를 그대로 신뢰해 <strong>무인증 호출자가 실제 EIR 을 SIPG 에 발급·취소</strong>하고 남의 ID 로 로그를 남길 수 있었고, <code>GET getValidToken</code> 은 <strong>살아있는 SIPG 토큰</strong>을 세션 검사 없이 반환했다. <code>getCachedToken</code> 은 <code>getSession()</code> 의 <code>ClassCastException</code> 으로 "우연히" 막혀 있었을 뿐 접근제어가 아니다(<code>uploadFile</code> 과 같은 패턴). ★<code>/test/**</code> 와 달리 <strong>인터넷에서 실제로 도달 가능했다</strong> — nginx 가 <code>/api/</code> 를 백엔드로 넘기기 때문(<code>/test/**</code> 는 접두가 달라 애초에 못 닿았다). 안전성은 7일치 액세스로그 Referer 전수로 판정했다(<code>EirExportIssue</code> 2,295·<code>EirImportIssue</code> 469·<code>EirResponseLog</code> 3·<strong>외부 0건</strong>). 외부 사이트가 쓰는 EIR 취소는 <code>/api/partner/cancelEir</code>(<code>PartnerController</code>)라 무관하며 계속 열려 있다. 함께 ①<code>issueEirNew</code>·<code>cancelEirNew</code>·<code>getEirInfo</code> 의 주체를 <code>getSession().getUserId()</code> 로 전환(화면이 원래 <code>$session('userId')</code> 를 보내 동작 변화 없음, <code>userId</code> 는 데이터 필터가 아니라 <code>selectVmsCommonProcedure</code> 호출 주체) ②호출부 0인 <code>GET /api/eir/getValidToken</code> 제거. ⚠️<code>getCachedToken</code> 은 <code>EirResponseLog.fnSearchToken</code> 이 실제로 쓰므로 <strong>존치</strong>(14일 1건은 화면이 드물게 쓰이기 때문이지 死코드 근거가 아니다). ★배포 경로: Dockerfile 이 빌드 시 실 <code>application*.yaml</code> 을 <code>*.yaml.example</code> 로 덮어쓰므로 <strong><code>.example</code> 이 곧 운영 설정</strong>이다. Infra #17 종결.</li>
+<li><strong>EIR <code>updateEirInfo</code> — deprecated <code>saveVmsCommonProcedure</code> → <code>executeVmsCommonProcedure</code> 전환</strong>(PR #133) — 프론트가 전량 이관된 뒤에도 백엔드에 마지막으로 남아 있던 <code>@Deprecated saveVmsCommonProcedure</code> 사용처(<code>EirService:1093</code>, <code>SP_SET_EIR_INFO</code> 호출)를 통합 실행기로 옮겼다. 두 경로 모두 매퍼가 <code>${PACKAGE}.${PROCEDURE}</code> 를 동적 실행하는 <strong>범용 실행기</strong>라 DB 프로시저 부하는 동일하다 — 전환의 실익은 성능이 아니라 <strong>死 삼킴 경로 제거</strong>다. ★동작 차이: 구 save 는 resultCd/사유 검사가 DAO 호출보다 <strong>앞</strong>이라 프로시저 <code>N</code>(업무검증 실패)/<code>E</code>(SQL오류)를 <strong>조용히 삼키고 부분 커밋</strong>했는데, execute 는 그 경우 <strong>예외를 던진다</strong>. 호출부 <code>EirController.issueEirNew</code> 는 이 구간을 <code>try/catch</code>(건별 에러 기록·500 아님, PR #128)로 감싸므로 묻히던 실패가 <strong>로그+건별 메시지로 표면화</strong>되고, 반환값은 컨트롤러가 이미 무시하므로 happy-path 는 동일하다. ⚠️이 SP 는 SIPG 발급(4단계) 성공 <strong>후</strong> 로그갱신(6단계)이라, 갱신 SP 가 N/E 면 <em>실제 발급된 건</em>이 화면에 에러로 보일 수 있다(락 유지→이중발급은 방지). 컷오버 후 Hikari 풀 고갈 재진단(Infra #33) 중 "왜 아직 save 가 호출되나"에서 발견된 잔여 이관이다.</li>
+<li><strong>파일 서브시스템 견고성 — 다운로드 널가드·FTP 응답코드/재시도·Excel null-row</strong>(PR #132) — 컷오버(2026-09-08) 후 온프렘 NAS/FTP 가 VPN 너머로 이동하며 부하·지연에 드러난 파일 에러 3종 방어. ① <strong>다운로드 널가드</strong>: <code>FileDataController.downloadFileNas</code>/<code>openPdfViewer</code> 가 <code>fileInfoMap</code>(FILE_SN 미스매치 시 null)을 미검사해 NPE → <code>sendError(404)</code>. 서비스 fallback(SNKO/HALK/HSLI) put NPE 도 가드. ② <strong>FTP 응답코드 로깅 + 일시오류 재시도</strong>: <code>fetchNasBytes</code> 가 null 리턴 시 <code>getReplyCode()</code> 로 <strong>550(파일없음) vs 일시오류</strong>를 구분하고, 550 이 아니면 <strong>3회(300ms) 재연결 재시도</strong>로 VPN 블립을 사용자 미노출로 자동복구. ③ <strong>Excel null-row 스킵</strong>: <code>VmsExcelFacade</code> 파싱 루프가 빈 행(<code>sheet.getRow(i)</code>=null)을 안 걸러 <code>parseRow</code> NPE → 형제 코드와 동일하게 <code>if (row == null) continue;</code>. 짝: 프론트 FILE_SN=0 다운로드 중앙 가드(FE #182). ★풀 고갈 자체는 이 PR 범위 밖 — 재진단 결과 원인은 느린 CRS 견적저장 SP 의 hold-time 이고 <code>uploadFile</code>/<code>executeVendorCommonProcedure</code> 는 피해자였다(Infra #33). Infra #33.</li>
+<li><strong>死 모듈 <code>mds</code>·<code>rpa</code> 제거</strong>(PR #129) — 두 모듈 모두 <strong>프론트에 화면·호출이 0</strong>이고(레거시 프론트에도 없었다) <strong>운영 90일 로그 호출 0건</strong>이다. <code>mds</code>(데이터 사전 — 용어/도메인/단어 관리, 컨트롤러·서비스·DAO 각 3 + 매퍼 3)와 <code>rpa/terminal</code>(터미널 일정 조회, 각 1 + 매퍼 1) 총 <strong>16파일</strong> 삭제. ★유일한 외부 참조였던 <code>VmsExcelFacade</code> 의 <code>MdsTermMgtService</code> <strong>import 는 본문 미사용 死 import</strong> 였다(엑셀 업로드는 운영에서 살아있는 기능이라 이 확인이 필수였다). 함께 <code>security.request-permit-all-mappings</code> 에서 <strong><code>/api/rpa/**</code> 무인증 선언 제거</strong> — 모듈이 사라지면 남을 이유가 없다. 문서도 동반 정리: <code>code-walkthrough/{mds,rpa}.md</code> 삭제, <code>mkdocs.yml</code> nav·<code>modules.md</code>·<code>architecture.md</code>·<code>code-walkthrough/index.md</code>·<code>api.md</code>·<code>getting-started.md</code>·<code>security.md</code> 의 목록/표/설명에서 제거. ⚠️ <strong>DB 테이블은 건드리지 않았다</strong>(코드만 제거). ※ 같은 맥락으로 정리된 죽은 EDI Azure 시크릿(<code>EDI_FNC_*</code> env·KV)은 이 레포 변경이 아니라 라이브 <code>az</code> 수행 + Infra PR #28(IaC 정합)이다. Infra #26.</li>
+<li>
+<p><strong>EIR 다건 발급·취소 — 중간 실패 시 앞 건 결과 유실 수정</strong>(PR #128) — <code>issueEirNew</code>/<code>cancelEirNew</code> 는 <code>List&lt;DMap&gt;</code> 을 루프 돌며 건별 결과를 <code>resultMsg</code> 에 쌓는데, 한 건이 실패하면 <strong>그때까지 쌓인 성공 결과가 통째로 버려졌다.</strong> 유실 경로 3가지: ① <code>issueEirNew</code> 에서 <code>setJson</code> 이 <code>[ERROR]</code> 를 반환하면 <code>resultMap.put("RESULT", errorMap); return;</code> — <code>resultMsg</code> 를 버리고 단건만 반환(<code>cancelEirNew</code> 는 이미 건별 처리 + <code>continue</code> 였다) ② 양쪽 <code>catch (Exception e) { releaseIssueLock(...); throw e; }</code> — 요청 전체가 500 ③ 4단계 <code>sendSIPGNew</code> 가 try 밖이라 SIPG 통신 실패(<code>ExternalServiceException</code>, PR #109)도 같은 결과. <strong>왜 위험한가</strong>: 발급은 실제로 SIPG 에 나갔는데 화면은 실패로 보여 <strong>재전송 → 이중발급</strong>을 유도한다(이중발급 방지 락(PR #71)이 최악은 막지만 사용자에겐 그냥 실패로 보인다). → 세 경로 모두 <strong>건별 실패로 기록하고 다음 건으로 진행</strong>하도록 바꿔 <code>RESULT</code> 가 <strong>항상 전체 목록</strong>이 되게 했다. ★락 정책은 유지: 전송 <strong>전</strong> 실패는 락 해제(즉시 재시도 가능), 전송 <strong>이후</strong> 예외는 <strong>락을 풀지 않는다</strong>(SIPG 도달 여부를 알 수 없어 즉시 재시도를 허용하면 이중발급). 삼켜지던 예외는 <code>log.error</code> 로 남긴다. 반복되던 4줄 에러 DMap 조립은 <code>itemError</code> 헬퍼로, <code>getMessage()</code> null 대비는 <code>errorText</code> 로 정리. <strong>프론트 변경 없음</strong> — <code>Array.isArray(res) ? res : [res]</code> + <code>data.ERROR === 'Y'</code> 건별 렌더가 이미 있다(초기 커밋부터). Infra #26.</p>
+</li>
+<li>
+<p><strong><code>/test/**</code> permit-all 제거</strong>(PR 예정) — <code>TestController</code>(<code>/test/autono</code>·<code>/test/sendMail</code>·<code>/test/upperSnakeCase</code>)가 GET·POST 양쪽에 무인증으로 선언돼 있었다. <code>GET /test/autono</code> 는 <code>@Transactional</code> 채번이라 <strong>쓰기</strong>다. 실제 도달 가능성은 없었다 — nginx 가 백엔드로 넘기는 접두는 <code>/api/</code> 뿐이고(<code>/WebDocumentViewer/</code>·<code>/sendSIPG</code> 는 외부 upstream, 그 밖은 SPA <code>try_files</code> 폴백), 백엔드 ingress 는 <code>external=false</code>. 운영 90일 로그의 <code>/test/swagger</code>·<code>/test/openapi</code>·<code>/test/docs</code> 200 은 <strong>스캐너가 SPA 폴백(index.html)을 받은 것</strong>이지 백엔드 응답이 아니다(프론트 호출처도 0). 다만 permit-all 은 "인증 없이 열어도 된다"는 선언이라 nginx 에 <code>/test</code> 프록시가 추가되거나 백엔드가 직노출되는 순간 무인증 쓰기 엔드포인트가 된다 → 도달 불가에 기대는 방어를 지우고 선언을 없앴다. <strong>엔드포인트 자체는 로컬 개발용으로 존치</strong>(이제 세션 필요). Infra #17.</p>
+</li>
+<li>
+<p><strong>EIR 서명 SALT 외부화</strong>(PR 예정) — <code>EirService.generateSignature</code> 안에 선사별 SALT 2개가 <strong>소스에 평문 하드코딩</strong>돼 있었다(초기 커밋 <code>4df7d40</code> 부터). 이 값이면 SIPG 요청 서명(<code>SHA-256("Body=" + base64(body) + "&amp;" + SALT)</code>)을 위조할 수 있고, <code>CLAUDE.md</code> 의 "하드코딩 금지, <code>@Value</code>/env 외부화" 규칙에도 어긋난다. <code>eir.{snko,halk}.salt</code> 로 옮겨 <code>eir.*.client-secret</code> 과 동일한 경로(gitignored YAML / Azure 는 KV→env)를 타게 했다. <code>@Value</code> 는 static 필드에 주입되지 않으므로 <code>generateSignature</code> 를 <strong>static → 인스턴스 메서드</strong>로 바꿨다(호출부 2곳 모두 인스턴스 컨텍스트라 호출 형태 변화 없음). 설정 누락 시 빈 SALT 로 서명이 나가면 SIPG 가 "서명 불일치"만 돌려줘 원인 추적이 어려우므로 <strong>빈 값이면 <code>ExternalServiceException</code> 으로 즉시 중단</strong>하는 가드를 뒀다. ⚠️ <strong>로테이션(값 교체)은 별건이며 현재 불가</strong> — SALT 는 SIPG 와 공유하는 비밀이라 양쪽이 함께 바꿔야 서명이 맞는데 상대 창구가 없다(Infra #17 에서 종결). 따라서 <strong>히스토리에 남은 값은 여전히 유효</strong>하며, 이번 작업의 실익은 ① 앞으로 새 커밋에 안 남음 ② 소스 열람 권한과 시크릿 접근 권한 분리 ③ 규칙 준수 ④ 나중에 로테이션이 가능해지면 <strong>코드 변경 없이 KV 값만 교체</strong> 로 한정된다.</p>
+</li>
+<li>
+<p><strong>docs: 공개 URL(permit-all) 표 동기화 + 임시 공개 경로 마감 조건 명시</strong>(PR 예정) — <code>security.md</code> 의 permit-all 표가 <strong>PR #122 이후 갱신되지 않아 실제와 달랐다</strong>(이미 닫힌 <code>/api/file/**</code> 전체와 제거된 <code>/api/crs/repair/disabledFileExtList</code> 가 공개 목록에 그대로 남아 있었다). 이 문서는 <strong>공개 GitHub Pages 로 발행</strong>되므로 무인증 엔드포인트 목록이 실제와 어긋난 채 게시돼 있던 상태다. ① 표를 현행화(GET 에서 <code>/api/file/**</code> 제거, POST 는 <code>getBase64ImageList</code> 단건만) ② 축소 경위와 무엇이 왜 닫혔는지를 success 박스로 기록 ③ <code>/api/eir/**</code> warning 에 <strong>마감 조건</strong>(PoC 종료 → permit-all 2줄 제거, 추적 Infra #17)을 명시하고, <code>/test/**</code> 는 <strong>PoC 와 무관한 별도 점검 대상</strong>임을 분리 ④ <code>/api/partner/**</code>·<code>getBase64ImageList</code> 는 외부 사이트 딥링크 때문에 <strong>의도된 공개</strong>임을 네트워크 노트에 덧붙임(관리번호 추측 방어는 Infra #20).</p>
+</li>
+<li>
+<p><strong>EIR 토큰 발급 실패 경로 정리 — NPE 대신 원인을 담아 502</strong>(PR #116, #115 후속) — <code>getTokenNew</code> 가 ESB 로부터 access_token 없는 정상 JSON(자격증명 오류 등)을 받으면 실패 사유를 지역변수에 담아만 두고 <strong>빈 <code>DMap</code> 을 반환</strong>했고, 호출부(<code>getValidToken</code>/<code>getValidTokenNew</code>)가 <code>Long.parseLong(tokenResp.get("expires_in").toString())</code> 로 곧바로 꺼내 <strong><code>null.toString()</code> NPE</strong> — ESB 가 알려준 실패 사유가 버려지고 무관한 NPE 만 남아 원인 추적이 안 됐다. <code>expires_in</code> 누락·비숫자(RFC 6749 상 OPTIONAL 이라 구조적으로 가능)도 동일하게 터졌다(실측). → 응답 맥락을 아는 <code>getTokenNew</code> 안에서 검증하고 code/message(상태코드·본문)를 담은 <code>ExternalServiceException</code> 을 던진다(<strong>502 + MSG000430</strong>, 이 파일이 외부 연동 실패에 이미 쓰는 예외). <code>checkTokenValidate</code> 는 미수정 — <code>active</code> 가 없으면 <code>"true".equals(null)</code>→false 로 토큰 재발급 경로로 <strong>이미 안전하게 강등</strong>된다(실측 확인). 발현 조건이 ESB 자격증명 변경·계정 잠금이라 실제 발생 이력은 없음. <strong>레거시 동일 반영(사용자 커밋)</strong>. 상세: <a href="../code-walkthrough/eir/">eir 코드 워크스루</a>.</p>
+</li>
+<li><strong>EIR — ESB 응답 무검증 JSON 파싱 3곳 가드</strong>(PR #115) — ESB(esb.gdtspace.com) 응답을 상태코드 확인 없이 곧바로 hutool 로 파싱해, 빈 본문이 오면 <code>JSONException</code> 이 그대로 전파돼 발급이 실패했다(HTTP 호출 4곳 중 <code>sendSIPGNew</code> 만 catch 보유). 처리 방침은 <strong>지점별로 다르다</strong> — ① <code>getTokenNew</code>: 토큰 미수령은 실패 확정이되, 정체불명 <code>JSONException</code> 대신 상태코드·본문 앞부분을 담은 <code>ExternalServiceException</code>(502) ② <code>checkTokenValidate</code>: <code>"false"</code> 로 강등해 호출부의 <strong>토큰 재발급 경로로 흘림</strong>(기존엔 예외가 그 복구 경로 도달 자체를 막았다) ③ <code>getEirInfoFromSIPG</code>: <strong>흡수</strong> — 발급 후처리(RECEIPTNO 보충)라 예외를 올리면 <strong>이미 성공한 발급이 화면에 실패로 보인다</strong>(운영 실제 발생, 2026-06-18). 사후 원인 파악용 <code>describeBadResponse</code>(status/len/본문 200자)+<code>@Slf4j</code> 도입. 운영 실측(레거시 에러로그 90일): 2건(getEirInfoFromSIPG 후처리 실패 1·checkTokenValidate 발급 실패 1), V2 는 동일 코드 보유였으나 미발현(30일 <code>issueEirNew</code> 574건 전부 200). <strong>레거시 동일 반영(사용자 커밋)</strong>. 상세: <a href="../code-walkthrough/eir/">eir 코드 워크스루</a>.</li>
+<li><strong>CmsAzureLog 엔드포인트 지정 조회 API</strong>(프론트 짝) — <code>POST /api/cms/log/cmsAzureLog/endpointOutcome</code> 신설. URL 조각(<code>URL_PART</code>)으로 특정 API 의 성공/실패를 확인한다 — 메일 발송 복구(프론트 #160) 이후 "V2 에서 나간 메일"을 세는 유일한 방법이다(<code>TB_CMS_EMAIL</code> 에 출처 컬럼이 없고 V2·레거시가 같은 <code>VmsSendMicrosoftGraphMailService</code> 에서 같은 <code>PKG_CM_EMAIL.SP_SET_EMAIL</code> 을 호출하므로 DB 로는 구분 불가. 반대로 <code>sendMail</code> 200 1건 = V2 발송 1건이다). 기존 <code>queryFailedRequests</code> 는 <code>Success == false</code> 만 집계해 <strong>성공 건수를 못 본다</strong>. ★<strong>두 소스를 조인하지 않고 나눠 쓴다</strong> — 집계(<code>SUMMARY</code>)는 <code>AppRequests</code>(상태코드별 <code>sum(ItemCount)</code>·avg·p95·최근시각), 최근 목록(<code>ROWS</code>)은 <strong>nginx 액세스로그</strong>(<code>ContainerAppConsoleLogs_CL</code>, <code>ContainerName_s == 'frontend'</code>)를 <code>extract()</code> 로 파싱해 시각·메서드·경로·<strong>화면(Referer)</strong>·실 클라이언트 IP 를 준다. <code>AppRequests</code> 에는 Referer 필드가 없고 <code>ClientIP</code> 가 <code>0.0.0.0</code>(프록시 뒤)이라 화면·사용자 추적이 불가능하다(실측). 반대로 nginx 로그엔 소요시간이 없어 소요는 집계 쪽 avg/p95 로만 싣는다. ★건수는 <code>count()</code> 가 아니라 <strong><code>sum(ItemCount)</code></strong> — <code>AppRequests</code> 는 샘플링된다. ★<code>URL_PART</code> 는 클라이언트 입력이라 <code>kqlEscape</code> 필수이고, 매칭은 <code>has</code> 가 아니라 <strong><code>contains</code></strong> 다(<code>has</code> 는 토큰 단위라 <code>sendM</code> 같은 조각을 놓친다). 범용 KQL 통과 API 는 <strong>의도적으로 두지 않았다</strong> — 워크스페이스에는 nginx 액세스로그(SSO 토큰이 실린 URL·사용자 IP)까지 들어 있어 브라우저에서 임의 KQL 을 받으면 그대로 유출 경로가 된다. 실패/미구성/범위오류는 <code>ERROR</code>(또는 <code>SUMMARY_ERROR</code>/<code>ROWS_ERROR</code>) 키로 부분 실패 표시(대시보드 패턴 동일). 로컬 실측: 운영 워크스페이스 대상 <code>sendMail</code> 조회로 200 4건(평균 550ms·p95 753ms)과 화면·실 IP 정상 반환 확인.</li>
+<li><strong>멀티파트 실패를 원인별로 갈라 안내 — 계약 위반에 "다시 시도" 안내하던 오분류 교정</strong>(PR #113, 프론트 #160 짝) — PR #108 이 만든 <code>ClientAbortExceptionTranslator</code> 는 <code>MultipartException</code> <strong>계열 전체</strong>를 회선 절단으로 보고 400 + MSG000429("네트워크 문제로 저장/업로드가 중단되었습니다. 다시 시도해 주세요")로 응답했다. 그런데 같은 <code>MultipartException</code> 이라도 <strong>Content-Type 이 애초에 multipart 가 아닌 계약 위반</strong>이면 재시도해도 100% 같은 실패다 — 실제로 사용자가 하루 40회까지 재시도하는 동안(에러로그 <code>ERR_SN</code> 로 확인) 원인이 계약 위반이라는 사실이 드러나지 않았다. ★<code>supports(Class&lt;?&gt;)</code> 는 클래스만 받아 원인을 못 가르고, 두 경우 모두 최상위 클래스가 <code>MultipartException</code> 으로 동일하다 — 차이는 <strong>cause 에만</strong> 있다. 인스턴스를 받는 <code>doTranslateMessage</code> 에서 <strong>원인 체인에 <code>InvalidContentTypeException</code> 이 있으면</strong> 형식 오류 문구로 응답한다(상태코드 400·<code>errDiv 02</code>·<code>unknown</code> 은 불변). ★<code>getCause()</code> 를 한 번만 보면 안 된다 — 스프링이 <code>MultipartException</code> 으로 감싸고 그 안에 Tomcat 이 <code>ServletException</code> 을 한 겹 더 끼운다(<code>Request.parseParts</code>: <code>catch (InvalidContentTypeException e) → new ServletException(e)</code>). 회선 절단은 <code>catch (IOException)</code> 으로 다른 가지를 타므로 이 규칙으로 정확히 갈린다. 문구는 신규 코드 <strong><code>MSG000431</code></strong>("요청 형식이 올바르지 않습니다. 관리자에게 문의 바랍니다.")을 쓴다. ★<strong>코드마스터 <code>TB_CMS_DATA_DIC</code>(<code>DATA_DIV='2'</code>) 에 ko/en/zh 3행 등록이 배포보다 선행돼야 한다</strong> — <code>LanguageService.getMessage()</code> 는 미등록 코드를 <strong>코드 문자열 그대로</strong> 반환하므로 미등록 상태로 배포하면 화면에 문자 그대로 "MSG000431" 이 뜬다(PR #105 의 <code>LOGIN_DIV</code> E03~E05 등록과 동일한 선행 절차). 로컬 실측: 같은 400·<code>errDiv 02</code>·<code>unknown</code> 을 유지한 채 문구만 "네트워크 문제로 저장/업로드가 중단되었습니다…" → <code>MSG000431</code> 분기로 갈리는 것 확인(등록 전이라 코드 문자열로 출력되는 것까지 확인).</li>
+</ul>
+<h2 id="2026-08">2026-08<a class="headerlink" href="#2026-08" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong><code>dsh</code> 도메인 신설 — 홈 대시보드 달력 개인 메모 API</strong>(PR #111, 프론트 #157 과 한 쌍) — <code>UserDashBoard</code> 달력의 개인 메모를 담당하는 15번째 도메인. <code>HomeController</code>/<code>HomeService</code>/<code>HomeDao</code> + 매퍼 4파일 <strong>전부 신규</strong>이고 기존 파일 수정은 0이다. ★<strong>"복구"가 아니라 신설</strong>이다 — 프론트에는 <code>fnSelectMemo</code>/<code>fnSaveMemo</code> 와 <code>EScheduler</code> 배선이 이미 다 있었는데 그것들이 부르는 <code>/api/dsh/Home/*</code> 는 <strong>V2 에도 레거시에도 존재한 적이 없다</strong>(레거시 프론트도 <code>mounted()</code> 의 호출이 똑같이 주석). 즉 이 기능은 어느 쪽에서도 한 번도 동작한 적이 없고 테이블만 남아 있었다. <code>TB_CMS_USER_MEMO</code> 가 이미 있고 컬럼이 프론트 기대와 정확히 일치해(운영 데이터 0건) <strong>DDL 없이</strong> 붙었다. 경로가 도메인 규칙이 아닌 <code>Home</code> 인 것은 프론트를 고치지 않으려고 <strong>기존 호출 계약에 맞춘</strong> 것이다. ★<code>MEMO_SN</code> 은 테이블에 시퀀스도 PK 도 없어 <strong>사용자별 MAX+1</strong> 로 채번하므로 사용자 안에서만 유일하다 — 수정·삭제는 반드시 <code>(USER_ID, MEMO_SN)</code> 두 컬럼으로 걸어야 한다. <code>USER_ID</code>/<code>CORP_CD</code> 는 요청 본문이 아니라 <strong>세션에서 채운다</strong>(남의 메모 조회·수정 차단). 프론트와 <strong>동시 배포 필요</strong>(백엔드가 늦으면 404 지만 <code>quiet:true</code>+<code>.catch</code> 라 달력만 빈 채로 뜬다). 상세: <a href="../code-walkthrough/dsh/">dsh 코드 워크스루</a>.</li>
+<li>
+<p><strong>문서 — 날짜 인자·커서 컬럼 자동 절단(<code>setDateColumn</code>) 함정 명문화</strong> — <code>VmsCommonService</code> 가 IN 파라미터·IN 커서 컬럼을 <strong>이름 접미사만 보고</strong> 자른다는 사실(<code>_DT</code>8/<code>_DI</code>12/<code>_DM</code>6/<code>_DY</code>4, <code>value.replaceAll("[-T:]","").substring(0,N)</code>, <strong>길이검사 없음</strong>)이 문서 어디에도 없었다. 자릿수 미달이면 <code>StringIndexOutOfBoundsException</code> 500(운영 에러로그 실측 18건, 2025-07-16~2026-01-21), <code>/</code>·<code>.</code> 구분자는 예외 없이 <code>2026/08/</code> 로 <strong>조용히 썩는다</strong>. <code>VSL_DT</code> 만 <code>equals</code> 예외이며 TES 커서가 여기에 <code>yyyyMMddHHmm</code> 12자를 의도적으로 실으므로 <strong>규칙을 <code>endsWith("_DT")</code> 로 넓히면 예외 없이 시각이 사라진다</strong>. 백엔드는 미수정이고 프론트가 전송 직전 관문에서 막았으므로(FE PR #158) <strong>프론트를 거치지 않는 호출은 여전히 500 이 난다</strong>. → <a href="../code-walkthrough/vps/">vps 코드 워크스루 §2-3</a>.</p>
+</li>
+<li>
+<p><strong>SIPG 통신 실패를 502 + 전용 문구(MSG000430)로 구분 응답</strong>(PR #109) — SIPG ESB 연결 불가/타임아웃(<code>HttpHostConnectException</code> 등)이 범용 500("시스템에 장애가 발생 하였습니다")으로 응답돼 <strong>포털 장애로 오인</strong>되던 문제. <code>ExternalServiceException</code> + 전용 번역기 신설 — <code>EirService</code> 의 SIPG HTTP 호출 4곳(<code>getTokenNew</code>/<code>checkTokenValidate</code>/<code>sendSIPGNew</code>/<code>getEirInfoFromSIPG</code>) execute 실패 catch 에서 <strong>IOException 만</strong> 래핑 → <strong>502 Bad Gateway</strong> + MSG000430("SIPG 서버 오류로 통신할 수 없습니다. 잠시 후 다시 시도해 주세요…"). <code>unknown=true</code> 유지(프론트 모달 자동 표시)·ERR_DIV <code>02</code> 기록 유지, <strong>5xx 유지라 외부 의존성 다운 경보(vp-prod-fe-http-5xx 류)는 계속 발화</strong>(의도). 검증=도달불가 URL 로 connect timeout 30s → 502+실문구(ko), 원복 후 실토큰 발급 200 무회귀. <strong>레거시에도 동일 반영(사용자 커밋)</strong>. 상세: <a href="../code-walkthrough/eir/">eir 코드 워크스루</a>.</p>
+</li>
+<li>
+<p><strong>업로드 중 클라이언트 회선 절단을 500 대신 400 + 전용 문구(MSG000429)로</strong>(PR #108) — 운영 사례(2026-08-26): 사용자가 파일 업로드 중 회선이 끊기면 멀티파트 수신 실패(<code>MultipartException</code>)가 범용 500("오류가 발생하였습니다")으로 응답돼, <strong>서버 잘못이 아닌 이벤트가 5xx 메트릭 경보(Sev2)를 울리고</strong> 사용자 문구도 무정보였다(실측: 2초간 500 14건 — HTTP/2 한 커넥션에 다중화된 병렬 업로드가 절단 시 전멸하는 구조; 전부 컨트롤러 도달 전 사망이라 DB/FTP 잔재 0, 동일 사용자가 1분 내 재시도해 14건 전부 성공). <code>ClientAbortExceptionTranslator</code> 신설 — <code>MultipartException</code>(용량 초과 <code>MaxUploadSizeExceededException</code> 은 제외)·<code>ClientAbortException</code> → <strong>400</strong> + MSG000429("네트워크 문제로 저장/업로드가 중단되었습니다…"). <code>unknown=true</code>·ERR_DIV <code>02</code> 유지. ★<code>ClientAbortException</code> 은 IOException 계열이라 <code>IOExceptionTranslator</code> <strong>보다 먼저</strong> 등록해야 한다.</p>
+</li>
+<li>
+<p><strong>SSO 유입도 로그인 로그에 적재 — 레거시→V2 전환 사용자 집계 누락 해소</strong>(PR #106) — <code>JwtAuthenticationFilter</code> 에 성공 핸들러가 배선돼 있지 않아, 레거시에서 <code>USER_DIV='V2'</code> 사용자가 SSO(<code>/api/link?token=</code>)로 무비번 유입되면 <strong><code>TB_CMS_LOGIN_LOG</code> 에 아무 기록도 남지 않았다</strong>. 그 결과 <code>LOGIN_MSG='Login at V2'</code> 건수가 "V2 URL 로 직접 로그인한 사용자"만 세어 실제 V2 접속자가 과소집계됐다(운영 실측: 레거시 로그인 다수에 대응하는 V2 행이 없음). 필터가 SSO 전환 성공 시 <code>LoginSuccessService.loginSuccess()</code> 를 직접 호출하도록 수정. ★<code>LoginAuthenticationSuccessHandler</code> 를 배선하지 <strong>않은</strong> 이유 = 그 핸들러가 200 응답 바디를 써서 <code>/api/link</code> 의 <code>sendRedirect</code> 를 깨뜨린다(SSO 자동로그인 실패). 세션 재사용(프로바이더가 기존 인증 객체를 그대로 반환하는 경로)은 새 로그인이 아니라 인증 전후 객체 참조 비교로 제외했고, 파트너 API 의 stateless JWT 는 <code>JwtUserAuthentication</code> 이라 <code>instanceof LoginUserAuthentication</code> 에서 걸러진다(안 그러면 API 호출마다 로그인 로그가 쌓인다). 적재 실패는 catch 해 SSO 자체를 막지 않는다(레거시 <code>v2SsoLink</code> 와 동일한 fail-open). SSO 와 직접 로그인을 구분하는 마커는 두지 않았다(목적이 "V2 접속자 파악") — 레거시 잔류 사용자는 레거시 행(<code>LOGIN_MSG IS NULL</code>)으로 센다. 부수효과: SSO 유입 시에도 <code>initPasswordFailCount</code> 가 돌아 <code>LOGIN_FAIL_CNT</code> 가 초기화된다(정상 인증이므로 타당). 로컬 실측: SSO 토큰(jti=SSO) 왕복으로 302 리다이렉트 유지 + <code>S01</code>/<code>Login at V2</code> 1건 적재, 동일 세션 재유입 시 <strong>추가 적재 없음</strong> 확인.</p>
+</li>
+<li><strong>로그인 실패 사유 세분화 — <code>LOGIN_DIV</code> E02 → E02~E05 + 사용자 안내 문구 분리</strong>(PR #105) — 종전 <code>loginFailure</code> 는 비밀번호 오류만 <code>E01</code> 로 가르고 <strong>나머지 전부를 <code>E02</code>("사용자 권한 오류")로 뭉뚱그려</strong>, 로그만 봐서는 원인을 알 수 없었다(실측: 과거 <code>E02</code> 7,264건 중 2,616건은 계정이 실제 존재하는 행). 사유별로 코드를 나눈다 — <code>E02</code> 계정 없음 / <code>E03</code> 비활성(<code>USE_YN='N'</code>) / <code>E04</code> 5회 실패 잠금 / <code>E05</code> 유효기간 만료. 함께 <strong>계정없음과 비활성의 사용자 문구도 분리</strong>했다(종전엔 둘 다 "User information corresponding to the ID does not exist or is disabled." 하나 → 각각 "The user ID does not exist." / "This account is disabled. Please contact the administrator."). 유효기간 만료 문구도 한글 → 영문("The account validity period has expired. Please contact the administrator.")으로 통일했다(로그인 실패 계열은 -25.02.07 부터 무조건 영문 출력 관행). 구현은 <strong>사용자 응답을 건드리지 않는 방식</strong>을 택했다: 사유 코드를 <code>LoginFailureReasonException</code>(순수 <code>RuntimeException</code>)에 실어 cause 체인으로 전달하고 <code>loginFailure</code> 가 꺼낸다 — provider 가 <code>InternalAuthenticationServiceException</code> 으로 감싸므로 상태코드(401)·<code>type</code>·<code>errDiv</code> 가 그대로다. <code>E04</code> 는 <code>LoginAuthenticationException</code> 타입만으로 확정(getPreChecker 가 던지는 유일한 타입). 계정없음/비활성 판별용으로 <code>USE_YN</code> 필터 없는 <code>selectUserUseYn</code> 을 신설했다(<code>selectUser</code> 의 <code>USE_YN='Y'</code> 필터는 <strong>제거하면 비활성 계정이 로그인에 통과</strong>하므로 그대로 두고, 아이디/비밀번호 찾기가 공유하는 <code>selectUserByUserId</code> 도 건드리지 않음). 분류 실패 시 기존 <code>E02</code> 로 폴백 — <code>loginFailure</code> 에서 예외가 새면 인증 필터 밖으로 전파돼 401 대신 Tomcat 기본 500 이 나가기 때문이다. 로컬(.100) 실측으로 E01·E02·E03·E04 4케이스의 HTTP 401·문구·<code>LOGIN_DIV</code> 기록을 확인했다(E05 는 .100 에 만료 계정이 없어 미실측, E02/E03 와 동일 경로). <strong>코드마스터 <code>TB_CMS_CD_DTL(MSTR_CD='LOGIN_DIV')</code> 에 E03~E05 등록이 별도로 필요</strong>하다(미등록 시 <code>CmsLoginLog</code> 화면에 raw 코드 표시·검색 콤보 누락 — 화면 코드 수정은 불필요). 레거시에도 동일 반영(사용자 커밋).</li>
+<li><strong>EIR <code>setEirResponse</code> 중복 에러로그 제거</strong>(PR #103) — <code>setEirResponse</code> 의 빈 커서 분기에서 남기던 에러로그를 제거했다. 이 지점의 로그는 <strong>항상 두 번째 기록</strong>이다 — <code>setEirResponse</code> 는 언제나 <code>sendSIPGNew</code> 직후에만 호출되고, <code>sendSIPGNew</code> 가 정상 리턴하는 모든 분기는 이미 로그를 남긴 뒤다(응답 있음=<code>insertEirLog</code>, 응답 파싱 예외=<code>insertErrorLog</code>). 게다가 빈 커서(<code>P_RS</code>)는 이상 상황이 아니라 <strong><code>SP_SET_EIRLOG</code> 의 설계된 실패 처리</strong>다 — <code>RESPONSEMEMO</code> 는 있고 <code>RESPONSEFIELD</code> 가 없으면(=SIPG 실패 응답) <code>send_log</code> 행을 지우고 커서를 열지 않은 채 return 하며, 그 실패 내용은 <code>sendSIPGNew</code> 가 이미 <code>TB_EIR_RESPONSE_LOG</code> 에 남겼다. <code>err_cls</code> 문자열이 <code>sendSIPGNew</code> 의 진짜 시스템 예외와 같아서, 남겨두면 <strong>PR #98 이 정리한 "응답 있으면 response_log / 응답 없을 때만 error_log" 구분을 다시 흐린다</strong>. 가드 자체는 유지(결과 없으면 빈 <code>DMap</code> 반환 — <code>get(0)</code> NPE 방지), 로그 문자열 조립에만 쓰이던 <code>sipgResponse</code>/<code>fixedBlNo</code> 는 함께 정리. 적재량 절감이 아니라 <strong>의미 중복·오분류 제거</strong>가 목적이다(운영 실측: <code>err_cls '[EIR ERROR] SIPG RESPONSE ERROR'</code> 는 전체 기간 0건). 레거시에도 동일 반영(사용자 커밋). 상세: <a href="../code-walkthrough/eir/">eir 코드 워크스루</a>.</li>
+<li><strong>CmsAzureLog 실패 요청 상세 조회 API + custom 구간 결함 2건</strong>(PR #102, #100, #101, 프론트 #140 짝) — 실패 요청 TOP 은 엔드포인트×상태코드 <strong>집계</strong>라 원인 API 까지만 좁혀졌다. <code>POST /api/cms/log/cmsAzureLog/failedRequestDetail</code> 신설 — 해당 조합의 <strong>최근 실패 30건</strong>을 <code>AppRequests × AppExceptions</code>(<code>OperationId</code> 조인)로 시각·예외 유형/메시지·소요(ms)·IP·URL 까지 반환한다. <code>window</code>/<code>from</code>/<code>to</code> 는 대시보드와 동일 규약(<code>Window.of</code> 재사용), <code>NAME</code>/<code>CODE</code> 는 클라이언트 입력이라 <strong>KQL 문자열 리터럴 이스케이프</strong>(<code>kqlEscape</code>, 주입 방지), 실패/미구성/범위오류는 <code>ERROR</code> 키 반환(대시보드 부분실패 패턴 동일). 함께 수정한 결함 2건 — ① <strong>KQL 예약어 충돌</strong>(#100): <code>sample</code> 은 KQL 연산자라 <code>summarize</code> 별칭으로 쓰면 파싱 실패(<code>BadArgumentError/SYN0002</code>) → <code>sampleUrl</code>. 예외 패널의 <code>last</code>→<code>lastSeen</code> 과 같은 함정이며 응답 키는 URL 로 매핑돼 있어 프론트 무변경. ② <strong>custom 구간 메트릭 400</strong>(#101): 메트릭 API 는 <code>timespan</code> 을 <strong>URL 쿼리 파라미터</strong>로 보내는데 KST 오프셋(<code>+09:00</code>)의 <code>+</code> 가 공백으로 깨져 ISO 8601 파싱 실패(<code>"2026-08-18T00:00 09:00"</code>) → 파싱 시 <code>withOffsetSameInstant(UTC)</code> 로 변환(같은 시각·<code>Z</code> 표기라 <code>+</code> 없음). 로그 쿼리는 POST 바디라 무사했다.</li>
+<li><strong>에러로그에 요청 URI·파라미터 동반 적재 + 중복 적재 정리</strong>(PR #97, #96) — 전역 예외 적재(<code>AdminService.getErrorValue</code>)가 <code>TB_CMS_ERROR_LOG.ERR_MSG</code> 머리에 요청 요약(<code>REQUEST:</code> 메서드+URI, <code>PAYLOAD:</code> JSON pretty-print)을 붙인다 — 에러 당시 입력값으로 원인 재현 가능. 바디는 전 요청을 감싸는 <code>RequestResponseBodyCachingFilter</code> 캐시에서 판독, 키 이름에 pwd/password/secret/token 포함 시 값 마스킹(<code>*****</code>), multipart 는 크기만, 텍스트 4000자 캡, 조립 실패 시 빈 문자열 폴백(적재 자체는 불중단). 이에 따라 <code>VmsCommonService</code> 3곳(select/save/execute)의 catch 별도 PARAMETERS 적재("03")는 <strong>중복이라 제거</strong>(예외는 전파 → 전역 한 곳 적재). 함께 공통 프로시저 경로의 디버그 <code>System.out.println</code> 2건(파라미터·IN커서 컬럼 — 행×컬럼만큼 출력)과 컴파일 불가 死 setInParam 주석 블록 제거(PR #96).</li>
+<li><strong>EIR SIPG 200+receiptNo 빈값 → 에러로그 대신 응답로그</strong>(PR #98) — <code>sendSIPGNew</code> 에서 status 200 인데 receiptNo 만 없는 케이스는 SIPG 가 응답한 것이므로 <code>insertErrorLog</code>("04") 대신 응답 로그(<code>insertEirLog</code>)로 기록 — 오류응답(4xx) 분기와 처리 통일. 응답이 아예 없는 예외 케이스만 에러로그 유지. 레거시에도 동일 반영(사용자 커밋).</li>
+<li><strong>CmsAzureLog 기간 직접 지정(custom)·7d/30d 프리셋 + 실패 요청 TOP</strong>(PR #94·#95, 프론트 #135~#138 짝) — <code>Window</code> 에 절대구간(custom, <code>FROM_DTM</code>/<code>TO_DTM</code> yyyyMMddHHmm·상한 90일) 지원, 버킷은 차트 ~300 포인트 이하가 되는 최소 granularity 로 자동 산정(메트릭 API 허용값 1m~1d 중 선택). 프리셋 <code>7d</code>(1h)·<code>30d</code>(6h) 추가. <code>AppRequests Success==false</code> 를 엔드포인트×상태코드로 집계하는 실패 요청 TOP(top 20) 신설 — 에러율 급등 시 원인 API 추적. 잘못된 범위는 <code>CONFIGURED=false + ERROR</code> 로 응답해 화면 notice 에 사유 표시.</li>
+<li><strong>CmsAzureLog KQL 패널 빈값 수정 — <code>LogsTable.getColumns()</code> 빈 리스트 폴백</strong>(PR #91) — azure-monitor-query 1.5.7 이 <code>getColumns()</code> 를 빈 리스트로 돌려줘(행·셀은 정상) 컬럼 인덱스가 전부 -1 → KQL 패널 전체가 0/빈값·1970 도트로 표시되던 문제. 첫 행 셀의 <code>getColumnName()</code> 폴백으로 해결.</li>
+<li><strong>문서 배포 인증 PAT → GitHub App 전환</strong>(PR #90, 프론트 #130) — 문서 발행용 fine-grained PAT(<code>DOCS_DEPLOY_TOKEN</code>)가 2026-09-14 만료 예정이었고 PAT 는 자동 재발급이 불가해, GitHub App(<code>vendorportal-docs-deployer</code>, <code>-docs</code> 2개 레포에만 설치·Contents R/W)으로 전환. <code>actions/create-github-app-token</code>(SHA 고정)이 실행 시마다 1시간짜리 설치 토큰을 발급해 <code>peaceiris</code> 에 주입 — <strong>토큰 만료 관리 소멸</strong>. 전환 검증(dispatch 배포 success·gh-pages 커밋) 후 구 PAT revoke·시크릿 삭제 완료. 상세: <code>DOCS-DEPLOY.md</code>.</li>
+<li><strong>구형 EIR 토큰/발급 경로 삭제 — 하드코딩 시크릿 소스에서 소멸</strong>(PR #89) — 화면이 신버전(<code>issueEirNew</code>/<code>cancelEirNew</code>)만 호출해 호출자가 없던 구형 엔드포인트 3종(<code>/api/eir/issueEir</code>·<code>/api/eir/cancelEir</code>·<code>/api/partner/getToken</code>)과 <code>EirService.getToken()</code>/<code>sendSIPG()</code>, PartnerService 의 주석 처리된 구 getToken 블록, <code>PartnerDao.getToken</code> 잔재 선언을 제거. 이로써 소스에 남아 있던 <strong>SIPG 평문 자격증명(<code>authStr</code>/<code>username</code>/<code>password</code>)이 소멸</strong>했다(<code>generateSignature</code> SALT 는 신버전이 사용해 존치). 삭제 근거 = 운영 API 로그 실측: <code>/api/partner/getToken</code>(EIR001) 마지막 호출 <strong>2025-12-30</strong>(죽은 API). 잔여 = EIR 운영 PoC 종료 시 <code>/api/eir/**</code> permit-all 제거, (선택) git 히스토리 잔존 대응 SIPG 크리덴셜 로테이션.</li>
+<li><strong>[DB] pkg_fds 스왑(sp_swap4company)·컨테이너 무브 저장(sp_set_eqmv_new) 결함 8건 수정 + 그룹인보이스 저장 규칙 정비</strong>(2026-08-20, DB 패키지 작업 — 이 레포 커밋 없음·운영 반영 완료) — FdsOrdMgt/FdsCntrMoveUpload 저장·삭제와 선사 EDI(<code>liner.t_oceq013</code>/<code>hliner.t_oceq011</code>/<code>*_e</code>) 적재를 스왑 풀사이클(재스왑→저장→스왑백→저장)로 실측 검증하며 수정: ①스왑 오더 무브 <strong>삭제</strong>가 EDI 에서 안 지워지던 방향 비대칭(적재는 from→to 인데 삭제만 to→from) ②HALK 비스왑 SOC merge <code>blno</code> 누락 ③HALK 스왑 SOC merge 가 <code>tmp_mvs_cntr_mv</code> 오참조(무브 조용히 유실) ④<code>tb_fds_swapcomp.iscurrent</code> 계보 정리 보강(org 갈라진 이중 Y 예방) ⑤스왑백 시 <code>isTrans</code> 원복(종전 0행 update 로 'Y' 잔존) ⑥HALK 분기 B/L 검증 방향 역전(SNKO 복붙 — HALK발 스왑이 항상 "B/L not found" 차단) ⑦스왑백 insert <code>rank()</code> 동점 이중삽입 → <code>ORA-00001</code>(HALK 분기의 <code>dense_rank</code>+<code>rnk</code> 타이브레이커 패턴 이식) ⑧결과 커서 스왑 union 에 <code>emp_nm</code> 필터 누락 — <strong><code>TMP_FDS_EQMV</code> 등 <code>TMP_FDS_*</code> 는 이름과 달리 영구 테이블</strong>이라 타 유저 잔존행이 저장 결과에 섞여 표시. 함께 <code>sp_get_errcheck</code>(FD) 의 그룹인보이스 저장 차단 규칙을 확정: <strong>E/O 는 grp_inv 있으면 차단, 수입(I)은 D/O 일시가 입력값(tmp)·DB 기발행값 어느 쪽에든 있으면 허용</strong>(신규 발행·기발행 수정 모두 통과, 6케이스 실측). 상세: <a href="../code-walkthrough/vps/">vps 코드 워크스루 §6</a>.</li>
+<li><strong>파일 업로드 단일화 — 미사용·결함 <code>uploadInvFile</code> 폐기</strong>(PR #87, 프론트 #127) — 인보이스 첨부 전용 업로드 <code>POST /api/file/uploadInvFile</code> 을 제거하고 업로드 경로를 <code>uploadFile</code> 하나로 단일화. <code>uploadInvFile</code> 은 <code>FILE_SN=null</code> 로 INSERT 하는 결함(운영 데이터 0건 실측)이 있었고, 팝업(CmsInvoiceFileUploadPopup)과 5개 화면 오픈부·<code>FileService</code>/<code>EAttachFileGrid</code> 의 호출 경로를 <code>uploadFile</code> 로 이관했다. <code>deleteFile</code>/<code>uploadFile</code> 컨트롤러의 죽은 <code>FILE_EXPL</code> 기본값("파일 설명입니다." — <code>putAll</code> 에 항상 덮여 死코드)도 제거.</li>
+<li><strong>파트너 API 호출 로그 문구 영문화</strong>(PR #85, hotfix) — <code>insertCallApiLog</code> remark "수리비 면제" → "Repair Waive"(외부 공유 로그 표기 정리).</li>
+<li><strong>레거시→V2 SSO 최초 진입 500 수정 — JWT clock skew leeway + 검증 실패 예외화</strong>(PR #84) — <code>USER_DIV='V2'</code> 사용자의 레거시→V2 SSO 자동전환 최초 진입에서 Tomcat 500(새로고침하면 정상)이 나던 문제. 레거시가 토큰 <code>nbf</code>=발급순간(<code>LocalDateTime.now()</code>)으로 찍는데 V2 컨테이너 시계가 1~2초 느려 auth0 검증기(leeway 0)가 <code>IncorrectClaimException</code> → <code>JwtIssueService.verify()</code> 가 삼켜 null → <code>JwtVerifyAuthenticationProvider</code> null 반환 → <code>AuthenticationProviderChain</code> 이 <code>null.getClass()</code> 로 NPE → <code>JwtAuthenticationFilter</code> 미포착 → Tomcat 500(세션저장 前이라 실패, 수초 뒤 <code>now≥nbf</code> 면 통과=새로고침 OK). 검증기에 <code>acceptLeeway(30)</code>(발급/검증 호스트 시계오차 흡수) + provider 검증 실패 시 null 대신 <code>JwtAuthenticationException</code>(체인 NPE→정상 인증실패). TZ 무관(nbf=UTC instant). 이 수정으로 레거시→V2 점진 전환 SSO(<code>USER_DIV='V2'</code> 유저의 무비번 자동 유입)는 <strong>운영에서 정상 가동 중</strong>이다. 상세: <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §4.6</a>.</li>
+<li><strong>백엔드 직노출 차단 — ingress <code>external:false</code>(internal) 복귀 + 파트너 API 호출 IP 로깅</strong>(Infra·프론트 #117/#118, 백 #78) — 백엔드 Container App 을 <code>external=false</code>(internal ingress)로 돌려 <strong>인터넷에서 백엔드 FQDN 직호출을 차단</strong>했다(오직 프론트 nginx <code>/api</code> 프록시 경유만 도달). 2026-06-23 에 internal 전환이 "App Unavailable" 404 로 막혔던 진짜 원인은 nginx <code>resolver=168.63.129.16</code>(Azure 공용 DNS)이 <code>.internal</code> FQDN 을 공용 인그레스로 오해석한 것 — 프론트 부트스크립트(<code>docker-entrypoint.d/15-set-resolver.envsh</code>)가 resolver 를 컨테이너 DNS(<code>/etc/resolv.conf</code>, ACA=<code>127.0.0.11</code>→클러스터 DNS)로 덮어써 해결(FE #117/#118, <code>--chmod</code> 는 <code>az acr build</code> BuildKit 미사용이라 <code>RUN chmod</code> 로). 짝으로 <strong>프론트 <code>/api</code> 에 <code>limit_req</code></strong>(IP당 rate limit, 키=X-Forwarded-For) 추가 — 정문 flood 완화. 선행 실측 작업으로 <strong>파트너 API 호출자 IP 를 <code>TB_CMS_API_LOG.CALL_IP</code> 에 기록</strong>(백 #78, <code>getClientIp()</code>=X-Forwarded-For 체인; CmsApiLog 화면 IP 컬럼=프론트 #116; 조회 SP 측 <code>CALL_IP</code> 출력 컬럼 추가는 DB 작업으로 완료). 외부 호출(EBIZ 다운로드/취소)은 전부 <code>partner.sinokor.co.kr</code> <strong>도메인 경유</strong>라 백엔드 잠금과 무관 확인. 상세: <a href="../troubleshooting/migration-pitfalls/">migration-pitfalls §3.4</a>·<a href="../security/">보안·인증</a>.</li>
+<li><strong>TES 엑셀 업로드 검증 4종 완성 + 공통화</strong>(PR #77, 프론트 #113) — <code>VmsExcelChkFacade</code> 의 강취료/결해속비/예선료 검증 스텁(<code>uploadChkTesLineHandleExpn</code>/<code>uploadChkTesLashingExpn</code>/<code>uploadChkTesTugExpn</code>)을 구현하고, 검수료(<code>uploadChkTesInspExpn</code>)에만 있던 VSL·PORT·WHARF 대조를 공통 <code>chkVslPortWharf</code> 로 추출해 4종이 공유한다(4종 모두 붙여넣기 그리드에 VSL/PORT/WHARF 컬럼 보유). 공통화하며 로직도 개선: ① 마스터를 값 Set 으로 1회 구축해 행당 O(1) 대조(종전 행마다 마스터 전체 × 전 컬럼 선형 스캔), WHARF 는 SPORT 별 그룹 Map ② 첫 불일치에서 중단하지 않고 <strong>항목별 오류 라인을 모아 한 번에 보고</strong>(앞 10개 + "외 N건", 수정→재업로드 왕복 축소; PORT 불일치 행은 WHARF 검사 생략) ③ <strong>양쪽 trim+대문자 정규화</strong>(엑셀 붙여넣기의 뒤 공백·소문자 거짓 실패 흡수) ④ 판정 범위는 종전 <code>containsValue</code> 와 동일(마스터 행의 아무 컬럼 값 일치 시 통과) 보존, 고아가 된 <code>checkValueExists</code> 제거. 프론트 짝(PR #113): 4개 화면 <code>$axios.post</code>→<code>$post</code> 전환으로 <code>COMP_CD</code>(activeCompany) 자동 주입 — 종전엔 COMP_CD 부재로 <strong>항상 LINER(SNKO) 스키마 기준 검증</strong>되던 것이 현재 선택 선사 기준으로 정확해짐 + 예선료 팝업 <code>TYPE:'INSP_EXPN'</code>(검수료) 오배선을 <code>'TUG_EXPN'</code> 으로 정정(정정 전엔 신설 예선료 분기를 타지 않음).</li>
+<li><strong>공통팝업 선사 스키마 키 <code>CORP_CD</code> → <code>COMP_CD</code> 통일</strong>(PR #76, 프론트 #112) — <code>CmsCommonPopup</code> 계층에서 선사(<code>SNKO</code>→<code>LINER</code>·<code>HALK</code>→<code>HLINER</code>·<code>HSLI</code>→<code>HSL</code> 스키마) 지정 키를 <code>COMP_CD</code> 로 통일했다(정석 규칙: <strong>COMP_CD=조회 대상 선사·스키마 결정자 / CORP_CD=유저 소속법인</strong> — 그간 선사가 CORP_CD 키에 실려 두 뜻이 과적재). 컨트롤러 top-level 승격 <code>SEARCH.CORP_CD</code>→<code>SEARCH.COMP_CD</code>, 서비스 스키마 switch 키 <code>CORP_CD</code>→<code>COMP_CD</code>(Port/Vessel/Location/CntrType/Currency/CurrencyNation/CustomerCode/RepairCompany), 매퍼 <code>${CORP_DIV}</code>→<code>${COMP_DIV}</code>. 프론트 공통팝업이 조회 시 <code>COMP_CD=activeCompany</code> 를 항상 실어 보내므로 <strong>기본 동작 동일</strong>, activeCompany 외 선사는 코드박스 <code>:params="{COMP_CD}"</code> 로 명시(프론트 CmsCommonPopup 이 <code>PARAM.COMP_CD</code> 우선 — PR #112 와 한 쌍). 기존 <code>:params CORP_CD</code> 사용처 전수조사 결과 값이 전부 activeCompany 라 결과 무변, 예외였던 AmendPopup(인보이스행 선사 명시)은 미사용 확인. 아래 #72 항목의 <code>CORP_CD</code> 승격·<code>${CORP_DIV}</code> 서술은 이 PR 로 <code>COMP_CD</code>/<code>${COMP_DIV}</code> 가 됐다.</li>
+<li><strong>VMS 공통 프로시저 실패 사유를 <code>P_RS_ERR</code> 커서에서 읽도록 수정</strong>(PR #75) — 프로시저가 <code>p_rs_cd='E'</code> 로 실패해도 화면엔 구체 사유가 안 보이던 문제. <code>executeVmsCommonProcedure</code> 경로가 실패 시 <code>P_RS_ERR</code> OUT 커서의 메시지를 응답에 실어 프론트 경고창에 실제 실패 사유가 표시된다.</li>
+<li><strong>CmsUserMgt 거래처 코드박스 REPAIR용 <code>selectRepairCompany</code> 팝업 엔드포인트</strong>(PR #72·후속 정정 #73, 프론트 #106) — 사용자관리 corp 탭 <code>CUST_CD</code> 코드박스를 회사구분(<code>CORP_CD</code>)에 따라 분기 — <code>REPAIR</code> 는 신설 <code>selectRepairCompany</code>, 그 외는 기존 <code>selectCustomerCode</code> 를 호출한다. <code>selectLocation4Feeder</code>/<code>selectCustomerCode</code> 패턴을 그대로 따른다: 컨트롤러가 <code>{SEARCH:{...}}</code> 안의 <code>CORP_CD</code>(프론트가 해당 corp row 의 <code>CORP_CD</code> 전달)를 top-level 로 올리고, 서비스가 그 값으로 회사별 스키마를 스위치(<code>SNKO</code>→<code>LINER</code>·<code>HALK</code>→<code>HLINER</code>·<code>HSLI</code>→<code>HSL</code> 의 <code>.T_OCEQ_REPAIR_COMPANY</code>, <code>default</code>=<code>LINER</code> — <code>DMap.getString</code> 이 미존재 키에 <code>""</code> 를 반환하므로 회사코드 없이 호출돼도 default 로 안전), 매퍼는 <code>FROM ${CORP_DIV}</code> 로 <code>COMPANY_CD</code>→<code>CODE</code>·<code>COM_NAME</code>→<code>NAME</code> 조회(<code>SEARCH_KEYWORD</code> LIKE). 프론트 코드박스(<code>RepairCompany</code>/<code>CustomerCode</code> 분기)와 한 쌍(PR #106).</li>
+<li><strong>CI: <code>azure/login</code> @v2 → @v3</strong>(PR #74, 프론트 #108) — GitHub hosted 러너의 Node 24 강제 전환으로 v2 액션의 OIDC 로그인이 깨져 배포가 실패하던 것을 v3 로 올려 해결.</li>
+<li><strong>EIR 발급/취소 이중 발급 방지 — Redis 분산락 + 비멱등 전송 하드닝</strong>(PR #71) — 한 번의 전송 클릭이 두 요청으로 갈라져 서로 다른 ACA 레플리카(<code>minReplicas=2</code>)에서 각각 처리되어 같은 B/L 에 EIR 2건 발급 + <code>TB_EIR_RESPONSE_LOG</code> 2행 + SIPG receiptNo 2개가 생기던 문제. 다중 인스턴스라 인스턴스 메모리 가드로는 못 막아 <strong>Redis 분산락</strong>(<code>tryIssueLock</code>/<code>releaseIssueLock</code>, 키 <code>lock:eir:issue:{COMP}:{BL}:{CNTR}:{SEND}</code>, TTL 60s)으로 차단하고 부수 결함도 함께 수정: SIPG 타임아웃 명시(<code>RequestConfig</code>, 조회 30s/전송 120s — 미설정 시 무한 대기), <code>sendSIPGNew</code> <code>disableAutomaticRetries</code>(비멱등 요청 조용한 재전송 차단) + <code>execute()</code> 실패 시 <code>httpClient.close()</code>로 커넥션 누수 차단(<strong>단 sendSIPGNew 는 예외를 흡수하지 않고 rethrow</strong> — 흡수 시 RESPONSEFIELD 가 비어 컨트롤러가 락을 풀면 이중 발급 위험), <code>insertEirLog</code> 에 <code>CNTR_NO</code>/<code>IMEX</code> 적재(그간 NULL), <code>updateEirInfo</code> 가 토큰을 파라미터로 받아 컨테이너마다 토큰 재검증 왕복 제거. 컨트롤러는 락 실패 시 <code>[DUPLICATE]</code> 건너뜀 · SIPG 전송 <strong>前</strong> 예외만 락 해제(전송 후 예외는 도달 불명이라 유지) · 취소 성공 시 발급락도 해제. 레거시(sinokor-backend) 커밋 이식이며 vp 패키지·<code>@Value</code> 시크릿 외부화·<code>jakarta</code> import 보존, 프론트 재진입 가드와 한 쌍(프론트 PR #102). 상세: <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §4.5</a>.</li>
+</ul>
+<h2 id="2026-07">2026-07<a class="headerlink" href="#2026-07" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>role_id 재설계 — 관리자 판정 role 기반 + self-describing role_id</strong>(PR #69) — role_id 체계를 self-describing(<code>&lt;MODULE 3자리&gt;&lt;seq 2자리&gt;</code>, 관리자=<code>ADMIN</code>)로 재설계하고 그에 맞춰 백엔드를 정렬했다. ① <strong>관리자 판정을 로그인계정(<code>user_id='admin'</code>)이 아니라 권한(<code>ROLE_ID='ADMIN'</code>)으로 전환</strong> — <code>ExtendBaseService.isAdminRole()</code>(세션 <code>LoginUser.roleId</code> 에 <code>ADMIN</code>) 신설로 <code>VmsCommonService</code>·<code>EirService</code>·<code>MdmNoticeService</code> 의 <code>"admin".equals(userId)</code> 대체, 매퍼 admin 판정 4곳 → <code>ROLE_ID='ADMIN'</code>, <code>CmsLoginLog</code>/<code>CmsVisitLog</code> 로그 제외를 <code>USER_ID!='admin'</code> → <code>NOT EXISTS(role ADMIN)</code>. ② <strong>self-describing 대응</strong> — <code>MdmNotice</code> 공지 모듈필터 <code>DECODE(SUBSTR 1,4)</code> → <code>SUBSTR(ROLE_ID,1,3)</code>(접두어 3자리=MODULE_DIV), <code>CmsUserMgt selectList</code> 전체조회 예외 <code>ROLE_ID='ADMIN' OR LIKE '%00'</code>(모듈 관리 tier), <code>CmsCommonPopup selectRole</code> 의 옛 <code>NOT LIKE '1%'</code>(새 스킴선 '1' 시작 role 없어 무력화 → 비관리자에게 ADMIN·%00 노출) 버그 수정. ③ <strong>버그 수정</strong> — <code>ORA-01427</code>(selectTree·selectCorp <code>SYSTEM_DIV=(스칼라 서브쿼리)</code> → <code>IN</code>, 다중 SYSTEM_DIV 유저), 역할별 메뉴 권한관리 복사의 <code>BTN_TP</code>/<code>BTN_IMAGE</code> 누락(버튼이 <code>BTN_TP=NULL</code> 로 들어가 화면 미노출), 역할 삭제 가드(<code>countUserRole</code> — 배정 유저 있으면 삭제 차단, 고아 방지). ④ <strong>레거시 겸용(dual-role)</strong> — 유저가 구+신 role 을 동시 보유하면 레거시(구 role 읽음)·V2(신 role 읽음) 무수정 겸용이 되나, <code>Admin.selectMenuButtonList</code> 가 <code>(MENU_ID,ROLE_ID)</code> 조인이라 버튼이 2중 노출 → <code>DISTINCT</code> 추가로 방지(메뉴는 기존 <code>DISTINCT</code> 라 무관).</li>
+<li><strong>CmsUserMgt 조회 범위 role 기반 확장</strong>(PR #68) — <code>selectList</code> 가 리터럴 <code>'admin'</code> id 만 corp 스코프 필터 예외라, admin 과 같은 권한(role)이어도 다른 id 유저는 소속 corp(SYSTEM_DIV) 매칭이 없으면 빈결과였다. <code>ROLE_ID LIKE '1000-%'</code>(내부/관리자 role)이면 corp 스코프를 우회(전체 조회)하도록 확장 — 대시보드 관리자 판정('1000-01')과 동일 결.</li>
+<li><strong>레거시→V2 SSO 자동로그인 핸드오프</strong>(PR #62·#63·#64) — 레거시(partner) 지정 사용자를 V2(partner-v2)로 무비번 자동로그인시키는 카나리아 핸드오프. ① <code>JwtAuthenticationFilter</code> 가 SSO 인증 성공 시 <code>SecurityContext</code> 를 세션(<code>HttpSessionSecurityContextRepository</code>)에 <strong>명시 저장</strong> — SB6 <code>SecurityContextHolderFilter</code> 는 요청 종료 시 자동 저장을 안 해, 이 저장이 없으면 SSO 링크(<code>?token=</code>) 진입이 세션으로 이어지지 않아 V2 로그인 화면으로 떨어졌다(#62). ② <code>JwtSwitchingLoginUserAuthenticationProvider</code> 는 기존 세션이 <strong>토큰과 동일 사용자일 때만</strong> 재사용하고 다르면 토큰 사용자로 스위칭 — 한 브라우저에서 A 세션에 B 토큰이 와도 A로 남던 세션 꼬임 해소(#63). ③ <code>selectRoleId</code> 에 <code>DISTINCT</code> + <code>TB_CMS_USER_CORP_MGT</code> 조인으로 roleId 카테시안 중복 제거(#64). 상세: <a href="../security/">보안·인증 §SSO 전환</a>.</li>
+<li><strong>개발자 문서 Partner Portal 브랜딩</strong>(PR #65·#66) — 좌상단 로고/파비콘을 V2 파비콘으로, 헤더·상단 탭을 톤다운 블루(#2C6CB0)+흰 글자로, 우상단은 레포명 숨기고 github 아이콘만(라이트/다크 토글을 github 왼쪽으로·여백 통일), 좁은 화면에서도 github 를 헤더에 유지+드로어 제목 개행 2줄. 표기 <code>Vendor Portal V2</code> → <code>Partner Portal</code>(repo 주소·<code>vps</code>=Vendor Portal Service 코드 약어·기술적 V2 는 보존).</li>
+<li><strong>CI/CD GitHub-hosted(ubuntu-latest) 복귀</strong>(PR #60) — GitHub Actions 분(minute) 복구로 <code>ci</code>·<code>deploy</code>·<code>docs-deploy</code> 3개 워크플로를 self-hosted Windows 러너 → <strong>GitHub-hosted 로 되돌림</strong>. 활성=hosted 원본(ci=<code>gradle build</code>+Trivy CVE+SBOM, deploy/docs=기존 hosted 잡), <strong>self-hosted(PowerShell/stub) 버전은 각 워크플로 하단 주석 블록으로 보관</strong>(각 줄 <code>#</code> 제거로 언제든 재전환). ⚠️ 전제 = GH 분 실제 복구(아직 소진이면 hosted 잡이 러너 할당 실패로 즉시 실패). <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §3.11</a>.</li>
+<li><strong>로그인 로그 V2 유입 마커 <code>LOGIN_MSG='Login at V2'</code></strong>(PR #59) — 레거시 partner 와 <strong>같은 Oracle DB(<code>TB_CMS_LOGIN_LOG</code>)를 공유</strong>하므로, V2 백엔드가 남기는 모든 로그인로그 레코드에 <code>LOGIN_MSG='Login at V2'</code> 를 표기해 두 시스템을 구분(기존엔 <code>insertLoginLog</code> INSERT 에 <code>LOGIN_MSG</code> 컬럼 자체가 없어 NULL 이 들어갔다). 접속 IP(<code>CLIENT_IP</code>)는 <code>forward-headers-strategy: native</code> 덕에 실제 사용자 공인 IP 로 정확히 기록됨 — <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §4.4</a>.</li>
+<li><strong>배포 OIDC 토큰 캐시 무효화 → <code>containerapp update</code> 직전 재로그인</strong>(PR #58, 프론트 #79) — <code>azure/login</code> OIDC 는 리프레시 토큰이 없어, 긴 <code>az acr build</code>(백엔드 gradle=수 분) 후 캐시 토큰이 만료되면 다음 <code>az containerapp update</code> 가 <code>Could not retrieve credential from local cache</code> 로 실패한다. <code>Build image in ACR</code> 와 <code>Update Container App</code> 사이에 <code>azure/login@v2</code> 재로그인 1스텝 추가. <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §3.12</a>.</li>
+<li><strong>CI/CD self-hosted Windows 러너 이전(→ 2026-07-23 hosted 복귀, 위 참고)</strong> — GitHub Actions 월 쿼터 소진으로 <code>deploy.yml</code> 을 온프렘 <strong>self-hosted Windows 러너</strong>(<code>runs-on: [self-hosted, Windows, vendor-portal-v2]</code>, <code>shell: powershell</code>)로 이식. 이미지 빌드는 <code>az acr build</code>(클라우드)라 러너엔 <strong>Git + PowerShell + Azure CLI</strong> 만 필요(Docker/JDK 불필요). bash→PowerShell 이식(<code>$LASTEXITCODE</code> 명시 판정, <code>application-azure.yaml</code> 복원은 UTF-8 BOM 없음으로 바이트 동일). OIDC(<code>azure/login</code>)는 self-hosted 에서도 정상. 백엔드 이미지 빌드는 인코딩 이슈 없이 통과(프론트는 <code>az acr build</code> 가 vite <code>✓</code> 출력 시 cp949 크래시 → <strong>러너 시스템 로케일 UTF-8</strong> 로 해결, <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §3.11</a>). ⚠️ <code>ci.yml</code>·<code>docs-deploy.yml</code> 은 아직 self-hosted 스텁(checkout만) — 이식엔 러너 JDK 21·Python + <code>peaceiris</code>(Docker 액션) 대체 필요.</li>
+<li><strong>미사용 화면 3종 + 관련 死코드 정리</strong>(PR #49, 프론트 #69) — 미사용 확정 화면 <code>CmsMyBooking</code>(부킹 스케줄러)·<code>MdmPricingMgt</code>(단가관리)·<code>CmsGridLayoutCopyMgt</code>(레이아웃 복사) 관련 백엔드 제거. 앞 둘은 controller/service/dao/mapper 전체 삭제(+<code>PricingExcelColumn</code>·고아 <code>MdmExcelUploadService</code>). <code>gridLayout/copyLayout</code>·<code>gridLayout/selectUserList</code>(호출 0 死 엔드포인트) 제거 — 공용 <code>gridLayout/select·save·copy·delete·saveDefaultGridLayout</code>·<code>selectCarrier</code>·<code>downloadTemplate4TES</code>는 보존. 고아 <code>downloadTemplate</code>(단수) 엔드포인트/서비스 메서드도 제거(단가관리 전용이었음). ★CmsGridLayoutCopyMgt 화면 자체는 존재하지 않는 <code>/api/cms/select|save</code>를 부르던 死화면이라 프론트 폴더만 삭제.</li>
+<li><strong>미사용 스토리지 추상화 정리 — <code>StorageService</code> <code>init()</code>-only</strong>(PR #49) — 파일 저장/다운로드가 NAS/FTP로 일원화돼 S3 <code>upload</code>/<code>download</code>/<code>load</code> 구현은 운영 미사용(호출 0). <code>StorageService</code> 인터페이스를 <code>init()</code>(부팅 시 업로드 디렉터리 생성)만 남기고, <code>AwsS3FileService</code>·<code>FileSystemStorageService</code>의 미사용 메서드 + <code>StorageFileNotFoundException</code> 제거. ⚠️ S3 관련 설정(<code>cloud.aws</code>/<code>AwsS3Property</code>)·의존성은 존치하나 현재 코드 참조 0(향후 정리 후보).</li>
+<li><strong>미사용 세션 필드 + 死 선사(Carrier) 기능 제거</strong>(PR #45, 프론트 #65) — <code>LoginUser</code> 세션값 전수조사(백/프론트) 후 <strong>미사용 20필드 + <code>compId</code></strong>(세팅조차 안 됨) 제거, 유지 필드엔 <code>[BE·FE]</code>/<code>[BE]</code>/<code>[FE]</code> 사용현황 주석. <code>AdminService</code> setter·<code>ExtendBaseController.getCompId()</code>·<code>selectUser</code> 死컬럼 18개 정리(<code>serialVersionUID</code> 고정이라 기존 Redis 세션 무영향). 아울러 <strong>연결 DB에 <code>TB_MDM_CARRIER</code>/<code>TB_CMS_CARRIER_SITE</code> 자체가 없어</strong>(ORA-00942 실측) 死상태인 선사 기능 제거 — <code>MdmCarrierMgt</code>(선사관리)·<code>CmsCarrierSiteMgt</code>(선사 사이트 관리) 화면 통삭제 + <code>imageServerLocation</code>(선사 로고 S3 base) 제거. <code>CmsCommonPopup.selectCarrier</code>는 <code>MdmPricingMgt</code>/<code>MdmExcelUpload</code>가 공유해 <strong>존치</strong>, <code>CmsMyBooking</code> 선사 조인 디커플은 후속.</li>
+<li><strong>메뉴 검색 오류/개선</strong>(PR #46·#47) — <code>CmsMenuMgt selectMenuList</code>의 <code>MENU_ABBR</code> 필터에 <strong><code>LIKE</code> 누락</strong>(약어 검색 시 <code>ORA-00920</code>) 수정 + 검색 바인드를 <code>UPPER(#{...})</code>로 감싸 <strong>대소문자 무관</strong> 검색. (API는 <code>{SEARCH:{...}}</code> 래핑 필요, top-level은 NPE.)</li>
+<li><strong>컨테이너 타임존 Asia/Seoul</strong>(PR #46) — 에러로그 등이 Oracle <code>CURRENT_TIMESTAMP</code>(=JDBC 세션TZ=JVM 기본TZ)로 기록되는데 Azure 컨테이너 기본이 UTC → <strong>KST−9h</strong>(04시=13시)로 찍힘. 리전(Korea Central)은 위치일 뿐 TZ가 아님. <code>Dockerfile ENV TZ=Asia/Seoul</code>(temurin tzdata 내장)로 <code>CURRENT_TIMESTAMP</code>·앱 시간을 KST 정렬.</li>
+<li><strong>미사용 파일 백엔드 정리 + 네이밍 정렬</strong>(PR #42·#43·후속) — 프론트/외부 호출이 전무한 Cost 첨부기능(<code>VmsCostController</code>·<code>VmsCostService</code>)과 그 전용 진입점(<code>KeyService</code>), 이들만 쓰던 <code>PKG_CM_FILE</code>(<code>SP_GET_FILE_UPLOAD</code>/<code>SP_SET_FILE</code>) 호출 체인, 死메서드 12개(<code>fileUploadGpt</code>·<code>logoImageDownload</code>·<code>base64ImageDownload*</code> 등)와 死엔드포인트(<code>/fileUploadGpt</code>·<code>/fileDownload</code>·<code>/logoImageDownload</code>)를 제거(약 1,320줄↓). 이어 <code>FileDataController</code>/<code>FileDataService</code> 의 <strong>메서드명과 엔드포인트 URL 을 verb-first 로 정렬</strong>했다 — <code>/api/file/fileUpload</code>→<code>/uploadFile</code>, <code>/fileUploadInv</code>→<code>/uploadInvFile</code>, <code>/fileDelete</code>→<code>/deleteFile</code>, <code>/templateDownload</code>→<code>/downloadTemplate</code>, <code>/templateDownload4TES</code>→<code>/downloadTemplate4TES</code>(메서드명 동일 규칙, <code>uploadFileNasPath</code>→<code>uploadFileNas</code> 포함; TES 템플릿 생성 private 헬퍼 <code>tally</code>/<code>lhdc</code>/<code>lash</code>/<code>lashCon</code>/<code>tug</code>→<code>get*Template</code>). 아울러 死스텁 엔드포인트 <code>POST /api/vendor/comm/invoiceFileUploadIF</code>(빈 응답·호출 0)도 제거. ⚠️ <strong>엔드포인트 개명은 API 경로 변경(breaking)</strong> 이라 프론트 호출부(<code>FileService</code>·첨부 그리드·TES 템플릿 다운로드 등)를 <strong>같은 릴리스에서 함께 수정</strong>해 반영했다 — 백엔드·프론트를 동시 배포해야 한다. 존치 다운로드(<code>/api/file/downloadFileNas</code>)와 파트너 ZIP 다운로드 경로는 그대로다. 아울러 다건 조회 <code>selectFileLists</code>(<code>MNGT_NO IN</code>)를 <code>selectFileList</code> 에 동적 WHERE(<code>&lt;choose&gt;</code>: 단건 <code>=</code> / 리스트 <code>IN</code> / 그 외 <code>1=0</code>)로 <strong>흡수</strong>하고 유일 호출처(CmsInvoiceFileUploadPopup) 1곳을 이관 — 엔드포인트/매퍼 1쌍 감소(관리포인트 축소).</li>
+<li><strong>공통 프로시저 호출 통합</strong>(<code>executeVmsCommonProcedure</code>) — <code>select</code>/<code>save</code> 두 경로를 합친 상위집합 메서드와 전용 엔드포인트 <code>POST /api/vendor/comm/executeVendorCommonProcedure</code> 신설. <code>@Transactional</code>·IN 커서 항상 처리·OUT 커서 1~20·커서별 개별 resultMap(<code>ORA-17006</code> 방지). 기존 <code>select</code>/<code>save</code> 는 존치. 프런트는 <strong>EIR 제외 전 모듈</strong> 전환. 상세: <a href="../adr/0004-common-procedure-unification/">ADR-0004</a>, <a href="../code-walkthrough/vps/">vps §2-2</a>.</li>
+<li><strong>문서 작성 정책 명문화</strong> — 홈에 ① 사내 전용 정보(내부 IP·호스트명·계정·실운영 문서)의 공개 문서 게시 금지 ② 한국어 · MkDocs Material 조직 표준 준수 를 명시. → <a href="../">홈</a>.</li>
+<li><strong>배포 컷오버 graceful shutdown 실동작</strong>(PR #31) — Dockerfile <code>ENTRYPOINT</code> 에 <code>exec</code> 추가. <code>sh -c "java …"</code> 는 dash 가 java 를 자식으로 fork → PID 1(셸)이 SIGTERM 을 JVM 에 전달 못해 graceful shutdown 이 무력화됐다. <code>exec java …</code> 로 JVM 이 PID 1 이 되어 SIGTERM 직접 수신. 상세: <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §3.10</a>.</li>
+<li><strong>CI 품질게이트 워크플로 추가</strong>(PR #27) — <code>dev</code>/<code>main</code> PR 에서 빌드(<code>./gradlew build</code>)·Trivy 의존성 CVE(리포트)·SBOM 을 실행한다. 리포트 전용·비차단. 사용법은 <a href="../getting-started/">시작하기 §CI 품질게이트</a>, 도입 함정은 <a href="../troubleshooting/migration-pitfalls/">마이그레이션 함정 §3.9</a>.</li>
+</ul>
+<h2 id="2026-06">2026-06<a class="headerlink" href="#2026-06" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>개발자 문서 사이트 신설</strong> — MkDocs Material 기반 개발자 문서(<code>docs/</code>)와 자동 배포 파이프라인(<code>main</code> 푸시 → <code>Vendor-Portal-V2-Backend-docs</code>/<code>gh-pages</code>) 추가. 상세: 레포 루트 <code>DOCS-DEPLOY.md</code>.</li>
+<li><strong>V2 백엔드 초기 커밋</strong> — SB2.3/Java11 → <strong>Spring Boot 3.5 / Java 21</strong> 이관(<code>com.sinokor.vp</code>, <code>vp-backend.jar</code>). 자세한 결정은 <a href="../adr/0001-sb3-java21-migration/">ADR-0001</a>.</li>
+<li>시크릿 외부화(yaml gitignore + <code>.example</code> 템플릿, <code>@Value</code>/env) — <a href="../adr/0002-secret-externalization/">ADR-0002</a>.</li>
+<li>PageHelper 1.4.7 <code>pageSizeZero</code> 동작 복원 — <a href="../adr/0003-pagehelper-pagesizezero/">ADR-0003</a>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      장금상선 · Partner Portal
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" target="_blank" rel="noopener" title="Backend 레포" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
