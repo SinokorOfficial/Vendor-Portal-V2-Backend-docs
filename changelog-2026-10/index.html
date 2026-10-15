@@ -1,0 +1,4240 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="장금상선 Partner Portal 백엔드(vp-backend) 개발자 문서 — 아키텍처·컨벤션·도메인 코드 워크스루">
+      
+      
+      
+        <link rel="canonical" href="https://sinokorofficial.github.io/Vendor-Portal-V2-Backend-docs/changelog-2026-10/">
+      
+      
+        <link rel="prev" href="../changelog/">
+      
+      
+        <link rel="next" href="../changelog-2026-09/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2026-10 - Partner Portal Backend · 개발자 문서</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2026-10" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="Partner Portal Backend · 개발자 문서" class="md-header__button md-logo" aria-label="Partner Portal Backend · 개발자 문서" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Partner Portal Backend · 개발자 문서
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2026-10
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="green"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="green"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Vendor-Portal-V2-Backend
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  시작하기
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  시스템
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../data/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  데이터
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../code-walkthrough/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  코드 워크스루
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../troubleshooting/migration-pitfalls/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  운영·트러블슈팅
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../adr/0001-sb3-java21-migration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  결정 기록 (ADR)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../changelog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  변경 이력
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Partner Portal Backend · 개발자 문서" class="md-nav__button md-logo" aria-label="Partner Portal Backend · 개발자 문서" data-md-component="logo">
+      
+  <img src="../assets/favicon.svg" alt="logo">
+
+    </a>
+    Partner Portal Backend · 개발자 문서
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Vendor-Portal-V2-Backend
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시작하기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시작하기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빌드·실행·프로파일
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    설정·시크릿 정책
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시스템
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시스템
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    모듈 맵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 컨벤션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    보안·인증
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    데이터
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    데이터·MyBatis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code-walkthrough/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 워크스루
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    코드 워크스루
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    핵심 도메인
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    핵심 도메인
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/admin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    관리자 · admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    파트너 API · api
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/cms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMS · cms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/eir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EIR · eir
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    기준정보(마스터)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    기준정보(마스터)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/mdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MDM · mdm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    화물·물류 운영
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    화물·물류 운영
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/cfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFS 컨테이너 화물 · cfs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/crs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRS 컨테이너 수리 · crs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/mvs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVS 이동 현황 · mvs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/fds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDS 운임율 · fds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    통합·공통
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    통합·공통
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/vps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vendor Portal · vps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-walkthrough/dsh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    대시보드 · dsh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    운영·트러블슈팅
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    운영·트러블슈팅
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/migration-pitfalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    마이그레이션 함정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/connection-pool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커넥션 풀 고갈 진단
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/redis-connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Redis 연결 끊김 진단
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    결정 기록 (ADR)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    결정 기록 (ADR)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0001-sb3-java21-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0001 · SB3/Java21 이관
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0002-secret-externalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0002 · 시크릿 외부화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0003-pagehelper-pagesizezero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0003 · PageHelper pageSizeZero 복원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adr/0004-common-procedure-unification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR-0004 · 공통 프로시저 호출 통합
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../changelog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    변경 이력
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    변경 이력
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-10
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sql-pr-221-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        보안 수정: 인증 우회 규칙 제거, 팝업 SQL 바인드, 비밀번호 해시 응답 제외, 내부 전용 프로시저 거절 (PR #221, Infra #88)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="보안 수정: 인증 우회 규칙 제거, 팝업 SQL 바인드, 비밀번호 해시 응답 제외, 내부 전용 프로시저 거절 (PR #221, Infra #88)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정적 확장자 예외 규칙 삭제 (1번)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bl_no-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        컨테이너 타입 팝업 BL_NO 바인드 (2번)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 관문: 내부 전용 프로시저 거절 (3번 긴급분)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사용자 상세 조회에서 비밀번호 해시 제외 (5번)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        테스트 (DB, Redis, 실 설정 파일 없이)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eir-response-log-pr-224-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 관문: EIR Response Log 는 관리자 고정 대상에서 제외 (PR #224, Infra #88)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#admin-pr-222-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 관문: 관리자 전용 프로시저는 ADMIN 만 (PR #222, Infra #88)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="공통 프로시저 관문: 관리자 전용 프로시저는 ADMIN 만 (PR #222, Infra #88)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관리자 전용 프로시저는 ADMIN 만
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pkg_cmsp_get_argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        내부 전용 프로시저에 PKG_CM.SP_GET_ARGUMENT 추가
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-redis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        테스트 (DB, Redis 없이)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-223-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사용자, 회사 관리 법인 범위를 서버에서 강제 (PR #223, Infra #88)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-pr-220-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관리 화면 API 에 서버측 역할 검사 (PR #220, Infra #88)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="관리 화면 API 에 서버측 역할 검사 (PR #220, Infra #88)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin-2026-10-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 코드를 ADMIN 전용으로, 역할 부여 범위 제한 (2026-10-15 사용자 결정)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-pr-216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        미사용 import 정리 (PR #216)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="미사용 import 정리 (PR #216)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        판정 방법
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        안 건드린 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-212-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메뉴 꺼짐, 메뉴 없음 화면의 백엔드 삭제 (PR #212, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jsp-pr-214-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쓰지 않는 /jsp/** 경로 삭제 (PR #214, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-213-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        운임 코드 관리, 변경 이력 팝업, 사용자 삭제 백엔드 삭제 (PR #213, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mngt_no-param-pr-218-infra-76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러로그에 관리번호(MNGT_NO)와 멀티파트 param 기록 (PR #218, Infra #76)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="에러로그에 관리번호(MNGT_NO)와 멀티파트 param 기록 (PR #218, Infra #76)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        바뀐 모습
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        원인 두 가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        범위
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9050-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검증 (로컬 9050, .100)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crs-pr-219" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        삭제된 crs 도메인 문서 동기화 + 모듈 맵 숫자 정정 (PR #219)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="삭제된 crs 도메인 문서 동기화 + 모듈 맵 숫자 정정 (PR #219)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-code-walkthroughcrsmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. code-walkthrough/crs.md — 통째로 다시 썼다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modulesmd-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. modules.md — crs 행과 드리프트 난 숫자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ★집계 기준을 못 박았다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        안 건드린 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-215-infra-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 팝업 서비스 중복 제거 (PR #215, Infra #81)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-pr-211-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쓰지 않는 공통 팝업 엔드포인트 23개 삭제 (PR #211, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-pr-210" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파이썬 바이트코드를 git 에서 제외 (PR #210)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eir-pr-207-infra-82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EIR 옛 토큰 경로 삭제 (PR #207, Infra #82)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-pr-208-fe-254" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변경 이력을 PR 마다 파일 하나로 (PR #208, FE #254)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transutil-infra-73-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TransUtil 오픈소스 라이선스 고지 추가 (Infra #73 3차 조사 후속)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eirservice-infra-73-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EirService 책임별 분리 — 동작 변경 없음 (Infra #73 3차)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-73-fe-249" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메뉴 삭제 시 매핑도 함께 삭제 (Infra #73, FE #249 짝)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-infra-73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메뉴 관리 API 관리자 검사 (Infra #73 중 발견)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예외 처리 정리 — 동작 변경 없음 (Infra #72)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-s3-infra-78" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        미사용 AWS S3 의존성·설정 제거 (Infra #78)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        비밀번호 복잡도 정책 + 이전 비밀번호 재사용 금지 (Infra #77)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temppwdyn-infra-77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        임시 비밀번호 로그인 시 변경 강제 — 세션에 tempPwdYn 추가 (Infra #77)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comsinokorvputil-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        유틸 중복 정리 — com.sinokor.vp.util 패키지 삭제 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        미사용 의존성 6개 제거 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printstacktrace-23-systemout-3-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        printStackTrace 23건과 System.out 3건을 로거로 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-6-http-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        죽은 엔드포인트 27개 + 선박 관리 6개 + 테스트 HTTP 흐름 삭제 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executevmscommonprocedure-infra-71-adr-0004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 옛 조회/저장 경로 삭제 — 관문은 executeVmsCommonProcedure 하나 (Infra #71, ADR-0004 후속)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-apiauthsessionreset-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인증 없이 다른 사용자로 전환되던 POST /api/auth/sessionReset 삭제 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isadminrole-false-loginuser-principal-details-pr-192" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        isAdminRole() 이 도입 이후 줄곧 false 였다 — LoginUser 는 principal 이 아니라 details 다 (PR #192)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-mngt_no_list-pr-187-infra-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일 정합성 점검 API 에 관리자 롤 게이트 + MNGT_NO_LIST 죽은 분기 삭제 (PR #187, Infra #60)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#menu-pr-182" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러로그에 호출 메뉴(MENU)를 남긴다 + 파일 장애 문구를 재시도 안내로 (PR #182)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150-msg000437-pr-186-fe-236-infra-49-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        전역 쿼리 타임아웃 150초 도입 + 전용 문구(MSG000437) (PR #186, FE #236, Infra #49 5번)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nas-pr-184" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAS 업로드가 접속 단계에서 실패하면 딱 한 번 다시 시도한다 (PR #184)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        첨부 소유 검증 — 업로더 축 단일 규칙으로 전 모듈 차단 (Infra #59)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog-2026-09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog-2026-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog-2026-07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog-2026-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sql-pr-221-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        보안 수정: 인증 우회 규칙 제거, 팝업 SQL 바인드, 비밀번호 해시 응답 제외, 내부 전용 프로시저 거절 (PR #221, Infra #88)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="보안 수정: 인증 우회 규칙 제거, 팝업 SQL 바인드, 비밀번호 해시 응답 제외, 내부 전용 프로시저 거절 (PR #221, Infra #88)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정적 확장자 예외 규칙 삭제 (1번)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bl_no-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        컨테이너 타입 팝업 BL_NO 바인드 (2번)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 관문: 내부 전용 프로시저 거절 (3번 긴급분)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사용자 상세 조회에서 비밀번호 해시 제외 (5번)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        테스트 (DB, Redis, 실 설정 파일 없이)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eir-response-log-pr-224-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 관문: EIR Response Log 는 관리자 고정 대상에서 제외 (PR #224, Infra #88)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#admin-pr-222-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 관문: 관리자 전용 프로시저는 ADMIN 만 (PR #222, Infra #88)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="공통 프로시저 관문: 관리자 전용 프로시저는 ADMIN 만 (PR #222, Infra #88)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관리자 전용 프로시저는 ADMIN 만
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pkg_cmsp_get_argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        내부 전용 프로시저에 PKG_CM.SP_GET_ARGUMENT 추가
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-redis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        테스트 (DB, Redis 없이)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-223-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사용자, 회사 관리 법인 범위를 서버에서 강제 (PR #223, Infra #88)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-pr-220-infra-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관리 화면 API 에 서버측 역할 검사 (PR #220, Infra #88)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="관리 화면 API 에 서버측 역할 검사 (PR #220, Infra #88)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin-2026-10-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 코드를 ADMIN 전용으로, 역할 부여 범위 제한 (2026-10-15 사용자 결정)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-pr-216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        미사용 import 정리 (PR #216)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="미사용 import 정리 (PR #216)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        판정 방법
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        안 건드린 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-212-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메뉴 꺼짐, 메뉴 없음 화면의 백엔드 삭제 (PR #212, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jsp-pr-214-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쓰지 않는 /jsp/** 경로 삭제 (PR #214, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-213-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        운임 코드 관리, 변경 이력 팝업, 사용자 삭제 백엔드 삭제 (PR #213, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mngt_no-param-pr-218-infra-76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러로그에 관리번호(MNGT_NO)와 멀티파트 param 기록 (PR #218, Infra #76)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="에러로그에 관리번호(MNGT_NO)와 멀티파트 param 기록 (PR #218, Infra #76)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        바뀐 모습
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        원인 두 가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        범위
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9050-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검증 (로컬 9050, .100)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crs-pr-219" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        삭제된 crs 도메인 문서 동기화 + 모듈 맵 숫자 정정 (PR #219)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="삭제된 crs 도메인 문서 동기화 + 모듈 맵 숫자 정정 (PR #219)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-code-walkthroughcrsmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. code-walkthrough/crs.md — 통째로 다시 썼다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modulesmd-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. modules.md — crs 행과 드리프트 난 숫자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ★집계 기준을 못 박았다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        안 건드린 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-215-infra-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 팝업 서비스 중복 제거 (PR #215, Infra #81)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-pr-211-infra-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        쓰지 않는 공통 팝업 엔드포인트 23개 삭제 (PR #211, Infra #80)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-pr-210" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파이썬 바이트코드를 git 에서 제외 (PR #210)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eir-pr-207-infra-82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EIR 옛 토큰 경로 삭제 (PR #207, Infra #82)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pr-pr-208-fe-254" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변경 이력을 PR 마다 파일 하나로 (PR #208, FE #254)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transutil-infra-73-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TransUtil 오픈소스 라이선스 고지 추가 (Infra #73 3차 조사 후속)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eirservice-infra-73-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EirService 책임별 분리 — 동작 변경 없음 (Infra #73 3차)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-73-fe-249" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메뉴 삭제 시 매핑도 함께 삭제 (Infra #73, FE #249 짝)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-infra-73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메뉴 관리 API 관리자 검사 (Infra #73 중 발견)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예외 처리 정리 — 동작 변경 없음 (Infra #72)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-s3-infra-78" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        미사용 AWS S3 의존성·설정 제거 (Infra #78)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        비밀번호 복잡도 정책 + 이전 비밀번호 재사용 금지 (Infra #77)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temppwdyn-infra-77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        임시 비밀번호 로그인 시 변경 강제 — 세션에 tempPwdYn 추가 (Infra #77)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comsinokorvputil-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        유틸 중복 정리 — com.sinokor.vp.util 패키지 삭제 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        미사용 의존성 6개 제거 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printstacktrace-23-systemout-3-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        printStackTrace 23건과 System.out 3건을 로거로 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-6-http-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        죽은 엔드포인트 27개 + 선박 관리 6개 + 테스트 HTTP 흐름 삭제 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executevmscommonprocedure-infra-71-adr-0004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 프로시저 옛 조회/저장 경로 삭제 — 관문은 executeVmsCommonProcedure 하나 (Infra #71, ADR-0004 후속)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-apiauthsessionreset-infra-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인증 없이 다른 사용자로 전환되던 POST /api/auth/sessionReset 삭제 (Infra #71)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isadminrole-false-loginuser-principal-details-pr-192" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        isAdminRole() 이 도입 이후 줄곧 false 였다 — LoginUser 는 principal 이 아니라 details 다 (PR #192)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-mngt_no_list-pr-187-infra-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일 정합성 점검 API 에 관리자 롤 게이트 + MNGT_NO_LIST 죽은 분기 삭제 (PR #187, Infra #60)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#menu-pr-182" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러로그에 호출 메뉴(MENU)를 남긴다 + 파일 장애 문구를 재시도 안내로 (PR #182)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150-msg000437-pr-186-fe-236-infra-49-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        전역 쿼리 타임아웃 150초 도입 + 전용 문구(MSG000437) (PR #186, FE #236, Infra #49 5번)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nas-pr-184" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAS 업로드가 접속 단계에서 실패하면 딱 한 번 다시 시도한다 (PR #184)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infra-59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        첨부 소유 검증 — 업로더 축 단일 규칙으로 전 모듈 차단 (Infra #59)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="네비게이션" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href=".." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    홈
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../changelog/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    변경 이력
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2026-10">2026-10 변경 이력<a class="headerlink" href="#2026-10" title="Permanent link">¶</a></h1>
+<h2 id="sql-pr-221-infra-88">보안 수정: 인증 우회 규칙 제거, 팝업 SQL 바인드, 비밀번호 해시 응답 제외, 내부 전용 프로시저 거절 (PR #221, Infra #88)<a class="headerlink" href="#sql-pr-221-infra-88" title="Permanent link">¶</a></h2>
+<p>2026-10-14 리팩토링 전수 조사(Infra #83)에서 나온 보안 항목 중 1, 2, 3(긴급분), 5번을 고쳤다. Infra #88 조사 기준으로 운영 로그에서 악용 흔적은 찾지 못했다(요청 본문은 기록되지 않아 2, 3번은 "흔적 없음"까지만 말할 수 있다).</p>
+<h3 id="1">정적 확장자 예외 규칙 삭제 (1번)<a class="headerlink" href="#1" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>WebSecurityConfiguration</code> 의 <code>webSecurityCustomizer</code> 를 지웠다. 정적 확장자로 끝나는 요청을 보안 필터에서 통째로 빼는 규칙이었는데, <strong>쿼리 문자열까지 보고 판정해서 API 요청도 보안 필터를 건너뛸 수 있었다.</strong></li>
+<li>백엔드는 운영에서 정적 자원을 서빙하지 않는다(nginx 는 <code>/api/</code> 만 넘기고, 리소스 핸들러가 가리키는 <code>static/css</code>, <code>js</code>, <code>img</code>, <code>fonts</code> 디렉터리도 없다). 그래서 지워도 바뀌는 정상 동작은 없다. permit-all 목록은 그대로다.</li>
+<li>보안 필터 3개(<code>JwtAuthenticationFilter</code>, <code>LoginAuthenticationProcessingFilter</code>, <code>SessionIdentityGuardFilter</code>)는 <code>@Bean</code> 이라 서블릿 필터로도 자동 등록되고 있었다. <code>FilterRegistrationBean#setEnabled(false)</code> 로 끄고 시큐리티 체인 안에서만 돌게 했다.</li>
+</ul>
+<h3 id="bl_no-2">컨테이너 타입 팝업 <code>BL_NO</code> 바인드 (2번)<a class="headerlink" href="#bl_no-2" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>CmsCommonPopup-mapper.xml</code> 의 <code>selectCntrType</code> 이 <code>BL_NO</code> 를 SQL 문자열에 그대로 넣고 있었다. 바인드(<code>#{BL_NO}</code>)로 바꿨다. <code>HCBLNO</code> 는 세 선사 스키마 모두 <code>VARCHAR2(16)</code> 이라 비교 결과는 같다.</li>
+</ul>
+<h3 id="3">공통 프로시저 관문: 내부 전용 프로시저 거절 (3번 긴급분)<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
+<ul>
+<li>외부 진입점 <code>VmsCommonController</code> 가 내부 전용 프로시저(지금은 메일 앱 설정을 돌려주는 <code>PKG_CM.SP_GET_AAD</code>)를 실행 전에 거절한다. 이름은 trim, 대문자로 맞춰 비교하고 목록은 상수 한 곳에 둔다.</li>
+<li>메일 발송(비밀번호 찾기 포함), EIR, 파트너 API 는 서비스 메서드를 직접 불러 영향이 없다.</li>
+<li>허용 목록 방식으로 바꾸는 것은 후속이다.</li>
+</ul>
+<h3 id="5">사용자 상세 조회에서 비밀번호 해시 제외 (5번)<a class="headerlink" href="#5" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>CmsUserMgt-mapper.xml</code> 의 <code>select</code> 에서 <code>USER_PWD</code> 를 뺐다. 화면은 저장 때 <code>MAIN</code> 을 그대로 돌려보내지만 <code>USER_PWD</code> 를 쓰는 곳은 없다(update 는 이 컬럼을 바인드하지 않는다).</li>
+</ul>
+<h3 id="db-redis">테스트 (DB, Redis, 실 설정 파일 없이)<a class="headerlink" href="#db-redis" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>테스트</th>
+<th>고정하는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WebSecurityConfigurationTest</code></td>
+<td>API 경로는 쿼리 문자열이 무엇이든 로그인을 요구한다, <code>application.yaml.example</code> 의 permit-all 경로는 열려 있다, 보안 필터는 체인 안에서만 돈다</td>
+</tr>
+<tr>
+<td><code>CmsCommonPopupMapperTest</code></td>
+<td><code>selectCntrType</code> 의 <code>BL_NO</code> 가 바인드 파라미터로 들어간다</td>
+</tr>
+<tr>
+<td><code>VmsCommonControllerTest</code></td>
+<td>내부 전용 프로시저는 대소문자, 공백과 무관하게 거절되고 서비스가 불리지 않는다</td>
+</tr>
+</tbody>
+</table>
+<p>세 테스트 모두 수정 전 코드로 되돌리면 실패하는 것을 확인했다.</p>
+<ul>
+<li>문서: <code>security.md</code>, <code>architecture.md</code>, <code>api.md</code> 의 정적 리소스 설명을 고치고 <code>WebSecurityConfiguration.java</code>, <code>VmsCommonController.java</code> 줄번호를 맞췄다(<code>modules.md</code>, <code>code-walkthrough/vps.md</code> 포함). <code>security.md</code>, <code>code-walkthrough/vps.md</code> 에 내부 전용 프로시저 거절을 적었다.</li>
+</ul>
+<h2 id="eir-response-log-pr-224-infra-88">공통 프로시저 관문: EIR Response Log 는 관리자 고정 대상에서 제외 (PR #224, Infra #88)<a class="headerlink" href="#eir-response-log-pr-224-infra-88" title="Permanent link">¶</a></h2>
+<p>BE #222 에서 관리자 전용으로 묶은 프로시저 중 <code>PKG_EEIR.SP_GET_RESPONSE_LOG</code>(EIR Response Log 화면)를 뺐다. 지금은 ADMIN 메뉴지만 나중에 다른 역할에 열 수 있어, 관문에서 ADMIN 으로 고정하지 않기로 했다(사용자 결정 2026-10-15). 화면 접근은 메뉴 권한으로 관리한다.</p>
+<ul>
+<li><code>VmsCommonController.ADMIN_ONLY_PROCEDURES</code> 에서 1개 제외(12개 → 11개)</li>
+<li>테스트: 모듈 관리자 역할(<code>EIR00</code>)로도 관문을 통과하는지 고정</li>
+</ul>
+<h2 id="admin-pr-222-infra-88">공통 프로시저 관문: 관리자 전용 프로시저는 ADMIN 만 (PR #222, Infra #88)<a class="headerlink" href="#admin-pr-222-infra-88" title="Permanent link">¶</a></h2>
+<p>Infra #88 3번(공통 프로시저 관문에 인가가 없다)의 후속이다. 관리자 메뉴 화면이 관문으로 부르는 프로시저를 서버가 역할을 보지 않고 실행하고 있었다. 메뉴가 ADMIN 에만 걸려 있어도 그건 좌측 메뉴 노출일 뿐이다.</p>
+<h3 id="admin">관리자 전용 프로시저는 ADMIN 만<a class="headerlink" href="#admin" title="Permanent link">¶</a></h3>
+<ul>
+<li>외부 진입점 <code>VmsCommonController</code> 가 실행 전에 관리자 전용 프로시저 목록(<code>ADMIN_ONLY_PROCEDURES</code>)을 보고, 세션 역할에 <code>ADMIN</code> 이 없으면 거절한다(<code>This function is allowed for administrators only.</code>). 역할은 세션에서만 읽고, 세션 역할이 비어 있어도 거절한다.</li>
+<li>이름은 내부 전용 프로시저와 같은 방식(trim, 대문자)으로 맞춰 비교하고, 한 요청에 하나라도 걸리면 아무것도 실행하지 않는다.</li>
+<li>대상은 아래 12개다. 화면별로 메뉴 역할(<code>.100</code>)과 프론트 호출처를 하나씩 확인했다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>화면(메뉴)</th>
+<th>메뉴 역할</th>
+<th>프로시저</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>외부 API 관리</td>
+<td>ADMIN</td>
+<td><code>PKG_API.SP_GET_API_LIST</code>, <code>PKG_API.SP_SET_API_LIST</code></td>
+</tr>
+<tr>
+<td>API 호출 로그</td>
+<td>ADMIN</td>
+<td><code>PKG_API.SP_GET_API_LOG</code></td>
+</tr>
+<tr>
+<td>용어 사전</td>
+<td>ADMIN</td>
+<td><code>PKG_CM.SP_CHK_TERM_DUP</code></td>
+</tr>
+<tr>
+<td>통합 로그 조회</td>
+<td>ADMIN</td>
+<td><code>PKG_CM.SP_GET_LOG</code>, <code>PKG_CM.SP_GET_LOG_TABLE</code></td>
+</tr>
+<tr>
+<td>Package 관리</td>
+<td>ADMIN</td>
+<td><code>PKG_CM.SP_GET_PKG</code>, <code>PKG_CM.SP_SET_PKG</code></td>
+</tr>
+<tr>
+<td>이메일 로그</td>
+<td>ADMIN</td>
+<td><code>PKG_CM_EMAIL.SP_GET_EMAIL_LOG</code></td>
+</tr>
+<tr>
+<td>EIR Response Log</td>
+<td>ADMIN</td>
+<td><code>PKG_EEIR.SP_GET_RESPONSE_LOG</code></td>
+</tr>
+<tr>
+<td>사용자 관리(삭제, 비밀번호 초기화)</td>
+<td>ADMIN, CFS00, EIR00, TES00</td>
+<td><code>PKG_CM_USER.SP_DEL_USER</code>, <code>PKG_CM_USER.SP_SET_INITPWD</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>사용자 관리 메뉴는 모듈 관리자 역할에도 걸려 있지만, 삭제 버튼과 비밀번호 초기화 버튼은 ADMIN 에만 보이고 두 프로시저의 PL/SQL 도 ADMIN 만 허용한다. 그래서 두 기능은 ADMIN 전용으로 묶었다(사용자 결정). 모듈 관리자가 쓰는 사용자 조회, 저장은 그대로다.</li>
+<li>이 12개를 서버 내부 호출(메일 발송, EIR, 파트너 API)이 부르는 곳은 없다. 내부 호출은 서비스 메서드를 직접 불러 어차피 이 검사를 거치지 않는다.</li>
+</ul>
+<h3 id="pkg_cmsp_get_argument">내부 전용 프로시저에 <code>PKG_CM.SP_GET_ARGUMENT</code> 추가<a class="headerlink" href="#pkg_cmsp_get_argument" title="Permanent link">¶</a></h3>
+<ul>
+<li>관문이 프로시저 인자를 알아내려고 DAO 로 직접 부르는 메타 조회다. 화면에서 쓰는 곳이 없어 외부 요청에서는 거절한다. 관문 자체의 인자 조회는 DAO 경로라 영향이 없다.</li>
+</ul>
+<h3 id="db-redis_1">테스트 (DB, Redis 없이)<a class="headerlink" href="#db-redis_1" title="Permanent link">¶</a></h3>
+<p><code>VmsCommonControllerTest</code> 를 늘렸다.</p>
+<ul>
+<li>ADMIN 역할이면 관리자 전용 프로시저 12개가 모두 서비스로 넘어간다</li>
+<li>ADMIN 이 아니면 대소문자, 공백과 무관하게 거절하고 서비스를 부르지 않는다</li>
+<li>일반 프로시저와 섞여 있어도 하나라도 관리자 전용이면 전체를 거절한다</li>
+<li>세션 역할이 null 이면 거절한다</li>
+<li><code>SP_GET_ARGUMENT</code> 는 ADMIN 이어도 거절한다</li>
+<li>두 목록의 항목은 모두 대문자 <code>패키지.프로시저</code> 형태다</li>
+</ul>
+<p>관리자 검사 줄을 빼면 거절 테스트 3개가, <code>SP_GET_ARGUMENT</code> 를 목록에서 빼면 내부 전용 테스트가 실패하는 것을 확인했다.</p>
+<ul>
+<li>문서: <code>security.md</code>, <code>code-walkthrough/vps.md</code> 에 관리자 전용 프로시저와 목록 위치를 적고, <code>VmsCommonController.java</code> 줄번호를 맞췄다(<code>modules.md</code> 포함).</li>
+</ul>
+<h2 id="pr-223-infra-88">사용자, 회사 관리 법인 범위를 서버에서 강제 (PR #223, Infra #88)<a class="headerlink" href="#pr-223-infra-88" title="Permanent link">¶</a></h2>
+<p>사용자 관리와 회사 관리의 모듈 범위(회사의 <code>SYSTEM_DIV</code> 가 편집자 역할 앞 3자 중 하나)는 회사 트리와 사용자 목록 SQL 에만 있었다. 단건 조회와 저장은 받은 ID 로만 처리했고, 사용자 목록은 모듈 관리자(<code>..00</code>)를 범위 밖으로 빼 전 회사 사용자를 보여 줬다. 2026-10-15 사용자 결정(ADMIN 은 전부, 모듈 관리자는 자기 모듈의 회사와 그 소속 사용자만)에 맞춰 기존 조건을 서버가 모든 경로에 강제한다.</p>
+<ul>
+<li>판정은 <code>ExtendBaseService.requireCorpScope</code> 한 곳(조건 <code>corpScopeFilter</code>). ADMIN 은 통과, 그 밖에는 대상 회사의 <code>SYSTEM_DIV</code>(DB 에서 읽는다, 새 매퍼 <code>CmsUserMgtDao.selectCorpSystemDiv</code>)가 편집자 세션 역할 앞 3자 중 하나여야 한다. 대상 사용자는 소속 회사로 판정한다.</li>
+<li>목록<ul>
+<li>사용자 목록(<code>selectList</code>): 모듈 관리자 예외를 없앴다. ADMIN 만 전체, 그 밖은 자기 모듈 회사 소속 사용자.</li>
+<li>회사 트리(<code>selectTree</code>): 모듈 조건이 읽는 <code>USER_ID</code> 를 서비스가 세션 값으로 덮어쓴다. 규칙은 그대로다.</li>
+</ul>
+</li>
+<li>단건 조회와 쓰기에 범위 확인을 더했다. 범위 밖이면 409 <code>This company or user is outside your management scope.</code> 와 <code>[SCOPE]</code> 경고 로그(편집자, 대상, 회사).<ul>
+<li>사용자 상세, 역할 복사 원본: 대상 사용자</li>
+<li>사용자 저장: 기존 사용자의 현재 소속과 새 소속, 새 사용자의 소속, 회사 관계 그리드의 <code>CORP_CD_REL</code></li>
+<li>회사 상세, 관계(<code>selectCorpRel</code>), 삭제: 대상 회사</li>
+<li>회사 저장: 현재와 저장할 <code>SYSTEM_DIV</code>(새 회사는 입력값), 바뀐 상위 회사, 하위 그리드가 쓰는 다른 회사</li>
+<li>쓰기는 퍼사드나 서비스 첫머리에서 쓰기 전에 전부 본다</li>
+</ul>
+</li>
+<li>기존 로직과 다르게 둔 것<ul>
+<li>관계 그리드는 행의 <code>CORP_CD</code> 가 아니라 <code>CORP_CD_REL</code> 로 본다. <code>CORP_CD</code> 는 선사(<code>SNKO</code>, <code>HALK</code>, <code>HSLI</code>, <code>FDS</code>)다.</li>
+<li><code>selectCorpRel</code> 은 대상 사용자가 아니라 요청의 회사(<code>CORP_CD</code>)로 본다. 읽는 것이 그 회사의 관계이고, 새 사용자를 만들 때는 사용자가 아직 없다.</li>
+<li>회사 수정은 저장할 <code>SYSTEM_DIV</code> 도 범위 안이어야 한다(다른 모듈로 옮기지 못한다).</li>
+</ul>
+</li>
+</ul>
+<p><code>.100</code> 영향(2026-10-15, 화면 기본 조건 = 사용 중 사용자, 소속 회사의 포트): 사용자 목록은 <code>EIRCNSHA</code> 98 → 91(CNSHA 의 FDS 회사 사용자 7명 빠짐), <code>SNKOINC</code> 23 → 16(KRINC 의 CRS 회사 <code>PCFINC</code> 사용자 7명 빠짐), 나머지 모듈 관리자 5명은 그대로. 포트 조건 없이 보면 817 → 80(TES), 84(CFS+TES), 97(EIR). 회사 트리는 화면이 세션 사용자를 보내 왔으므로 그대로다.</p>
+<p>규칙 전문: <a href="../security/#corp-scope">보안 문서</a>의 "법인 범위".</p>
+<p>테스트: <code>CorpScopeRuleTest</code>(판정 6건), <code>CorpScopeServiceTest</code>(경로별 거절과 통과 16건), <code>CorpScopeMapperTest</code>(매퍼 렌더 3건). <code>RoleGrantServiceTest</code> 의 역할 복사 테스트는 원본 사용자를 범위 안으로 두게 고쳤다. 판정 줄과 각 호출 줄을 빼면 해당 테스트가 실패하는 것을 확인했다. <code>./gradlew build</code> 통과.</p>
+<h2 id="api-pr-220-infra-88">관리 화면 API 에 서버측 역할 검사 (PR #220, Infra #88)<a class="headerlink" href="#api-pr-220-infra-88" title="Permanent link">¶</a></h2>
+<p>관리 화면 메뉴는 <code>TB_CMS_ROLE_MENU</code> 로 특정 역할에만 보이지만 API 는 로그인만 확인했다. 그래서 메뉴가 없는 협력사 계정도 사용자 역할, 역할-메뉴 매핑 같은 관리 데이터 저장과 에러로그, 메일 본문 조회를 쓸 수 있었다.</p>
+<ul>
+<li><code>ExtendBaseService.requireAnyRole(List&lt;String&gt;)</code> 를 추가했다. 세션 <code>LoginUser.roleId</code> 로 판정하고, 거절은 409 <code>This function is allowed for administrators only.</code> 와 <code>[ROLE]</code> 경고 로그(사용자 ID 포함)다.</li>
+<li>허용 역할 상수는 <code>ExtendBaseService</code> 한 곳에 둔다.<ul>
+<li><code>ROLES_USER_CORP_MGT</code> = <code>ADMIN</code>, <code>CFS00</code>, <code>EIR00</code>, <code>TES00</code>: 사용자 관리(<code>cmsUserMgt/*</code>), 회사 관리(<code>mdmCorpMgt/*</code>)</li>
+<li><code>ROLES_ADMIN</code> = <code>ADMIN</code>: 메뉴, 역할 메뉴, 역할 버튼, 화면, 공통 코드, 용어 사전, 언어, 정합성 점검, 자동번호 규칙과 카운트, 에러/로그인/방문/메일 로그, Azure 로그, 공지 저장과 삭제</li>
+</ul>
+</li>
+<li>컨트롤러가 부르는 서비스 메서드 첫 줄에 건다. <code>CmsAzureLogService</code> 는 이번에 <code>ExtendBaseService</code> 를 상속하게 했다.</li>
+<li>기존 검사 2곳(<code>CmsMenuMgtService.requireAdmin</code>, <code>CmsFileIntegrityService</code>)을 같은 헬퍼로 합쳤다. <code>FileDataService</code> 의 템플릿 검사는 조건부라 그대로 둔다.</li>
+<li>일부러 걸지 않은 것<ul>
+<li>공지 조회(<code>mdmNotice/selectList</code>, <code>select</code>): 전 역할 메뉴</li>
+<li>공통 프로시저 관문을 쓰는 관리 화면: 관문 처리는 별도 결정 대기</li>
+</ul>
+</li>
+</ul>
+<p>엔드포인트별 표와 새 관리 API 규칙은 <a href="../security/#admin-api-roles">보안 문서</a>의 "관리 화면 API 역할 검사" 절.</p>
+<h3 id="admin-2026-10-15">공통 코드를 ADMIN 전용으로, 역할 부여 범위 제한 (2026-10-15 사용자 결정)<a class="headerlink" href="#admin-2026-10-15" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>cmsCommonCode/*</code> 도 <code>ROLES_ADMIN</code> 으로 닫았다. <code>.3</code> 에서 CMS, MDM 관리 메뉴 중 ADMIN 밖에 열린 것은 CmsUserMgt, MdmCorpMgt 둘뿐이고 CmsCommonCodeUser 도 ADMIN 전용임을 확인했다.</li>
+<li>사용자 관리에서 <strong>줄 수 있는 역할을 편집자(세션 사용자) 기준으로 제한</strong>했다. ADMIN 은 전부, 그 밖에는 편집자가 가진 모듈 관리자 역할(<code>XXX00</code>)의 모듈에 속한 비관리자 역할만(예: <code>CFS00</code> → <code>CFS01</code>). <code>ADMIN</code>, <code>..00</code>, <code>POPUP</code> 처럼 꼴이 다른 역할은 비ADMIN 이 다루지 못한다.<ul>
+<li>판정은 <code>ExtendBaseService.grantableRoleFilter()</code> 한 곳이고, 역할 그리드 저장(<code>saveRole</code>, 추가 변경 삭제 행 전부를 쓰기 전에 검사), 역할 복사(<code>copyRole</code>), 역할 선택 팝업(<code>selectRole</code>)이 같이 쓴다.</li>
+<li>저장과 복사는 하나라도 범위 밖이면 전체를 거절한다(409, <code>[ROLE] 역할 부여 거절</code> 경고 로그). 대상이 이미 가진 범위 밖 역할은 건드리지 않으면 남는다.</li>
+<li>팝업은 서비스가 세션 기준으로 정한 <code>ROLE_IDS</code> 로만 거른다(새 매퍼 <code>selectRoleIds</code>). 쓰는 화면은 CmsUserMgt, CmsPopupMgt. ADMIN 은 전과 같고 모듈 관리자는 자기 모듈의 비관리자 역할만 본다.</li>
+</ul>
+</li>
+<li>규칙 전문: <a href="../security/#role-grant-scope">보안 문서</a>의 "역할 부여 범위".</li>
+</ul>
+<p>테스트: <code>ExtendBaseServiceRoleTest</code>(헬퍼 7건), <code>AdminApiRoleServiceTest</code>(서비스 6건), <code>RoleGrantRuleTest</code>(판정 7건), <code>RoleGrantServiceTest</code>(저장, 복사, 팝업 9건), <code>CmsCommonPopupRoleMapperTest</code>(매퍼 렌더 3건). 검사 줄을 빼면 해당 테스트가 실패하는 것을 확인했다. <code>./gradlew build</code> 통과.</p>
+<h2 id="import-pr-216">미사용 import 정리 (PR #216)<a class="headerlink" href="#import-pr-216" title="Permanent link">¶</a></h2>
+<p>IDE 가 노랗게 긋던 <code>The import ... is never used</code> 경고를 걷어냈다. <strong>8파일 16건 삭제, 동작 변화 없음.</strong></p>
+<table>
+<thead>
+<tr>
+<th>파일</th>
+<th>건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mdm/other/service/MdmNoticeService</code></td>
+<td>4 — <code>MultipartFile</code>, <code>AutonoRuleHandler</code>, <code>CmsCommonPopupDao</code>, <code>ArrayList</code></td>
+</tr>
+<tr>
+<td><code>admin/controller/FileDataController</code></td>
+<td>3 — <code>ThrowsAdvice</code>, <code>GetMapping</code>, <code>RequestParam</code></td>
+</tr>
+<tr>
+<td><code>admin/service/AdminService</code></td>
+<td>3 — <code>RequestBody</code>, <code>AgTreeUtil</code>, <code>ResponseVo</code></td>
+</tr>
+<tr>
+<td><code>vps/comm/facade/VmsExcelFacade</code></td>
+<td>2 — <code>CellType</code>, <code>CellValue</code></td>
+</tr>
+<tr>
+<td><code>cms/comm/service/CmsCommonService</code></td>
+<td>1 — <code>ArrayList</code></td>
+</tr>
+<tr>
+<td><code>core/ftp/FtpServiceInq</code></td>
+<td>1 — <code>HttpServletRequest</code></td>
+</tr>
+<tr>
+<td><code>core/util/FileUtil</code></td>
+<td>1 — <code>FileInputStream</code></td>
+</tr>
+<tr>
+<td><code>mdm/other/controller/MdmNoticeController</code></td>
+<td>1 — <code>MultipartFile</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_1">판정 방법<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
+<p><code>src</code> 의 자바 282파일을 돌며, <code>import ...Xxx;</code> 의 <strong>단순명이 import 블록 밖 본문에 단어 경계로 한 번도 안 나오면</strong> 미사용으로 봤다.</p>
+<ul>
+<li><strong>주석과 javadoc 도 본문에 포함</strong>한다 — <code>{@link Xxx}</code> 로만 쓰이는 import 는 <strong>남긴다</strong>(보수적)</li>
+<li><strong>와일드카드 <code>import x.y.*;</code> 27건은 손대지 않았다</strong> — 어느 클래스를 쓰는지 단순명으로 판단할 수 없다</li>
+<li>최종 확인은 컴파일이다. 실제로 필요한 import 를 지웠다면 <code>compileJava</code> 가 깨진다</li>
+</ul>
+<h3 id="_2">안 건드린 것<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<p>연속 빈 줄(<code>\n\n\n</code>)이 <code>FileDataController</code> 와 <code>CmsCommonService</code> 에 하나씩 있는데 <strong>이번 변경 전부터 있던 것</strong>이라(origin/main 과 대조 확인) 그대로 뒀다.</p>
+<p><code>./gradlew build</code> 통과.</p>
+<h2 id="pr-212-infra-80">메뉴 꺼짐, 메뉴 없음 화면의 백엔드 삭제 (PR #212, Infra #80)<a class="headerlink" href="#pr-212-infra-80" title="Permanent link">¶</a></h2>
+<p>메뉴가 꺼져 있거나 메뉴가 없어 들어갈 수 없던 화면을 지우기로 한 사용자 결정에 따라, 그 화면만 쓰던 백엔드를 삭제했다(엔드포인트 189개 → 131개, 58개 삭제). 프론트 화면 삭제는 FE PR 별도.</p>
+<ul>
+<li>컨트롤러째 삭제(19개 클래스, 56개 엔드포인트)<ul>
+<li><code>cms/comm</code>: <code>cmsJwtMgt</code>(JWT 발급 관리), <code>cmsSvcRoleMgt</code>, <code>cmsMyPage</code>, <code>CmsCommonController</code>(<code>gridLayout/*</code> 5개, <code>History/*</code> 2개)</li>
+<li><code>mdm/code</code>: <code>mdmContainerMgt</code>, <code>mdmCountryMgt</code>, <code>mdmCurrencyMgt</code>, <code>mdmCustomsMgt</code>, <code>mdmExrateMgt</code>, <code>mdmFrequentlyUsedPhraseMgt</code>, <code>mdmPackageUnitMgt</code>, <code>mdmPortMgt</code>, <code>mdmWarehouseMgt</code>, <code>mdmHscodeMgt</code>, <code>mdmTariffMgt</code></li>
+<li><code>mdm</code>: <code>mdmCustomerMgt</code>(외부 CRM 동기화 <code>crmSync</code> 포함), <code>organization/mdmOrganizationMgt</code></li>
+<li><code>csm</code>: <code>csmRequestList</code>, <code>csmRequestMgt</code> (도메인 패키지 <code>csm</code> 이 통째로 사라짐)</li>
+</ul>
+</li>
+<li>엔드포인트만 삭제(2개)<ul>
+<li><code>/api/auth/findMyId</code>: 아이디 찾기 메일. 화면이 없는데 <code>/api/auth/**</code> permit-all 아래라 <strong>로그인 없이 호출 가능한 메일 발송 경로</strong>였다. 메일 템플릿 <code>mail/find-my-id.html</code> 도 삭제</li>
+<li><code>/api/code/selectRoleId</code>: <code>CodeService</code> 의 <code>#ROLE_ID</code> 코드박스 전용. 로그인 세션 역할을 만드는 <code>AdminDao.selectRoleId</code> 는 별개라 그대로 둔다</li>
+</ul>
+</li>
+<li>함께 고아가 된 코드 정리: <code>CmsCommonService</code> 의 그리드 레이아웃, 변경이력 메서드와 매퍼 SQL, <code>CmsDocumentPopupService.saveDocFileList</code>, <code>deleteMgntNo</code>(CSM 전용), <code>MdmCorpMgtService.insertCorp</code>, <code>updateCorp</code>(CRM 동기화 전용)</li>
+<li>JWT SSO 로그인 경로(<code>JwtAuthenticationFilter</code>, <code>JwtVerifyAuthenticationProvider</code>)는 서명 검증만 하고 <code>TB_CMS_JWT</code> 를 읽지 않아 영향 없다.</li>
+<li>앱에서 더 이상 참조하지 않는 DB 객체(DB 는 손대지 않음): <code>TB_CMS_GRID_LAYOUT</code>, <code>TB_CMS_HISTORY</code>, <code>TB_CMS_JWT</code>, <code>TB_CSM_REQUEST</code>, <code>SQ_CSM_REQ_SN</code>, <code>TB_MDM_PORT</code>, <code>TB_MDM_EXRATE</code>, <code>TB_MDM_HSCODE</code>, <code>TB_MDM_TARIFF</code> 등</li>
+<li>문서: <code>code-walkthrough/csm.md</code> 삭제, <code>mdm.md</code> 재작성, <code>conventions.md</code> 예시를 <code>MdmPortMgt</code> 에서 <code>CmsCommonCode</code> 로 교체, <code>cms.md</code>, <code>admin.md</code>, <code>modules.md</code>, <code>architecture.md</code> 정리</li>
+</ul>
+<h2 id="jsp-pr-214-infra-80">쓰지 않는 <code>/jsp/**</code> 경로 삭제 (PR #214, Infra #80)<a class="headerlink" href="#jsp-pr-214-infra-80" title="Permanent link">¶</a></h2>
+<p>V1 시절 남은 시험용 경로를 걷어냈다. 이름만 JSP 이고 실제로는 Pebble 뷰였다.</p>
+<ul>
+<li><code>JspController</code> 삭제: <code>GET /jsp/page</code>, <code>GET /jsp/mexgTracking</code>. 두 뷰 모두 템플릿 파일(<code>template/jsp/...</code>)이 없어 호출하면 오류였다.</li>
+<li>정적 데모 페이지 <code>static/jsp/page.html</code>(CDN Vue2 메시지 출력) 삭제</li>
+<li>보안 설정 <code>request-permit-all-mappings</code> 의 GET <code>/jsp/**</code> 제거 → 로그인 없이 열린 경로가 하나 줄었다.</li>
+<li>근거: 프론트 호출 0, 운영 AppInsights 3개월(07-16 이후 요청 374만 건) <code>/jsp</code> 0건, 운영 nginx 는 <code>/api/</code> 만 백엔드로 넘겨 외부에서 도달할 수도 없었다.</li>
+<li>문서: <code>security.md</code>, <code>api.md</code>, <code>code-walkthrough/admin.md</code> 에서 <code>/jsp</code> 언급 제거, <code>application.yaml.example</code> 줄번호 참조 보정</li>
+</ul>
+<h2 id="pr-213-infra-80">운임 코드 관리, 변경 이력 팝업, 사용자 삭제 백엔드 삭제 (PR #213, Infra #80)<a class="headerlink" href="#pr-213-infra-80" title="Permanent link">¶</a></h2>
+<p>프론트에서 운임 코드 관리 화면(<code>MdmFreightMgt</code>)과 어느 화면도 열지 않던 변경 이력 팝업(<code>CmsHistoryPopup</code>)을 지우고, 사용자 관리의 사용자 삭제를 없애기로 한 사용자 결정(2026-10-14)에 따라 그것만 쓰던 백엔드를 삭제했다(엔드포인트 6개 삭제). 프론트 삭제는 FE PR 별도.</p>
+<ul>
+<li>컨트롤러째 삭제(2개 클래스, 5개 엔드포인트)<ul>
+<li><code>mdm/code</code>: <code>mdmFreightMgt</code>(<code>selectList</code>, <code>select</code>, <code>save</code>, <code>delete</code>). Facade, 서비스, DAO, 매퍼까지 삭제해 <code>mdm/code</code> 패키지가 사라짐</li>
+<li><code>cms/popup</code>: <code>cmsHistoryPopup</code>(<code>select</code>). 서비스, DAO, 매퍼 삭제</li>
+</ul>
+</li>
+<li>엔드포인트만 삭제(1개)<ul>
+<li><code>/api/cms/comm/cmsUserMgt/delete</code>: 프론트 호출이 이미 주석 처리돼 있었다. 이것만 쓰던 <code>CmsUserMgtService.delete</code>, <code>CmsUserMgtDao</code> 의 <code>delete</code>, <code>deleteCorpAll</code>, <code>deleteRoleAll</code> 과 매퍼 SQL 도 삭제. <code>deleteAuth</code> 는 권한 저장(<code>saveAuth</code>)이 쓰므로 남김</li>
+</ul>
+</li>
+<li>그대로 둔 것<ul>
+<li>공통 팝업 운임 검색 <code>/api/cms/popup/cmsCommonPopup/selectFreight</code>: 별개의 살아 있는 경로라 유지(운임 테이블 <code>TB_MDM_FRT</code>, <code>TB_MDM_FRT_ACCT</code>, <code>TB_MDM_FRT_CURR</code>, <code>TB_MDM_FRT_VAT</code> 를 계속 읽음)</li>
+<li><code>cmsUserMgt</code> 의 나머지 엔드포인트(<code>selectList</code>, <code>select</code>, <code>validUserId</code>, <code>save</code>, <code>copyRole</code>)</li>
+<li><code>cmsLangMgt</code> 전부(프론트가 팝업에서 다시 씀)</li>
+</ul>
+</li>
+<li>운임 코드 저장이 빠지면서 V2 에서 운임 코드를 만들거나 고칠 수 없고, 저장 때마다 하던 회계 운임코드(<code>FMSFRTCD</code>) MERGE 도 더 이상 일어나지 않는다.</li>
+<li>앱에서 더 이상 참조하지 않는 DB 객체(DB 는 손대지 않음): <code>FMSFRTCD</code>(운임 저장 시 회계 운임코드 MERGE 대상), <code>TB_FMS_HBL_LOG</code></li>
+<li>문서: <code>mdm.md</code> 에서 운임 코드 유스케이스와 엔드포인트 삭제, <code>cms.md</code>, <code>modules.md</code>, <code>code-walkthrough/index.md</code> 정리</li>
+</ul>
+<h2 id="mngt_no-param-pr-218-infra-76">에러로그에 관리번호(MNGT_NO)와 멀티파트 param 기록 (PR #218, Infra #76)<a class="headerlink" href="#mngt_no-param-pr-218-infra-76" title="Permanent link">¶</a></h2>
+<p>PR #182 로 에러로그에 호출 메뉴(<code>MENU:</code>)가 들어갔지만 <strong>관리번호는 빠져 있었다.</strong> 구멍은 멀티파트 하나였고, 하필 그게 첨부 업로드(FTP 장애 경로)라 2026-09-30 / 10-01 의 <code>FileSystemException</code> 이 어느 문서였는지 알 수 없었다.</p>
+<h3 id="_3">바뀐 모습<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>REQUEST: POST /api/file/uploadFile
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>MENU: crsEstUploadExl
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>MNGT_NO: SEL011908000123
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>PAYLOAD: (multipart/form-data, 1,234,567 bytes)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  param: {"MNGT_NO":"SEL011908000123","COMP_CD":"SNKO", ...}
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  files: 견적서.pdf (1,233,900 bytes)
+</span></code></pre></div>
+<p>콘솔 한 줄: <code>[ERR] POST /api/file/uploadFile [crsEstUploadExl MNGT_NO=SEL011908000123] : ...</code>. 관리번호는 식별자라 "콘솔에 요청 본문을 안 남긴다" 는 방침에 걸리지 않는다.</p>
+<h3 id="_4">원인 두 가지<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>멀티파트 <code>PAYLOAD</code> 줄이 아예 안 찍히고 있었다.</strong> Tomcat 은 파트를 파싱할 때 <code>ContentCachingRequestWrapper</code> 를 거치지 않고 밑단 스트림을 직접 읽어 캐시가 빈 채로 남는다. 그 분기가 "캐시가 비어 있지 않으면" 안에 있었다. <code>.100</code> 의 과거 <code>uploadFile</code> 에러 4건 모두 <code>PAYLOAD</code> 줄이 없었다. → 멀티파트는 <code>request.getParts()</code> 로 파트를 직접 읽는다.</li>
+<li><strong><code>param</code> 은 파일 파트처럼 온다.</strong> 프론트 <code>FormBuilder.appendJson</code> 이 <code>Blob</code> 을 넣는데, 브라우저는 File 아닌 Blob 에도 <code>filename="blob"</code> 을 붙인다. → filename 이 <strong>없거나</strong>(일반 폼 필드) <strong>json 이고 64KB 이하</strong>면 텍스트 파트로 보고 내용을 찍는다.</li>
+</ul>
+<h3 id="_5">범위<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<ul>
+<li>관리번호는 JSON 바디 또는 JSON 파트의 <strong>최상위 <code>MNGT_NO</code> 키 하나만</strong> 본다. <code>SEARCH.MNGT_NO</code>, <code>FILES[]</code> 처럼 한 겹 안의 값은 찾지 않는다(그 요청들은 JSON 이라 <code>PAYLOAD</code> 에 원문이 남는다).</li>
+<li><code>CmsDocumentPopup</code> 은 <code>param: {}</code> 로 올려서 이 조치로도 관리번호가 안 남는다(화면이 업로드 뒤에 행을 만드는 구조라 로그 때문에 바꿀 자리가 아니다).</li>
+<li>파트 파싱 자체가 실패한 요청(크기 초과, 깨진 멀티파트)은 크기만 남긴다. 에러 적재는 막지 않는다.</li>
+</ul>
+<h3 id="9050-100">검증 (로컬 9050, <code>.100</code>)<a class="headerlink" href="#9050-100" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>요청</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>업로드, <code>param</code> 을 <code>filename=blob</code> + json 으로</td>
+<td><code>MNGT_NO:</code> 줄, <code>param:</code> 내용(비밀번호 키 <code>*****</code>), 파일은 이름·크기만</td>
+</tr>
+<tr>
+<td>업로드, <code>param</code> 을 filename 없이</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>JSON 프로시저 호출(최상위 <code>MNGT_NO</code>)</td>
+<td><code>MNGT_NO:</code> 줄</td>
+</tr>
+<tr>
+<td>경계가 깨진 멀티파트</td>
+<td><code>PAYLOAD: (multipart/form-data, 24 bytes)</code> 만, 적재 정상</td>
+</tr>
+</tbody>
+</table>
+<h2 id="crs-pr-219">삭제된 crs 도메인 문서 동기화 + 모듈 맵 숫자 정정 (PR #219)<a class="headerlink" href="#crs-pr-219" title="Permanent link">¶</a></h2>
+<p>오늘(2026-10-14)까지의 커밋 로그를 훑어 <strong>코드는 지웠는데 문서가 안 따라간 곳</strong>을 찾았다. 실제로 낡은 곳은 두 군데였다.</p>
+<h3 id="1-code-walkthroughcrsmd">1. <code>code-walkthrough/crs.md</code> — 통째로 다시 썼다<a class="headerlink" href="#1-code-walkthroughcrsmd" title="Permanent link">¶</a></h3>
+<p><code>crs</code> 패키지는 <strong>2026-09-04 에 이미 사라졌는데</strong>(<code>dabc69b</code> — 사용처 0 확인 후 <code>RepairController</code>·서비스·DAO·매퍼 삭제) 문서는 여전히 <em>"현재는 ... 단일 기능을 제공한다"</em> 로 시작하면서 시퀀스 다이어그램, 엔드포인트 표, 주의점까지 82줄을 살아 있는 코드처럼 설명하고 있었다.</p>
+<p>같은 처지인 <a href="../code-walkthrough/fds/">fds</a>, <a href="../code-walkthrough/mvs/">mvs</a> 와 <strong>같은 형식</strong>으로 맞췄다.</p>
+<ul>
+<li>첫 줄에 <strong>백엔드 전용 코드가 없다</strong>는 사실과 날짜</li>
+<li>화면 9개가 실제로 타는 경로 — 공통 프로시저 관문 <code>executeVendorCommonProcedure</code> → <code>PKG_CRS_ESTIMATE</code> / <code>PKG_CRS</code> / <code>PKG_CRS_INVOICE</code></li>
+<li>첨부(<code>/api/file/uploadFile</code>)와 견적 엑셀(<code>/api/vms/comm/uploadExcel</code>)은 crs 전용 경로가 아니라 <code>admin</code>·<code>vps</code> 공통 API 라는 점</li>
+<li>지워진 <code>disabledFileExtList</code> 가 뭐였는지는 <code>!!! note "삭제된 코드"</code> 로 한 문단만 남겼다</li>
+</ul>
+<h3 id="2-modulesmd-crs">2. <code>modules.md</code> — crs 행과 드리프트 난 숫자<a class="headerlink" href="#2-modulesmd-crs" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>도메인 수</td>
+<td>14개</td>
+<td>11개 (그중 <strong>패키지가 실재하는 것은 8개</strong>)</td>
+</tr>
+<tr>
+<td><code>crs</code> 라우트 prefix</td>
+<td><code>/api/crs/repair</code></td>
+<td>(전용 엔드포인트 없음 — 공통 프로시저)</td>
+</tr>
+<tr>
+<td><code>crs</code> 컨트롤러/서비스</td>
+<td>1 / 1</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td><code>cms</code> 서비스</td>
+<td>20</td>
+<td>19</td>
+</tr>
+<tr>
+<td><code>vps</code> 컨트롤러/서비스</td>
+<td>4 / 10</td>
+<td>3 / 4</td>
+</tr>
+<tr>
+<td><code>eir</code> 서비스</td>
+<td>1</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>패키지 루트 주석이 인프라 코드로 <code>config/</code>, <code>core/</code>, <code>util/</code> 셋을 들고 있었는데 <code>util/</code> 은 최상위에 없어 함께 지웠다.</p>
+<p>"14개" 는 <code>crs</code>·<code>fds</code>·<code>mvs</code> 가 빠진 뒤로 맞지 않았다. 표 자체가 11행이었고, 그중 <code>src/main/java/com/sinokor/vp/</code> 에 패키지가 실제로 있는 것은 8개(<code>admin</code>, <code>api</code>, <code>cfs</code>, <code>cms</code>, <code>dsh</code>, <code>eir</code>, <code>mdm</code>, <code>vps</code>)다.</p>
+<h3 id="_6">★집계 기준을 못 박았다<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<p>숫자 셋이 어긋나 있던 이유는 <strong>세는 법이 적혀 있지 않아서</strong> 다. 원래 주석은 <em>"도메인 인벤토리 기준"</em> 이라고만 해서 재확인이 불가능했다.</p>
+<p>표의 수는 <strong>파일명이 <code>*Controller.java</code> / <code>*Service.java</code> 인 것을 세되 <code>core/</code> 하위는 뺀 값</strong>이다(<code>admin 6/8</code> 이 이 규칙과 정확히 일치한다). <code>Facade</code>·<code>Client</code> 로 끝나는 클래스(<code>VmsExcelFacade</code>, <code>EirSipgClient</code>)는 들어가지 않는다. 재확인 명령을 주석 안에 넣어 다음에 또 틀어지면 바로 잡히게 했다.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>find<span class="w"> </span>src/main/java/com/sinokor/vp/&lt;도메인&gt;<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*Service.java'</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s1">'*/core/*'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</span></code></pre></div>
+<h3 id="_7">안 건드린 것<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>troubleshooting/migration-pitfalls.md:57</code> 의 <code>MdmCustomerMgt</code> 언급 — 그 화면은 오늘 삭제됐지만 <strong>당시 겪은 함정을 적은 역사 서술</strong>이라 그대로 뒀다</li>
+<li><code>security.md:374</code> 의 <code>/api/crs/repair/disabledFileExtList</code> 언급 — 이미 <em>"엔드포인트째 제거(사용처 0)"</em> 로 <strong>올바르게</strong> 적혀 있다</li>
+<li><code>admin.md</code>(<code>runQueryCompiler</code>), <code>mdm.md</code>(<code>mdmFreightMgt</code>), <code>vps.md</code>(<code>/api/insurance</code>) 도 전부 "삭제했다" 로 기록돼 있어 손대지 않았다</li>
+<li><strong>프론트 문서(<code>docs-dev/</code>)는 갱신할 것이 없었다</strong> — 오늘 머지분·최근 7일분 모두 대조했으나 삭제된 코드를 살아 있는 것처럼 설명하는 곳이 없다</li>
+</ul>
+<h2 id="pr-215-infra-81">공통 팝업 서비스 중복 제거 (PR #215, Infra #81)<a class="headerlink" href="#pr-215-infra-81" title="Permanent link">¶</a></h2>
+<p><code>CmsCommonPopupService</code> 를 651줄에서 209줄로 줄였다. 엔드포인트, 요청, 응답은 그대로다.</p>
+<ul>
+<li>반복 두 가지를 헬퍼로 접었다.</li>
+<li><code>selectPage</code>: SEARCH 의 CURR_PAGE/PER_PAGE 로 PageHelper 를 걸고 DATA, PAGE_LENGTH, PAGE_TOTAL 로 돌려주는 블록(24곳에서 반복)</li>
+<li><code>compTable</code>: 선사(COMP_CD)별 스키마 선택 switch(10곳에서 반복). SNKO=LINER, HALK=HLINER, HSLI=HSL, 그 밖은 LINER</li>
+<li>매퍼가 <code>${COMP_DIV}</code>, <code>${BL_INFO}</code> 로 SQL 에 직접 넣는 값이라, 요청에 들어온 COMP_DIV 는 지금처럼 서버 값으로 항상 덮어쓴다.</li>
+<li>처음엔 도메인별 서비스로 쪼갤 계획이었지만(#73 방식), #80 정리 뒤 고유 로직이 거의 없어 쪼개도 복사본이 흩어질 뿐이라 중복 제거로 바꿨다.</li>
+<li>검증</li>
+<li>동작 고정 테스트 <code>CmsCommonPopupServiceTest</code> 14개를 먼저 커밋하고, 중복 제거 커밋에서 무수정 통과했다.</li>
+<li>로컬 실서버(.100)에서 26개 엔드포인트 73건(선사 4가지, 1, 2페이지)의 응답을 전후로 저장해 비교했고 모두 같았다.</li>
+<li>주석 처리돼 있던 옛 코드(<code>selectCorp</code> 의 트리 변환, <code>selectLocation4Feeder</code> 의 선사 switch)를 지웠다.</li>
+<li>문서: <code>conventions.md</code> 의 페이징 예시를 <code>selectPage</code> 헬퍼로 바꿨다.</li>
+</ul>
+<h2 id="23-pr-211-infra-80">쓰지 않는 공통 팝업 엔드포인트 23개 삭제 (PR #211, Infra #80)<a class="headerlink" href="#23-pr-211-infra-80" title="Permanent link">¶</a></h2>
+<p><code>CmsCommonPopupController</code> 의 운영 호출 0 엔드포인트 23개를 삭제했다(49개 → 26개, 프론트 FE #265 와 함께).</p>
+<ul>
+<li>프론트 참조 화면이 없던 16개: <code>selectAmsCust</code>, <code>selectCarrierByEdiCode</code>, <code>selectCommon</code>, <code>selectCostDetail</code>, <code>selectCostDiv</code>, <code>selectCurrencyNation</code>, <code>selectCustomerAbb</code>, <code>selectCustomerPic</code>, <code>selectCustoms</code>, <code>selectCustomsDept</code>, <code>selectCyCfs</code>, <code>selectHscode</code>, <code>selectItem</code>, <code>selectOwner</code>, <code>selectPlace</code>, <code>selectTeam</code></li>
+<li>메뉴가 꺼졌거나 없는 화면에서만 쓰던 5개(사용자 결정): <code>selectCarrier</code>, <code>selectCntrTypeTariff</code>, <code>selectCntrTypeGroupTariff</code>, <code>selectCustomer</code>, <code>selectOrg</code></li>
+<li>여는 곳이 없는 팝업에서만 쓰던 2개(사용자 결정): <code>selectExrate</code>, <code>selectLastNo</code>. <code>selectLastNo</code> 는 SQL 이 쓰는 <code>TB_FMS_MBL</code>, <code>TB_FMS_HBL</code>, <code>TB_OMS_JOB_AUTH</code> 가 DB 에 없어 원래 동작하지 않았다.</li>
+<li>컨트롤러, 서비스, DAO, 매퍼 SQL을 함께 지웠다. <code>selectOrg</code> 전용이던 <code>selectTeam</code> SQL, 트리 헬퍼(<code>selectOrgTree</code>, <code>createTreePath</code>), <code>setStopBizYnColumnInPageList</code> 도 같이 정리했다.</li>
+<li><code>selectCostDiv</code>, <code>selectCostDetail</code> 은 매퍼 SQL 이 원래 없어 호출하면 실패하던 엔드포인트였다.</li>
+<li>문서: <code>conventions.md</code> 페이징 예시를 <code>selectScreen</code> 으로, <code>code-walkthrough/cms.md</code> 의 공통 팝업 개수(26종)를 고쳤다.</li>
+</ul>
+<h2 id="git-pr-210">파이썬 바이트코드를 git 에서 제외 (PR #210)<a class="headerlink" href="#git-pr-210" title="Permanent link">¶</a></h2>
+<p>MkDocs 훅(<code>docs-tools/changelog_hook.py</code>)을 빌드할 때마다 생기는 <code>docs-tools/__pycache__/*.pyc</code> 가 커밋돼 있어, 문서를 빌드하면 매번 변경으로 잡혀 다른 커밋에 섞여 들어갔다. <code>.gitignore</code> 에 <code>__pycache__/</code> 를 넣고 추적 중이던 <code>.pyc</code> 를 제거했다(로컬 파일은 남는다). 프론트 레포는 이미 제외돼 있다.</p>
+<h2 id="eir-pr-207-infra-82">EIR 옛 토큰 경로 삭제 (PR #207, Infra #82)<a class="headerlink" href="#eir-pr-207-infra-82" title="Permanent link">¶</a></h2>
+<p>"사용 X" 표시로 남아 있던 ConcurrentHashMap 토큰 경로를 지웠다. 호출처는 주석뿐이었다.</p>
+<ul>
+<li><code>EirTokenService</code>(와 <code>EirService</code> 위임): <code>getValidToken</code>, <code>getCachedToken</code>, 메모리 캐시 <code>tokenCache</code>/<code>expireCache</code>, 그리고 <code>getValidToken</code> 만 부르던 <code>checkTokenValidate</code>(2026-09-15 PR #142 로 현행 경로에서 빠진 뒤 잔재).</li>
+<li><code>EirService</code> 의 안 쓰는 <code>PartnerService partnersService</code> 주입 필드.</li>
+<li>컨트롤러 2곳의 옛 호출 주석.</li>
+<li>엔드포인트 <code>GET /api/eir/getCachedToken</code> 은 그대로다(이미 Redis 경로 <code>getRedisToken</code> 을 쓴다, <code>EirResponseLog</code> 화면이 호출).</li>
+<li>테스트: 지운 메서드의 테스트 2건 삭제(나머지 <code>EirServiceTest</code> 26건 통과). 로컬 기동 후 <code>getCachedToken</code> 200 확인.</li>
+<li>에러 로그 문구 <code>CALL POINT: EirService.sendSIPGNew(Exception Error)</code> 를 실제 위치인 <code>EirSipgClient.sendSIPGNew</code> 로 바꿨다(#205 분리로 위치가 옮겨졌다). <strong>운영 에러 로그(<code>TB_CMS_ERROR_LOG</code>)를 이 문구로 검색할 때는 배포 시점 전후로 두 문구를 함께 찾을 것.</strong></li>
+</ul>
+<h2 id="pr-pr-208-fe-254">변경 이력을 PR 마다 파일 하나로 (PR #208, FE #254)<a class="headerlink" href="#pr-pr-208-fe-254" title="Permanent link">¶</a></h2>
+<p>PR 여러 개가 <code>changelog.md</code> 의 같은 자리(그 달 섹션 맨 위)에 항목을 끼워 넣어, 하나를 머지하면 나머지가 매번 충돌했다.</p>
+<ul>
+<li>항목은 <code>docs/changelog/YYYY-MM/YYYYMMDD-&lt;브랜치슬러그&gt;.md</code> 에 파일 하나로 추가한다. 새 파일만 생기니 PR 끼리 충돌하지 않는다. 작성 규칙은 같은 폴더 <code>README.md</code>.</li>
+<li>빌드 때 MkDocs 훅(<code>docs-tools/changelog_hook.py</code>)이 조각을 모아 <code>changelog.md</code>(월 목록)와 월별 페이지(<code>changelog-YYYY-MM.md</code>)를 만든다. 추가 패키지는 없다. 기존 <code>changelog.md</code> 링크는 그대로 동작한다. <code>docs-deploy</code> 트리거에 <code>docs-tools/**</code> 를 추가했다.</li>
+<li>형식을 프론트와 맞췄다. <code>- **제목**(참조) — 본문</code> 한 줄 + 들여쓴 불릿이던 것을 <code>## 제목 (참조)</code> + 본문 + 불릿으로 바꿨다. 기존 100개 항목의 글 내용은 그대로다(<code>YYYYMM00-NN-…</code>, 원래 순서 보존).</li>
+</ul>
+<h2 id="transutil-infra-73-3"><code>TransUtil</code> 오픈소스 라이선스 고지 추가 (Infra #73 3차 조사 후속)<a class="headerlink" href="#transutil-infra-73-3" title="Permanent link">¶</a></h2>
+<p>이 파일은 <code>crizin/korean-romanizer</code>(MIT)의 두 파일을 합친 것인데 고지가 없었다. 파일 맨 위에 출처와 MIT 전문을 넣었다. 코드 변경 없음, 호출처 0 이지만 보전(사용자 결정).</p>
+<h2 id="eirservice-infra-73-3">EirService 책임별 분리 — 동작 변경 없음 (Infra #73 3차)<a class="headerlink" href="#eirservice-infra-73-3" title="Permanent link">¶</a></h2>
+<p>1,145줄 한 클래스에 토큰, 서명, SIPG 전송, 프로시저 호출, 응답 로그가 모여 있던 것을 책임별 빈으로 나눴다. <code>EirService</code> 는 파사드로 남아 컨트롤러(<code>EirController</code>, <code>PartnerController</code>)는 그대로다. 메서드 본문은 글자 그대로 옮겼다.</p>
+<ul>
+<li><code>EirService</code>(237줄): 이중발급 방지 락(<code>tryIssueLock</code>, <code>releaseIssueLock</code>)과 조회 오케스트레이션(<code>updateEirInfo</code>, <code>getEirInfo4Web</code>)은 그대로 두고 나머지는 위임.</li>
+<li><code>EirTokenService</code>(461줄): 토큰 발급/검증, Redis 캐시와 분산락, 캐시 조회/비우기. <code>evictCachedToken</code> 은 <code>EirSipgClient</code> 가 불러야 해서 <code>private</code> 을 패키지 공개로 풀었다.</li>
+<li><code>EirSipgClient</code>(372줄): 요청 서명, 발급/취소 전송(<code>sendSIPGNew</code>), 발급 후 조회(<code>getEirInfoFromSIPG</code>). 비멱등 방어(자동 재시도 끔, 통신 예외 rethrow)와 비JSON 응답 가드는 그대로다.</li>
+<li><code>EirProcedureService</code>(159줄): <code>PKG_EEIR</code> 의 <code>SP_RTNJASON</code>, <code>SP_SET_EIRLOG</code>, <code>SP_GET_EIR_INFO</code> 호출.</li>
+<li><code>EirResponseLogService</code>(57줄): <code>TB_EIR_RESPONSE_LOG</code> 적재. <code>EirEsbSupport</code>(40줄): 타임아웃 설정과 비JSON 응답 요약(static).</li>
+<li>프록시 영향 없음: EIR 서비스 쪽에 <code>@Transactional</code>, <code>@Async</code>, <code>@Cacheable</code> 이 하나도 없고, 바깥 빈 호출(<code>VmsCommonService</code>, <code>AdminService.insertErrorLog</code>)은 원래도 다른 빈 경유였다.</li>
+<li>운영 추적 주의: 로거 이름과 예외 스택의 클래스명이 새 클래스로 바뀐다(예: <code>getValidTokenNew</code> 는 이제 <code>EirTokenService.java</code>). 에러 로그 <code>CALL POINT: EirService.sendSIPGNew</code> 문구는 그대로 뒀다.</li>
+<li>테스트 <code>EirServiceTest</code> 28건(분리 전 원본으로 먼저 고정, 분리 후 무수정 통과). HTTP 는 정적 목으로 막아 ESB 로 나가지 않는다.</li>
+<li>문서의 <code>EirService.java:줄번호</code> 참조를 새 클래스 기준으로 다시 맞췄다(일부는 이전부터 어긋나 있었다).</li>
+<li>문서 <code>code-walkthrough/eir.md</code> 에 평문으로 적혀 있던 선사별 SIPG SALT 값을 지우고 설정 키 안내로 바꿨다(공개 발행 문서, 사용자 결정으로 값 삭제만 하고 종결).</li>
+</ul>
+<h2 id="infra-73-fe-249">메뉴 삭제 시 매핑도 함께 삭제 (Infra #73, FE #249 짝)<a class="headerlink" href="#infra-73-fe-249" title="Permanent link">¶</a></h2>
+<p>메뉴 관리 화면에서 메뉴를 지우면 <code>TB_CMS_MENU</code> 행만 지워져 역할 메뉴(<code>TB_CMS_ROLE_MENU</code>), 역할 버튼(<code>TB_CMS_ROLE_BUTTON</code>), 즐겨찾기(<code>TB_CMS_USER_MENU</code>)가 고아로 남았다(FK 없음). <code>CmsMenuMgt-mapper.xml</code> <code>delete</code> 를 네 테이블을 한 블록에서 지우도록 바꿨다(<code>changeMenuId</code> 와 같은 PL/SQL 블록 패턴). 방문 로그(<code>TB_CMS_VISIT_LOG</code>)는 이력이라 남긴다.</p>
+<ul>
+<li>확인: <code>.100</code> 에 임시 메뉴와 매핑 4행을 만들고 삭제 API 호출 → 네 테이블 모두 0, 다른 메뉴 매핑은 그대로.</li>
+</ul>
+<h2 id="api-infra-73">메뉴 관리 API 관리자 검사 (Infra #73 중 발견)<a class="headerlink" href="#api-infra-73" title="Permanent link">¶</a></h2>
+<p><code>/api/cms/comm/cmsMenuMgt/*</code>(조회, 저장, 삭제, ID 변경)에 롤 검사가 없어 협력사 계정도 메뉴를 지울 수 있었다(<code>.100</code> 실측). <code>CmsMenuMgtService</code> 의 공개 메서드 5개 첫 줄에 <code>requireAdmin()</code>(ROLE_ID <code>ADMIN</code>, <code>CmsFileIntegrityService</code> 와 같은 방식). 화면 메뉴는 원래 <code>ADMIN</code> 롤에만 부여돼 있어 정상 사용자 영향 없음.</p>
+<ul>
+<li>확인: 협력사(TES01) 4개 API 모두 409 "administrators only", 데이터 변화 없음 / 같은 계정에 <code>.100</code> 에서 <code>ADMIN</code> 롤을 잠시 붙이면 저장, 삭제 200(매핑까지 0) — 롤은 원복.</li>
+</ul>
+<h2 id="infra-72">예외 처리 정리 — 동작 변경 없음 (Infra #72)<a class="headerlink" href="#infra-72" title="Permanent link">¶</a></h2>
+<p>넓은 <code>catch (Exception|Throwable|RuntimeException)</code> 97건을 전수 분류했다(재throw/변환 39, 로그·오류 기록 후 계속 36, 의도된 폴백 22). 로그 없이 예외를 버리는 곳은 없었다.</p>
+<ul>
+<li>이유 없이 폴백하던 19곳에 이유 주석(문자열·날짜 파싱 유틸, Azure 로그 셀 파싱, <code>Trace</code>, <code>DMap</code>, 컨버터 등록, 트리 정렬 등).</li>
+<li>원인 예외를 버리고 업무 메시지만 던지던 4곳에 던지기 직전 <code>log.error</code>(PartnerController EIR 취소 조회, PDFUtil, 프로시저 결과 CLOB/BLOB 변환). 응답 메시지는 그대로다 — 원인을 예외에 붙이면 <code>GlobalHandlerExceptionResolver</code> 가 그 원인을 핸들러 인자로 넘겨 응답이 달라질 수 있어 붙이지 않았다.</li>
+<li>에러 로그 요청 정보 구성 실패(<code>AdminService</code>)는 조용히 <code>""</code> 를 돌려주던 것을 <code>warn</code> 로그로 남긴다.</li>
+<li>주석 처리된 옛 코드 3곳 삭제(JWT 검증 Provider 옛 <code>authenticate</code>, 공지 BLOB 변환, CRS 견적 엑셀 옛 파서). Graph 메일 첨부 주석은 보존.</li>
+<li><code>core/encrytion/Aes256Module</code> 삭제 — 암호화 실패 시 평문을 돌려주는 폴백이 있었지만, 생성·참조하는 곳이 0 인 레거시 이관 잔재였다(Bean 아님).</li>
+<li>문서의 줄 번호를 다시 맞췄다(이번 변경으로 밀린 것 + <code>VmsCommonService</code> 는 #195 이후 어긋나 있던 3곳).</li>
+</ul>
+<h2 id="aws-s3-infra-78">미사용 AWS S3 의존성·설정 제거 (Infra #78)<a class="headerlink" href="#aws-s3-infra-78" title="Permanent link">¶</a></h2>
+<p>코드에서 S3 를 쓰는 곳이 0 이었다(파일은 NAS/FTP).</p>
+<ul>
+<li><code>build.gradle</code>: <code>spring-cloud-aws-starter-s3</code> + awspring BOM 3.4.2 삭제.</li>
+<li><code>AwsS3Property</code>(<code>cloud.aws.*</code>), <code>StorageProperty.awsS3Location</code>, <code>FileUtil.getAwsS3Path()</code> 삭제(사용처 0).</li>
+<li>스토리지 초기화 껍데기 정리: <code>StorageService</code> 와 구현 2개(<code>AwsS3FileService</code> = 빈 <code>init()</code>, <code>FileSystemStorageService</code> = 쓰지 않는 <code>file</code> 프로파일 전용), <code>StorageException</code>, <code>VpApplication</code> 의 <code>CommandLineRunner</code> 삭제. 운영에서는 원래 아무 일도 안 하던 경로다.</li>
+<li>설정 예시에서 <code>spring.cloud.aws.*</code>, <code>cloud.aws.*</code>, <code>storage.awsS3Location</code>, <code>com.amazonaws</code> 로그 레벨 삭제. 실설정(<code>application*.yaml</code>, GitHub secret <code>APPLICATION_AZURE_YAML</code>)에 키가 남아 있어도 읽는 코드가 없어 무해하다.</li>
+<li>이 PR 배포 후 인프라에서 AWS env 2개(<code>SPRING_CLOUD_AWS_CREDENTIALS_*</code>), secretRef, KV 시크릿을 지운다(Infra #78 순서).</li>
+<li>문서의 설정 예시 줄 번호를 다시 맞췄다(일부는 이전 정리 때부터 어긋나 있었다).</li>
+</ul>
+<h2 id="infra-77">비밀번호 복잡도 정책 + 이전 비밀번호 재사용 금지 (Infra #77)<a class="headerlink" href="#infra-77" title="Permanent link">¶</a></h2>
+<p>내 정보 비밀번호 변경(<code>updateUser</code>)에 정책 검사를 넣었다. 지금까지는 일치·확인만 봐서 <code>abc</code> 로도 바뀌었다.</p>
+<ul>
+<li><code>core/util/PasswordPolicy</code>: 8~20자, 대문자·소문자·숫자·특수문자(<code>!@#$%^&amp;*()_+-=?</code>) 각 1자 이상(<code>MSG000441</code>), 같은 문자 4연속 금지(<code>MSG000442</code>), 아이디 연속 4글자 포함 금지(<code>MSG000443</code>). 문자 종류는 ASCII 로만 센다(프론트 정규식과 같은 판정).</li>
+<li>재사용 금지(<code>MSG000444</code>): 현재 비밀번호 + 이력(<code>TB_CMS_PWD_HISTORY</code>) 전체와 bcrypt 대조. 임시 비밀번호는 이력에 없어서 현재 비밀번호 대조가 따로 필요하다.</li>
+<li>비밀번호 찾기 임시 비밀번호: <code>randomAlphabetic(16)</code>(영문자만 — 정책 불통과) → <code>generateTemporary</code>(12자, 정책 통과, <code>0/O/1/l/I</code> 제외).</li>
+<li>최소 사용기간은 넣지 않았다(사용자 결정).</li>
+<li>메시지 <code>MSG000441</code>~<code>MSG000446</code>(ko/en/zh)은 운영 <code>TB_CMS_DATA_DIC</code> 에 등록했다. 441~444 는 백엔드, 445·446 은 프론트(임시 비밀번호 강제 화면)가 쓴다. <code>MSG000438</code>~<code>440</code> 은 CrsEstimate 인쇄 문구라 겹치지 않게 비켜 잡았다.</li>
+<li>테스트 <code>PasswordPolicyTest</code> 5건(임시 비밀번호 500개가 모두 정책 통과하는지 포함). 로컬 API 로 위반 3종·현재 비밀번호 재사용·이력 재사용 409, 정상 변경 200 확인(테스트 계정 원복).</li>
+</ul>
+<h2 id="temppwdyn-infra-77">임시 비밀번호 로그인 시 변경 강제 — 세션에 <code>tempPwdYn</code> 추가 (Infra #77)<a class="headerlink" href="#temppwdyn-infra-77" title="Permanent link">¶</a></h2>
+<p><code>TB_CMS_USER.TEMP_PWD_YN</code> 은 비밀번호 찾기(<code>findPassword</code>)가 <code>'Y'</code> 로, 내 정보에서 비밀번호를 바꾸면(<code>updateUser</code>) <code>'N'</code> 으로 기록해 왔지만 <strong>읽는 코드가 없었다.</strong> 로그인 때 <code>selectUser</code> 로 읽어 <code>LoginUser.tempPwdYn</code> 에 담고(<code>/api/session</code> 으로 프론트에 전달), 프론트(FE)가 <code>'Y'</code> 면 내 정보 팝업을 닫을 수 없게 띄운다. 막는 위치는 화면뿐이다(API 차단 없음 — 사용자 결정).</p>
+<ul>
+<li>관리자 초기화(<code>PKG_CM_USER.SP_SET_INITPWD</code>)도 <code>temp_pwd_yn = 'Y'</code> 를 남기도록 <strong>DB 프로시저 변경이 함께 필요</strong>하다(운영 반영은 사용자, 스크립트는 Infra #77). 초기화 비밀번호 값 자체는 현행 유지.</li>
+<li>신규 등록 사용자는 <code>TEMP_PWD_YN</code> 이 <code>null</code> 이라 대상이 아니다.</li>
+<li>문서 정정: <code>code-walkthrough/admin.md</code> 의 "재사용·최소 사용기간 검사" 서술은 사실이 아니었다(둘 다 미사용 <code>updatePassword</code> 에만 있었고 #196 에서 삭제). 현재 변경 경로에는 없다 — Infra #77 에 기록.</li>
+<li><code>LoginUser</code> 의 <code>serialVersionUID</code> 가 고정이라 배포 전 세션도 깨지지 않는다(그 세션은 <code>tempPwdYn=null</code> → 다음 로그인부터 적용).</li>
+<li>.100 스냅샷 기준 <code>'Y'</code> 활성 사용자 22명 중 20명이 비밀번호 찾기 이후에도 임시 비밀번호로 계속 로그인하고 있었다 — 배포 후 다음 로그인 때 변경을 요구받는다.</li>
+</ul>
+<h2 id="comsinokorvputil-infra-71">유틸 중복 정리 — <code>com.sinokor.vp.util</code> 패키지 삭제 (Infra #71)<a class="headerlink" href="#comsinokorvputil-infra-71" title="Permanent link">¶</a></h2>
+<p><code>core/util</code> 과 이름·기능이 겹치는 클래스 3개가 따로 있었다.</p>
+<ul>
+<li><code>UltUtil</code>(125줄), <code>ExcelUtils</code>(143줄): 사용처 0. <code>ExcelUtils</code> 는 <code>core/util/ExcelUtil</code> 의 <code>cellValue</code>/<code>cellValueString</code> 을 복사해 둔 것이었다.</li>
+<li><code>StringUtils</code>: <code>VmsCommonService</code> 가 <code>clobToString</code>·<code>blobToBase64String</code> 두 개만 썼다(<code>CLOB_FIELD</code>/<code>BLOB_FIELD</code> 변환). 동작 그대로 <code>core/util/StringUtil</code> 로 옮겼다 — <code>clobToString</code> 은 줄마다 끝에 개행을 붙이는 기존 동작까지 유지한다. 나머지 <code>removeDateMask</code> 는 <code>UltUtil</code> 과 중복된 죽은 코드.</li>
+<li>옮긴 두 함수에 단위 테스트 <code>StringUtilLobTest</code> 4건 추가(<code>SerialClob</code>/<code>SerialBlob</code> 로 실제 LOB 생성).</li>
+<li><code>core/util</code> 내부의 중복(<code>StringUtil</code> 자기중복, <code>DateUtil</code>↔<code>StringUtil</code>)은 이번 범위가 아니다.</li>
+</ul>
+<h2 id="6-infra-71">미사용 의존성 6개 제거 (Infra #71)<a class="headerlink" href="#6-infra-71" title="Permanent link">¶</a></h2>
+<p>소스 import 0 을 확인하고, 자동 설정이나 하위 의존성으로 쓰이는 경로가 없는지 본 뒤 지웠다. jar 약 3MB 감소.</p>
+<ul>
+<li><code>spring-boot-starter-data-jdbc</code> — Spring Data JDBC 저장소/<code>JdbcTemplate</code> 사용 0. 커넥션 풀(HikariCP)과 <code>spring-jdbc</code> 는 MyBatis starter 가 따로 끌어온다.</li>
+<li><code>spring-integration-http</code> — 유일한 사용처 <code>HttpFlowConfiguration</code> 을 PR #196 에서 지웠다.</li>
+<li><code>mssql-jdbc</code> — MSSQL 접속은 없고, <code>ExtendBaseController</code>·<code>VmsCommonController</code> 가 <code>com.microsoft.sqlserver.jdbc.StringUtils.isEmpty</code> 하나를 빌려 쓰고 있었다 → 동작이 같은 <code>commons-lang3</code> 로 교체.</li>
+<li><code>jsch</code>, <code>org.json</code>, <code>imgscalr</code> — 사용 0.</li>
+<li><strong>남긴 것</strong>: <code>webflux</code>(<code>MdmCustomerMgtService</code> 의 CRM 동기화가 <code>WebClient</code> 사용), <code>websocket</code>·<code>web-push</code>·<code>bcprov</code>(WebPush 휴면 기능 보존 결정), <code>pebble</code>, <code>p6spy</code>(SQL 로깅에 사용 중), AWS S3 starter(코드 사용 0 이지만 인프라가 AWS 키를 Key Vault 시크릿으로 주입 중 — 인프라와 함께 별도 정리).</li>
+</ul>
+<h2 id="printstacktrace-23-systemout-3-infra-71"><code>printStackTrace</code> 23건과 <code>System.out</code> 3건을 로거로 (Infra #71)<a class="headerlink" href="#printstacktrace-23-systemout-3-infra-71" title="Permanent link">¶</a></h2>
+<p><code>printStackTrace</code> 는 stderr 로 바로 나가 logback 패턴(시각, 스레드, 클래스)이 안 붙고 레벨로 거를 수도 없었다. 전부 <code>log.error</code>/<code>log.warn</code>(스택 포함)으로 바꾸고 무엇이 실패했는지 메시지를 붙였다. 제어 흐름(삼킴/재throw)은 그대로다.</p>
+<ul>
+<li>레벨: 기능 실패는 <code>error</code>(메일 전송, PDF 변환, 파일 읽기, 환율 엑셀 파싱 등), 정상 흐름에서도 나는 것은 <code>warn</code>(JWT 검증 실패 = 만료 토큰, 로그인 본문 해석 실패, Accept 헤더 해석 실패, 숫자 형식 변환 실패, 초대형 PDF 건너뜀).</li>
+<li><code>System.out</code> 3건: PDF 페이지별 변환 출력·요율 저장 시 <code>map</code> 덤프는 <code>debug</code>(운영에선 안 나온다 — 원래 디버그 흔적), 업로드 차단 확장자 건너뜀은 <code>info</code>.</li>
+<li><code>AdminService</code> 의 <code>exception.printStackTrace(pw)</code> 는 스택을 문자열로 받아 에러 로그 테이블에 적재하는 정상 용도라 남겼다.</li>
+<li>로거가 없던 10개 클래스에 <code>@Slf4j</code> 추가, 주석 처리된 <code>System.out</code> 디버그 줄 14개 삭제.</li>
+</ul>
+<h2 id="27-6-http-infra-71">죽은 엔드포인트 27개 + 선박 관리 6개 + 테스트 HTTP 흐름 삭제 (Infra #71)<a class="headerlink" href="#27-6-http-infra-71" title="Permanent link">¶</a></h2>
+<p>엔드포인트 249개 전수 분류(Infra #71 코멘트)에서 <strong>프론트 호출 코드 0 + 운영 호출 0</strong>(AppInsights 2026-07-08~10-06, nginx 30일)이고 외부 공개 경로(<code>/api/partner/**</code>, <code>/jsp/**</code>)가 아닌 것만 지웠다. 화면은 있으나 운영 호출만 0인 83개는 업무 판단 대상이라 손대지 않았다.</p>
+<ul>
+<li><strong>컨트롤러째 삭제(8묶음, 컨트롤러/서비스/DAO/매퍼)</strong>: <code>CmsErrorLog</code>(에러 로그 화면은 <code>cmsLogList/selectErrorLog</code> 를 쓴다 — 이건 옛 중복), <code>CmsReportSetting</code>(DevExpress 리포트 잔재), <code>FdsRate</code>, <code>MdmAbbrDicMgt</code>·<code>MdmManifestItem</code>(화면 없음), <code>MdmUserSetting</code>, <code>ContainerMovement</code>, <code>TestController</code>(<code>/test/*</code> 는 nginx 가 넘기지 않아 운영에서 닿지도 않았다). 이로써 백엔드의 <code>fds</code>·<code>mvs</code> 패키지는 비었다 — 그 화면들은 원래 공통 프로시저로만 동작한다.</li>
+<li><strong>무인증 경로 2개</strong>: <code>POST /api/auth/close/session</code>(본문 <code>USER_ID</code> 하나로 아무 사용자의 세션 ID 를 비움), <code>/api/auth/updatePassword</code>(<code>/api/updateUser</code> 와 중복, 로그인 없이 부르면 사용자 ID 가 빈 채 동작).</li>
+<li><strong>개별</strong>: <code>inserUserPortal</code>(포탈 사용자 일괄 이관 — SQL 이 <code>'대상테이블'</code> placeholder 인 미완성 코드), <code>change/language</code>, <code>cms/comm/History/save</code>, <code>cmsUserMgt/changePassword</code>(프론트 호출이 주석 처리됨), <code>code/getAutoNo</code>, <code>mdmFreightMgt/copyAccount</code>, <code>mdmVesselMgt/selectOneSchedule</code>(DAO 는 다른 곳에서 써서 유지), 주석 처리된 <code>eir/insertEirLog</code> 블록.</li>
+<li><strong>미사용 클래스/메서드</strong>: <code>RefreshableSqlSessionFactoryBean</code> 두 벌(<code>core/mybatis</code>, <code>config/database</code> — 실제 사용은 <code>WatchedSqlSessionFactoryBean</code>), <code>VmsCommonDao</code> 메일 로그 메서드 2개, 위 삭제로 고아가 된 <code>AdminService.isChangePasswordAfterOneDay</code>, DAO/매퍼(<code>selectGetTargetList</code>, <code>updateSessionId</code>(매퍼 구현도 없었다), <code>insertManual</code>).</li>
+<li><strong>선박 관리(<code>MdmVesselMgt</code>) 스택째 삭제</strong> — 쓰는 테이블 6개 중 5개(<code>TB_MDM_VESSEL</code>, <code>TB_MDM_VESSEL_SCH</code>, <code>TB_FMS_HBL</code>, <code>FMSVSLCD</code>, <code>TB_OMS_JOB_AUTH</code>)가 DB 에 <strong>없다</strong>(.100 확인, 스키마는 운영 복제본). 화면 첫 조회(<code>select</code>)부터 <code>ORA-00942</code> 라 어떤 기능도 동작할 수 없었고, 메뉴도 <code>USE_YN=N</code>, 운영 호출 0. 컨트롤러 6개 엔드포인트와 서비스, DAO, 매퍼를 지웠다(프론트 화면도 함께 삭제).</li>
+<li><strong><code>/api/test/aaa</code> — <code>HttpFlowConfiguration</code> 삭제</strong> — Spring Integration 으로 열린 테스트용 GET 경로(<code>"test"</code> 응답)와 <code>localhost:8090</code> 으로 나가는 <code>HttpGateway</code> 였다. <code>@Mapping</code> 이 아니라 엔드포인트 249개 집계에 안 잡혔고, <code>/api/</code> 아래라 nginx 를 통해 운영에서도 닿았다. 게이트웨이 사용처 0, 운영 호출 0. <code>@Import</code> 하던 <code>HttpMessageConvertersConfiguration</code> 은 자체 <code>@Configuration</code> 이라 계속 등록된다.</li>
+<li>남긴 것: WebPush(휴면 기능 보존 결정), 공통 팝업 <code>cmsCommonPopup/select*</code> 26개(프론트 코드박스와 짝이라 별도 정리).</li>
+</ul>
+<h2 id="executevmscommonprocedure-infra-71-adr-0004">공통 프로시저 옛 조회/저장 경로 삭제 — 관문은 <code>executeVmsCommonProcedure</code> 하나 (Infra #71, ADR-0004 후속)<a class="headerlink" href="#executevmscommonprocedure-infra-71-adr-0004" title="Permanent link">¶</a></h2>
+<p>프런트는 2026-08-12 에 전환을 마쳤고, 마지막 서버 내부 호출처 5곳(<code>EirService</code> 3곳 <code>SP_RTNJASON</code>/<code>SP_SET_EIRLOG</code>/<code>SP_GET_EIR_INFO</code>, <code>PartnerService.getCancelEir</code>, 메일 설정 조회 <code>PKG_CM.SP_GET_AAD</code>)을 <code>execute</code> 로 옮긴 뒤 <code>selectVmsCommonProcedure</code>(+ 래퍼 <code>List</code>/<code>Data</code>), <code>saveVmsCommonProcedure</code>, DAO 27개, 매퍼 블록, HTTP 엔드포인트 <code>/selectVendorCommonProcedure</code>·<code>/saveVendorCommonProcedure</code> 를 지웠다. 서비스 952 → 461줄, 매퍼 1,060 → 167줄.</p>
+<ul>
+<li>근거: 다섯 프로시저 모두 IN VARCHAR + OUT 커서뿐이다(<code>.100</code> <code>ALL_ARGUMENTS</code>). OUT VARCHAR, IN 커서, IN/OUT 인자가 없어 <code>execute</code> 의 추가 처리가 끼어들 자리가 없다. <code>.100</code> 에서 <code>CALL</code> 과 <code>BEGIN … END;</code> 두 방식을 같은 입력으로 돌려 행·컬럼 수와 열리지 않은 커서(<code>SP_RTNJASON</code> 의 <code>P_RSERR</code>) 처리가 같음을 확인했고, 로컬 기동 후 <code>/api/partner/getCancelEir</code> 도 같은 10행을 돌려줬다.</li>
+<li>동작 차이: <code>execute</code> 는 <code>@Transactional</code> 이다. 호출처 중 바깥 트랜잭션 안에서 예외를 잡고 계속 가는 곳은 없어 rollback-only 전파 문제는 없다.</li>
+<li>옛 HTTP 엔드포인트는 컷오버 후 브라우저 캐시에 남은 레거시 페이지가 한동안 불렀다(9/15 1,565건 → 10/02 5건 → 이후 0건). 그런 캐시가 아직 남아 있으면 <code>No endpoint</code> 500 이 나는데, V2 버그가 아니라 레거시 잔상이다.</li>
+<li>함께 삭제: 옛 경로만 부르던 죽은 코드 — 보험 기능 <code>VmsInsuranceController</code>·<code>VmsInsuranceService</code>(프론트 0, 운영 0, 쓰던 프로시저 4개가 VENDOR 스키마에 없음), <code>PartnerService.setJson</code>(호출 0), <code>VmsCommonService</code> 의 미사용 import 14개(WebClient/Reactor).</li>
+</ul>
+<h2 id="post-apiauthsessionreset-infra-71">인증 없이 다른 사용자로 전환되던 <code>POST /api/auth/sessionReset</code> 삭제 (Infra #71)<a class="headerlink" href="#post-apiauthsessionreset-infra-71" title="Permanent link">¶</a></h2>
+<p><code>/api/auth/**</code> 는 <code>request-permit-all-mappings</code> 에 있어 인증 없이 열려 있는데, 이 핸들러는 본문의 <code>CHG_USER_ID</code> 하나로 그 사용자를 읽어 <code>SecurityContext</code> 에 비밀번호 확인 없이 인증 객체를 넣었다. 프론트 호출 0, 운영 호출 0(AppInsights 90일, nginx 30일)이라 기능 영향 없이 지웠다. 리팩토링 죽은 코드 조사 중 발견.</p>
+<h2 id="isadminrole-false-loginuser-principal-details-pr-192"><code>isAdminRole()</code> 이 도입 이후 줄곧 <code>false</code> 였다 — <code>LoginUser</code> 는 principal 이 아니라 details 다 (PR #192)<a class="headerlink" href="#isadminrole-false-loginuser-principal-details-pr-192" title="Permanent link">¶</a></h2>
+<p><code>ExtendBaseService.isAdminRole()</code> 이 <code>auth.getPrincipal() instanceof LoginUser</code> 로 검사했는데, <code>LoginUserAuthentication.getPrincipal()</code> 은 <code>LoginUser</code> 가 아니라 <code>details.getUsername()</code>(<strong>String</strong>)을 돌려준다. 타입이 영영 맞지 않아 그 아래 <code>roleId.contains("ADMIN")</code> 은 <strong>도입 시점(PR #69, 2026-07-28)부터 한 번도 실행된 적이 없다.</strong> 예외가 아니라 <code>false</code> 라 조용히 틀렸다. ★레거시엔 <code>isAdminRole()</code> 자체가 없었고(<code>"admin".equals(userId)</code> 문자열 비교), 레거시의 <code>getPrincipal()</code> 호출처 5곳은 전부 정상이다 — <strong>V2 에서만 생긴 결함</strong>이다. 같은 실수를 지난주 <code>getSessionUserId()</code> 에서 먼저 밟아 <code>getDetails()</code> 로 고쳐 검증했다(PR #191). <strong>관리자에게 다시 열린 것</strong> = 템플릿(FORM) 업로드·삭제(<code>FileDataService:123</code>,<code>:275</code> — 그간 관리자도 409), 파일 정합성 점검(<code>CmsFileIntegrityService:47</code> — 그간 전원 거절, BE #187 이후 호출 0건이라 아무도 부딪히지 않았을 뿐), 공지 조회수 제외(<code>MdmNoticeService:64</code>). ★<strong>함께 걷어낸 분기 2종</strong> — 고치기만 하면 켜지면서 문제가 되는 자리다. ① <code>VmsCommonService:98</code>·<code>:574</code> 의 <code>PORT_CD</code> 대리 세팅: 프론트는 <code>dataset[].PARAM</code> <strong>안쪽</strong>에 세션 <code>portCd</code> 를 싣고 바깥 <code>param</code> 엔 없어서, 켜지면 <code>null</code> 로 덮어쓴다 → <code>PKG_EEIR</code> 이 <code>a.port = p_port_cd</code> 등치 비교라 <strong>관리자만 0 건</strong>이 된다(상세는 <a href="../code-walkthrough/vps/">vps 코드 워크스루</a> §5). ② <code>EirService:415</code> 가 관리자에게 ESB 토큰 <strong>전문</strong>을 응답에 싣던 분기 → 절삭(10자)으로 통일(바로 아래 <code>:460</code> 은 이미 양쪽 분기가 같은 코드였다). ★검증 = 배포 후 운영에서 <code>[FILECHK] scoped=391539 … rows=296</code> 이 찍혀 <strong>10-02 롤 게이트 투입 이후 첫 성공 실행</strong>을 확인했다. ⚠️관리자 DEM 목록이 0 건인 것은 이 변경과 무관하다 — 관리자 법인 <code>SNKO</code> 의 <code>TB_MDM_CORP.PORT_CD</code> 가 비어 있어서이고(법인 200개 중 19개 미등록), 레거시에서도 같았다. 협력사 계정은 정상이다. 함정 전모는 <a href="../security/">보안 문서</a>의 "<code>LoginUser</code> 는 principal 이 아니라 details 에 있다" 절.</p>
+<h2 id="api-mngt_no_list-pr-187-infra-60">파일 정합성 점검 API 에 관리자 롤 게이트 + <code>MNGT_NO_LIST</code> 죽은 분기 삭제 (PR #187, Infra #60)<a class="headerlink" href="#api-mngt_no_list-pr-187-infra-60" title="Permanent link">¶</a></h2>
+<p><code>CmsFileIntegrity</code> 는 선사와 협력사를 가리지 않고 <strong>전사 파일을 훑는 것이 목적</strong>이라 첨부 소유 검증(Infra #59)을 일부러 걸지 않았다. 그러면 롤 검사가 유일한 차단막인데 컨트롤러·서비스·DAO·매퍼 어디에도 없었다. 메뉴는 <code>TB_CMS_ROLE_MENU</code> 에서 ADMIN 에만 부여돼 있지만 그건 좌측 메뉴 노출일 뿐이고, <code>POST /api/cms/comm/cmsFileIntegrity/check</code> 는 인증만 통과하면 누구나 호출해 전 협력사의 <code>MNGT_NO</code>·경로·파일명을 받을 수 있었다. 서비스 진입부에서 <code>isAdminRole()</code> 로 막고 거절을 로그에 남긴다. 판정은 계정명이 아니라 롤이다. ★<strong>이 화면은 소유 검증 대상에서는 빼야 한다</strong> — 롤 게이트는 넣고 소유 검증은 빼는, 방향이 반대인 두 조치다.</p>
+<ul>
+<li><strong><code>MNGT_NO_LIST</code> 분기 삭제</strong> — <code>selectFileList</code> 의 다건 분기는 송신처가 <strong>0건</strong>이다(프론트 전량 grep 결과 주석 한 줄뿐, 백엔드 유일 후보도 주석 처리). 종전엔 "검증을 이 분기로 통째로 우회할 수 있다" 는 우려가 있었으나 <strong>첨부 소유 검증이 <code>FN_CAN_ACCESS_FILE</code> 을 <code>&lt;choose&gt;</code> 바깥에 달면서 두 분기 모두 검증을 타게 됐다</strong> — 보안 문제가 아니라 순수 죽은 코드라 지웠다.</li>
+<li><strong><code>DOC_TYPE='RP'</code> 는 조치하지 않기로 했다</strong> — "클라이언트 값으로 UNION 분기를 타면 일반 <code>selectFileList</code> 의 <code>/FORM/</code> 한정 가드가 없다" 는 지적이었는데 실측 결과 <strong>노출이 없다.</strong> ① <code>DOC_TYPE='RP'</code> 송신처는 <code>CrsEstimate</code>·<code>CrsEstApproval</code> 2화면뿐이고 거기 <code>MNGT_NO</code> 는 <strong>견적번호</strong>라 템플릿 의사키(<code>eirManual</code> 등)와 겹치지 않아 가드가 발동할 일이 없다. ② <code>/FORM/</code> 한정 가드는 <strong>보안 가드가 아니라</strong> 템플릿 자리에 남의 첨부가 앉는 것을 막는 <strong>오동작 방지</strong>인데, UNION 분기는 템플릿을 읽는 경로가 아니다. ③ 템플릿 목록은 일반 조회에서 <code>FILE_PATH = '/FORM/'</code> 면제로 <strong>원래 전사 공개</strong>다. 오히려 UNION 쪽은 그 면제가 없어 템플릿 행도 소유 검증을 받는다.</li>
+<li><strong>파일 정합성 2단계(DB↔NAS 불일치 실제 정리)는 하지 않기로 했다</strong>(Infra #60 종결, 결정과 재검토 트리거는 Infra #65) — ① 포탈시스템을 읽는 쿼리 9개 전수에 <code>/VENDOR%</code> 제외가 있어 <strong>고아 미러는 어디로도 노출되지 않는데</strong>, 탐지 쿼리 <code>selectFallbackExposedMirrors</code> 는 정확히 <code>FILE_PATH LIKE '/VENDOR%'</code> 인 행만 센다 — 화면이 <code>MISSING_FALLBACK</code> 으로 세는 집합이 곧 이미 제외된 집합이다. ② <code>selectScopedFiles</code> 에 기간 필터가 있어 과거 잔재는 <strong>지우는 대신 기준일로 자르면 된다</strong>. ③ 되돌릴 수 없는 삭제라 위험이 비대칭이다(<code>ORPHAN</code> 판정은 <code>COMP_CD</code> NULL 로 5,923 → 4,950 오탐 전력이 있고, <code>MISSING</code> 은 실물이 없어 지워도 용량 이득이 0). 불일치를 만들던 원인은 이미 전부 닫혀 있다. ⚠️화면의 <code>MISSING_FALLBACK</code> 구분명은 이제 심각도를 과장한다 — 실제로는 노출되지 않는 고아 미러다. ⚠️견적 목록의 <code>File='Y'</code> 는 <code>sp_get_est</code> 가 미러만 보고 판정해 <code>/VENDOR%</code> 제외가 없어 "파일 있음인데 첨부 0건" 이 보일 수 있다(무해).</li>
+</ul>
+<h2 id="menu-pr-182">에러로그에 호출 메뉴(MENU)를 남긴다 + 파일 장애 문구를 재시도 안내로 (PR #182)<a class="headerlink" href="#menu-pr-182" title="Permanent link">¶</a></h2>
+<p>공용 API 는 URI 만으로 <strong>어느 화면에서 부른 요청인지 알 수 없다</strong>(<code>/api/file/uploadFile</code> 하나를 20개 넘는 화면이 공유한다). 브라우저가 보내는 <code>Referer</code> 의 <code>mid</code>(= 메뉴 약어 <code>MENU_ABBR</code>)를 읽어 <code>ERR_MSG</code> 에 <code>MENU:</code> 한 줄, 콘솔 한 줄 요약에 <code>[메뉴]</code> 로 남긴다. nginx 는 <code>Host</code>·<code>X-Forwarded-*</code>·<code>X-Real-IP</code> 만 덮어쓰고 <code>Referer</code> 는 지우지 않으므로 <strong>프론트 수정 없이 전 화면을 커버한다.</strong> <code>mid</code> 가 없으면(팝업 새 창 등) 경로를 대신 쓰고, <code>Referer</code> 자체가 없으면(서버간 호출·파트너 API) 줄을 아예 안 붙인다. ⚠️<code>Referer</code> 는 클라이언트가 보내는 값이라 위조될 수 있다 — <strong>추적 단서로만</strong> 쓰고 판단 근거로 쓰지 말 것.</p>
+<ul>
+<li><code>FileSystemExceptionTranslator</code> 의 사용자 문구를 범용 "오류가 발생하였습니다"(<code>MSG000044</code>)에서 <strong><code>MSG000436</code></strong>("파일 업로드/다운로드에 실패했습니다. 잠시 후 다시 시도해 주세요.")로 바꿨다. NAS 일시 장애는 재시도로 풀리는 경우가 많은데(PR #184) 사용자에게 아무 안내가 없었다.</li>
+<li><strong>관리번호(<code>MNGT_NO</code>)는 이 PR 에 없다</strong> — multipart 의 <code>param</code> 이 <code>Blob</code> 으로 들어가 서블릿이 폼 필드가 아닌 <strong>파일 파트</strong>로 취급해 <code>getParameterMap()</code> 에 안 잡힌다. 별도 건으로 둔다.</li>
+</ul>
+<h2 id="150-msg000437-pr-186-fe-236-infra-49-5">전역 쿼리 타임아웃 150초 도입 + 전용 문구(MSG000437) (PR #186, FE #236, Infra #49 5번)<a class="headerlink" href="#150-msg000437-pr-186-fe-236-infra-49-5" title="Permanent link">¶</a></h2>
+<p>지금까지 JDBC, MyBatis, <code>@Transactional</code> 어디에도 쿼리 타임아웃이 없어 한 호출이 DB 커넥션을 무한정 쥘 수 있었다.</p>
+<ul>
+<li><code>mybatis-config.xml</code> 에 <code>defaultStatementTimeout=150</code>(초). 모든 매퍼(프로시저 관문 <code>executeVmsCommonProcedure</code> 포함)에 적용된다.</li>
+<li>값 근거: 견적 엑셀 저장을 뺀 정상 호출 최장 83초(<code>SP_GET_EST</code>, 30일 <code>[VMSPROC]</code>) &lt; <strong>150</strong> &lt; 운영 경로 240초 벽. 견적 엑셀 저장은 화면이 300행 단위로 나눠 호출해(FE #230) 조각당 수 초~수십 초다. 30일 <code>AppDependencies</code> 에서 100초 넘는 SQL 은 견적 저장 벽 사건뿐이었다.</li>
+<li>이걸 막고 있던 건 옛 저장 프로시저로 되돌리는 화면 스위치였다(옛 경로는 246초까지 걸린다). 같은 날 FE 에서 스위치를 제거했다.</li>
+<li>신규 <code>QueryTimeoutExceptionTranslator</code> — <code>QueryTimeoutException</code> → <strong>500 · ERR_DIV '02' · unknown=true · MSG000437</strong>("처리 시간이 초과되었습니다. 결과를 확인한 뒤 다시 시도해 주세요."). '02' 는 SIPG(502)·클라이언트 절단(400) 선례를 따라 공통코드 추가가 필요 없다. Java 캐치올 앞에 등록.</li>
+<li><code>.100</code> 실측(<code>setQueryTimeout(2)</code>): 무거운 SELECT 는 2.1초에 끊겨 <code>SQLTimeoutException</code>(code 1013) → Spring <code>QueryTimeoutException</code>. ★<strong><code>WHEN OTHERS</code> 로 감싸 취소를 삼켜도 드라이버는 같은 예외를 던진다</strong> → 프로시저 resultCd <code>'E'</code> 쪽 별도 처리는 두지 않았다. <code>dbms_session.sleep</code> 은 취소에 즉시 끊기지 않고 끝까지 잔 뒤 타임아웃으로 보고됐다(일반 SQL 에는 해당 없음).</li>
+<li>문구에 "결과를 확인한 뒤" 를 넣은 이유: 타임아웃 호출은 롤백되지만, 중간 커밋하는 옛 방식 프로시저나 앞 조각이 이미 저장된 분할 저장은 일부가 남을 수 있다.</li>
+</ul>
+<h2 id="nas-pr-184">NAS 업로드가 접속 단계에서 실패하면 딱 한 번 다시 시도한다 (PR #184)<a class="headerlink" href="#nas-pr-184" title="Permanent link">¶</a></h2>
+<p>2026-09-30 00:37, 2026-10-01 14:12 KST 에 첨부 업로드가 <code>failed to create FTPClient</code> 로 실패했다. 둘 다 NAS 접속이 10초(접속 타임아웃) 안에 안 됐고, 같은 순간 두 레플리카에서 Oracle 커넥션도 끊긴 채 발견됐다. 그래서 NAS 가 아니라 Azure↔온프렘 경로가 1~2분씩 끊긴 것으로 본다(Infra #41). 10/1 건은 사용자가 3분 뒤 같은 파일로 다시 올려 성공했다.</p>
+<ul>
+<li><code>FtpServiceInq.send</code> — Spring Integration 이 세션을 못 만들었을 때(<code>AbstractFtpSessionFactory.getSession()</code> 이 던지는 <code>IllegalStateException("failed to create FTPClient")</code>)만 1회 재시도한다. 세션은 전송 전에 만들어지므로 이 경우엔 아무것도 안 보낸 상태라 다시 보내도 중복·깨진 파일이 생기지 않는다.</li>
+<li>전송 도중 실패(데이터 채널 stall 등)는 일부가 써졌을 수 있어 <strong>재시도하지 않는다</strong>. 지금처럼 롤백 + <code>ERR_DIV '05'</code> 로 끝난다.</li>
+<li>대가: 재시도까지 실패하면 DB 커넥션 점유가 접속 타임아웃 10초만큼 늘어난다(최대 약 20초). 재시도 때는 <code>[FTP] send … 접속 실패, 1회 재시도</code> WARN 이 남는다.</li>
+<li>⚠️ 끊김 자체를 막지는 않는다 — 끊김이 10초보다 길면 재시도도 실패한다. 원인 확인은 Infra #75(2026-10-02 #41 에서 분리, Azure 지원 요청 1순위).</li>
+<li>테스트 <code>FtpServiceInqTest</code> 5건: 닫힌 포트로 <strong>실제</strong> 세션 생성 실패를 일으켜 판정 기준이 Spring 의 예외와 맞는지 확인(라이브러리가 메시지를 바꾸면 깨진다) + 재시도 횟수 4건.</li>
+</ul>
+<h2 id="infra-59">첨부 소유 검증 — 업로더 축 단일 규칙으로 전 모듈 차단 (Infra #59)<a class="headerlink" href="#infra-59" title="Permanent link">¶</a></h2>
+<p><code>TB_CMS_ATFILE</code> 은 전 모듈 첨부가 모이는 한 테이블인데 클라이언트가 보낸 <code>MNGT_NO</code> 를 그대로 믿어, <strong>로그인만 하면 남의 번호로 목록·다운로드·삭제</strong>가 됐다. ★종전 설계(<code>fn_can_access_est</code> + 견적 존재 폴백)는 <strong>CRS 만 덮고 CFS/TES/FDS/CSM 은 무방비</strong>였다 — 비CRS 는 견적 조회가 항상 0건이라 검증을 아예 안 탔다. ★모듈별로 막으려면 디스패치 리졸버가 필요한데(값 모양으로 못 가른다), <strong>업로더 축이 그걸 통째로 우회한다</strong> — "누가 올렸나" 만 보면 모듈을 알 필요가 없다. <code>REG_USER_ID</code> 는 업로드 시 <code>getSession().getUserId()</code> 라 위조 불가이고 <code>.3</code> 914,822행 <strong>충전율 100%</strong>. ★<strong>①(견적 소유)이 맨 앞</strong>이어야 한다 — 한 견적에 여러 협력사가 올린 첨부가 섞인 경우가 1,827건 있어, 업로더 축만 쓰면 견적 소유자가 자기 첨부 일부를 잃는다. ★<strong>다운로드는 매퍼가 아니라 서비스에서</strong> 판정한다 — 매퍼에서 걸면 거절이 0건이 되어 포탈 폴백으로 흘러 같은 <code>MNGT_NO</code> 의 포탈 행이 대신 내려간다. ★<strong>포탈시스템(SKR_DOC_MST) 폴백 행도 같은 규칙으로 막는다</strong> — 거기 업로더는 <code>INS_USR</code> 이고 우리 쪽 <code>USER_ID</code> 다(충전율 99.999%). 업로드는 <strong><code>PKG_CM.FN_CAN_SAVE_FILE</code></strong> 로 막았다 — ①기존 첨부가 있으면 그걸 볼 수 있는가(주인이 아니어도 같은 회사면 통과), ②첨부 0건이면 <strong>번호의 주인</strong>(수리 견적 / <code>TB_TES_GRP_INV</code> 의 <code>COMP_CD</code>+<code>CORP_CD</code>), ③어디에도 없으면 신규로 보고 허용. ★<code>fn_can_access_file</code> 로 대신하면 안 된다 — 업로더 자리에 자기자신/NULL 을 넣으면 ②/④ 로 떨어져 <strong>항상 <code>'Y'</code></strong> 다. ★<code>CORP_CD</code> 는 파라미터가 아니라 함수가 세션 사용자로 조회한다. CSM 은 대상 밖. ★<strong>④(완전 신규로 보고 통과)가 남는 노출</strong>이다 — 미식별 813 · 포탈 문서 186 · CFS 주문(<code>BK_NO</code>) 9. "첨부가 아직 하나도 없는 남의 번호에 <strong>첫</strong> 파일을 심는 것" 이고 열람 유출이 아니라 무결성 문제다. ★<strong>CFS 는 두 갈래</strong> — 송장(<code>GRP_INV_NO</code>, <code>COST_TP='CFS'</code>)은 ③이 잡지만 주문(<code>TB_CFS_ORD.BK_NO</code>)은 <code>TB_TES_GRP_INV</code> 에 없어 ④로 빠진다. 9건뿐이라 <strong>막지 않기로 결정</strong>(2026-10-02). 막을 땐 소유 축이 <code>CUST_CD</code> 다 — 그룹인보이스의 <code>CORP_CD</code> 와 다르니 통일 금지. 적용 지점 4곳이 전부 닫혔고, 검증 제외 4종은 <a href="../security/">보안 문서</a>의 "첨부 소유 검증" 절에 적었다.</p>
+<ul>
+<li>★<strong>배포 직후 핫픽스 3건(2026-10-02)</strong> — 게이트 로직은 맞았는데 <strong>주체(<code>USER_ID</code>)가 매퍼까지 가지 않아</strong> 운영에서 드러났다. ① <code>getSessionUserId()</code> 가 <code>getPrincipal()</code> 을 봐서 <code>null</code> → <code>FN_CAN_ACCESS_FILE(null, …)</code> 이 전부 <code>'N'</code> → <strong>업로드 전건 거절</strong>(PR #191). ② 컨트롤러가 <code>param.getMap("SEARCH").put("USER_ID", …)</code> 로 주입했는데 <strong><code>DMap.getMap()</code> 은 <code>copyMap()</code> 으로 사본을 돌려준다</strong> — 쓴 값이 버려져 <strong>첨부 목록 0 건</strong>. 서비스에서 <code>SEARCH</code> 를 한 번만 꺼내 그 인스턴스를 DAO 로 넘기도록 고쳤다(<code>b15b1d3</code>). ③ <code>getBase64Image</code> 만 <code>USER_ID</code> 주입이 빠져 있었다 — 매뉴얼 이미지가 전부 <code>/FORM/</code> 이라 템플릿 면제로 살아 있었을 뿐, 아니었으면 <code>null</code> 행에서 NPE(500)였다. 주입 + <code>null</code> 가드 추가(<code>f917015</code>). ⇒ <strong>교훈</strong>: 거절을 <code>'N'</code>/빈 결과로 설계하면 전달이 끊겨도 조용히 전부 차단된다. 세션 값을 쓰는 게 게이트면 SQL 단위 검증으로 끝내지 말고 로그인 계정으로 그 엔드포인트를 실제 호출할 것.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      장금상선 · Partner Portal
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/SinokorOfficial/Vendor-Portal-V2-Backend" target="_blank" rel="noopener" title="Backend 레포" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
